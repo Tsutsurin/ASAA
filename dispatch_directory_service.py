@@ -43,6 +43,27 @@ def make_work_copy(source_file: Path) -> Path:
     return work_file
 
 
+def move_source_file(
+    source_file: Path,
+    target_dir: Path,
+    reason: str,
+) -> Path:
+    target_dir.mkdir(parents=True, exist_ok=True)
+
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    target_file = target_dir / f'{timestamp}_{source_file.name}'
+
+    shutil.move(str(source_file), str(target_file))
+
+    logger.info(
+        'Исходный файл отработки перемещен: reason=%s | %s',
+        reason,
+        target_file,
+    )
+
+    return target_file
+
+
 def archive_or_delete_source(
     source_file: Path,
     archive_dir: Path | None,
@@ -50,7 +71,12 @@ def archive_or_delete_source(
 ) -> None:
     if delete_after_processing:
         source_file.unlink()
-        logger.info('Исходный файл отработки удален: %s', source_file)
+
+        logger.info(
+            'Исходный файл отработки удален: %s',
+            source_file,
+        )
+
         return
 
     if archive_dir is None:
@@ -58,19 +84,32 @@ def archive_or_delete_source(
             'Архив не указан, исходный файл отработки оставлен: %s',
             source_file,
         )
+
         return
 
-    archive_dir.mkdir(parents=True, exist_ok=True)
-
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    archive_file = archive_dir / f'{timestamp}_{source_file.name}'
-
-    shutil.move(str(source_file), str(archive_file))
-
-    logger.info(
-        'Исходный файл отработки перемещен в архив: %s',
-        archive_file,
+    move_source_file(
+        source_file=source_file,
+        target_dir=archive_dir,
+        reason='success',
     )
+
+
+def move_source_to_error(
+    source_file: Path,
+    error_dir: Path,
+) -> None:
+    try:
+        move_source_file(
+            source_file=source_file,
+            target_dir=error_dir,
+            reason='error',
+        )
+
+    except Exception:
+        logger.exception(
+            'Не удалось переместить исходный файл в папку ошибки: %s',
+            source_file,
+        )
 
 
 def process_dispatch_directory(
@@ -87,6 +126,12 @@ def process_dispatch_directory(
         Path(settings.dispatch_directory.archive_dir)
         if settings.dispatch_directory.archive_dir
         else None
+    )
+
+    error_dir = (
+        Path(settings.dispatch_directory.error_dir)
+        if settings.dispatch_directory.error_dir
+        else input_dir / 'Ошибка'
     )
 
     files = get_excel_files(input_dir)
@@ -115,9 +160,16 @@ def process_dispatch_directory(
         except Exception:
             logger.exception(
                 'Ошибка обработки файла отработки. '
-                'Исходный файл НЕ будет архивирован: %s',
+                'Исходный файл будет перемещен в папку ошибки: %s',
                 source_file,
             )
+
+            move_source_to_error(
+                source_file=source_file,
+                error_dir=error_dir,
+            )
+
+            processed_any = True
             continue
 
         archive_or_delete_source(

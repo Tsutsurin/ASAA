@@ -1,6 +1,9 @@
 import configparser
 import logging
 import re
+import sys
+import time
+import uuid
 from pathlib import Path
 
 from openpyxl import Workbook, load_workbook
@@ -8,7 +11,11 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 
 logger = logging.getLogger('auto_responsible.formatter')
 
-BASE_DIR = Path(__file__).resolve().parent
+if getattr(sys, 'frozen', False):
+    BASE_DIR = Path(sys.executable).resolve().parent
+else:
+    BASE_DIR = Path(__file__).resolve().parent
+
 CONFIG_PATH = BASE_DIR / 'config.ini'
 
 HEADER_FONT = Font(bold=True, color='000000')
@@ -52,15 +59,38 @@ BDU_RE = re.compile(r'\b(?:\d{4}-\d{1,6}|\d{4,6})\b')
 def norm_name(s: str) -> str:
     if s is None:
         return ''
+
     return re.sub(r'\s+', '', str(s)).lower()
 
 
 def to_blank_space(v):
     if v is None:
         return ' '
+
     if isinstance(v, str) and v == '':
         return ' '
+
     return v
+
+
+def replace_file_with_retry(src: Path, dst: Path, retries: int = 5) -> None:
+    last_error = None
+
+    for attempt in range(1, retries + 1):
+        try:
+            src.replace(dst)
+            return
+        except PermissionError as error:
+            last_error = error
+            logger.warning(
+                'Файл занят, попытка замены %s/%s: %s',
+                attempt,
+                retries,
+                dst,
+            )
+            time.sleep(2)
+
+    raise last_error
 
 
 def load_settings_from_config() -> None:
@@ -70,13 +100,23 @@ def load_settings_from_config() -> None:
     config = configparser.ConfigParser()
     config.optionxform = str
 
+    logger.info(
+        'Проверяю config.ini: %s | exists=%s',
+        CONFIG_PATH,
+        CONFIG_PATH.is_file(),
+    )
+
     if CONFIG_PATH.is_file():
         config.read(CONFIG_PATH, encoding='utf-8')
 
         if config.has_section('header'):
             header_color = config.get('header', 'color', fallback=None)
+
             if header_color:
-                HEADER_FILL = PatternFill('solid', fgColor=header_color.strip())
+                HEADER_FILL = PatternFill(
+                    'solid',
+                    fgColor=header_color.strip(),
+                )
 
         if config.has_section('colors'):
             for key, val in config['colors'].items():
@@ -86,6 +126,7 @@ def load_settings_from_config() -> None:
 
         if config.has_section('columns'):
             raw_cols = config.get('columns', 'cols', fallback='')
+
             for line in raw_cols.splitlines():
                 line = line.strip()
 
@@ -104,6 +145,7 @@ def load_settings_from_config() -> None:
                 dst = parts[1]
 
                 width = None
+
                 if len(parts) >= 3 and parts[2]:
                     try:
                         width = float(parts[2])
@@ -116,6 +158,7 @@ def load_settings_from_config() -> None:
 
         if config.has_section('drop_columns'):
             raw_drops = config.get('drop_columns', 'cols', fallback='')
+
             for line in raw_drops.splitlines():
                 line = line.strip()
 
@@ -130,7 +173,10 @@ def load_settings_from_config() -> None:
     SEVERITY_FILLS.clear()
 
     for key, color in SEVERITY_COLORS.items():
-        SEVERITY_FILLS[key.lower()] = PatternFill('solid', fgColor=color)
+        SEVERITY_FILLS[key.lower()] = PatternFill(
+            'solid',
+            fgColor=color,
+        )
 
 
 def clean_cve(text: str) -> list[str]:
@@ -165,6 +211,24 @@ def clean_bdu(text: str) -> list[str]:
     return ids
 
 
+def build_column_maps() -> tuple[dict[str, str], dict[str, float]]:
+    rename_map_norm = {}
+    width_map_norm = {}
+
+    for src, dst, width in COL_MAP:
+        src_key = norm_name(src)
+        dst_key = norm_name(dst)
+
+        rename_map_norm[src_key] = dst
+        rename_map_norm[dst_key] = dst
+
+        if width is not None:
+            width_map_norm[src_key] = width
+            width_map_norm[dst_key] = width
+
+    return rename_map_norm, width_map_norm
+
+
 def stream_transform(infile, outfile=None, progress_callback=None) -> Path:
     load_settings_from_config()
 
@@ -173,7 +237,9 @@ def stream_transform(infile, outfile=None, progress_callback=None) -> Path:
 
     logger.info('Начинаю форматирование отчета: %s', infile)
 
-    temp_outfile = outfile.with_suffix('.formatted_tmp.xlsx')
+    temp_outfile = outfile.with_name(
+        f'~formatted_{uuid.uuid4().hex}.xlsx'
+    )
 
     src_wb = load_workbook(infile, read_only=True, data_only=True)
 
@@ -187,20 +253,13 @@ def stream_transform(infile, outfile=None, progress_callback=None) -> Path:
             progress_callback(0.0)
 
         first_row = next(src_ws.iter_rows(min_row=1, max_row=1))
+
         src_header = [
             str(cell.value).strip() if cell.value is not None else ''
             for cell in first_row
         ]
 
-        rename_map_norm = {}
-        width_map_norm = {}
-
-        for src, dst, width in COL_MAP:
-            key = norm_name(src)
-            rename_map_norm[key] = dst
-
-            if width is not None:
-                width_map_norm[key] = width
+        rename_map_norm, width_map_norm = build_column_maps()
 
         exist_idx_map = []
         tgt_header = []
@@ -272,7 +331,10 @@ def stream_transform(infile, outfile=None, progress_callback=None) -> Path:
             src_norm = norm_name(src_name)
             out_norm = norm_name(out_name)
 
-            if cve_pos is None and (out_norm == 'cve' or 'cve' in src_norm):
+            if cve_pos is None and (
+                out_norm == 'cve'
+                or 'cve' in src_norm
+            ):
                 cve_pos = pos
 
             if bdu_pos is None and (
@@ -284,6 +346,7 @@ def stream_transform(infile, outfile=None, progress_callback=None) -> Path:
 
             if sev_pos is None and (
                 out_norm == sev_target_name_norm
+                or src_norm == sev_target_name_norm
                 or 'severityrating' in src_norm
             ):
                 sev_pos = pos
@@ -313,14 +376,18 @@ def stream_transform(infile, outfile=None, progress_callback=None) -> Path:
                 if src_idx is None:
                     value = ' '
                 else:
-                    value = row_cells[src_idx].value if src_idx < len(row_cells) else None
+                    value = (
+                        row_cells[src_idx].value
+                        if src_idx < len(row_cells)
+                        else None
+                    )
                     value = to_blank_space(value)
 
                 row_vals.append(value)
 
             if cve_pos is not None and cve_pos < len(row_vals):
                 cve_ids = clean_cve(str(row_vals[cve_pos]))
-                row_vals[cve_pos] = ', '.join(cve_ids) if cve_ids else ' '
+                row_vals[cve_pos] = ','.join(cve_ids) if cve_ids else ' '
 
             if bdu_pos is not None and bdu_pos < len(row_vals):
                 bdu_ids = clean_bdu(str(row_vals[bdu_pos]))
@@ -352,7 +419,7 @@ def stream_transform(infile, outfile=None, progress_callback=None) -> Path:
                 sev_raw = str(row_vals[sev_pos]).strip().lower()
                 row_fill = SEVERITY_FILLS.get(sev_raw)
 
-            for col_idx, ((src_idx, _out_name),value) in enumerate(
+            for col_idx, ((src_idx, _out_name), value) in enumerate(
                 zip(exist_idx_map, row_vals),
                 start=1,
             ):
@@ -389,15 +456,22 @@ def stream_transform(infile, outfile=None, progress_callback=None) -> Path:
                 progress = processed_rows / total_rows * 100.0
                 progress_callback(progress)
 
-        for index, (src_idx, _out_name) in enumerate(exist_idx_map, start=1):
+        for index, (src_idx, out_name) in enumerate(exist_idx_map, start=1):
             col_letter = ws.cell(row=1, column=index).column_letter
 
             if src_idx is None:
                 width = DEFAULT_COL_WIDTH
             else:
                 src_name = src_header[src_idx]
-                normalized = norm_name(src_name)
-                width = width_map_norm.get(normalized, DEFAULT_COL_WIDTH)
+
+                normalized_src = norm_name(src_name)
+                normalized_out = norm_name(out_name)
+
+                width = (
+                    width_map_norm.get(normalized_src)
+                    or width_map_norm.get(normalized_out)
+                    or DEFAULT_COL_WIDTH
+                )
 
             ws.column_dimensions[col_letter].width = width
 
@@ -405,10 +479,19 @@ def stream_transform(infile, outfile=None, progress_callback=None) -> Path:
 
         last_row = ws.max_row
         last_filter_col_idx = max(1, len(tgt_header) - 1)
-        last_col_letter = ws.cell(row=1, column=last_filter_col_idx).column_letter
+        last_col_letter = ws.cell(
+            row=1,
+            column=last_filter_col_idx,
+        ).column_letter
+
         ws.auto_filter.ref = f'A1:{last_col_letter}{last_row}'
 
         wb.save(temp_outfile)
+
+        try:
+            wb.close()
+        except Exception:
+            pass
 
         if progress_callback:
             progress_callback(100.0)
@@ -416,7 +499,10 @@ def stream_transform(infile, outfile=None, progress_callback=None) -> Path:
     finally:
         src_wb.close()
 
-    temp_outfile.replace(outfile)
+    replace_file_with_retry(
+        src=temp_outfile,
+        dst=outfile,
+    )
 
     logger.info('Форматирование завершено: %s', outfile)
 

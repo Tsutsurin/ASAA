@@ -2,6 +2,7 @@ import logging
 import time
 from pathlib import Path
 
+from ad_user_service import resolve_dispatch_recipients
 from config import BASE_DIR, Settings
 from exchange_client import (
     download_excel_attachments,
@@ -56,8 +57,6 @@ def process_dispatch_excel_file(
         ip_column=settings.dispatch.ip_column,
         fqdn_column=settings.dispatch.fqdn_column,
         vulnerability_column=settings.dispatch.vulnerability_column,
-        sort_columns=settings.dispatch.sort_columns,
-        severity_order=settings.dispatch.severity_order,
     )
 
     tasks_dir = Path(settings.dispatch.network_tasks_dir)
@@ -73,7 +72,7 @@ def process_dispatch_excel_file(
     max_emails = settings.dispatch.max_emails_per_run
 
     for group_report in group_reports:
-        if created_count >= max_emails:
+        if max_emails > 0 and created_count >= max_emails:
             logger.warning(
                 'Достигнут лимит писем за запуск: %s. Остальные группы не обработаны.',
                 max_emails,
@@ -111,10 +110,23 @@ def process_dispatch_excel_file(
                     group_name=group_report.display_name,
                 )
 
+                filtered_to, filtered_cc = resolve_dispatch_recipients(
+                    raw_emails=group_report.emails,
+                    default_to=settings.dispatch.to,
+                    settings=settings.dispatch.recipient_filter,
+                )
+
+                logger.info(
+                    'Получатели после фильтрации для группы %s: to=%s | cc=%s',
+                    group_report.display_name,
+                    filtered_to,
+                    filtered_cc or settings.dispatch.cc,
+                )
+
                 send_html_email(
                     account=account,
-                    to=group_report.emails or settings.dispatch.to,
-                    cc=settings.dispatch.cc,
+                    to=filtered_to,
+                    cc=filtered_cc or settings.dispatch.cc,
                     subject=build_ticket_subject(
                         settings.dispatch.subject,
                         ticket_number,
@@ -155,6 +167,7 @@ def process_dispatch_excel_file(
 
         except Exception:
             failed_count += 1
+
             logger.exception(
                 'Ошибка отправки/создания заявки для группы: %s',
                 group_report.display_name,

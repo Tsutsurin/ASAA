@@ -44,6 +44,20 @@ class SendEmailSettings:
 
 
 @dataclass
+class RecipientFilterSettings:
+    enabled: bool
+    ldap_server: str
+    ldap_user: str
+    ldap_password_env: str
+    ldap_password: str
+    search_base: str
+    max_recipients: int
+    fallback_to: str
+    fallback_cc: str | None
+    allowed_title_keywords: list[str]
+
+
+@dataclass
 class DispatchSettings:
     enabled: bool
     template_path: str
@@ -66,8 +80,7 @@ class DispatchSettings:
     status_value: str
     max_emails_per_run: int
     pause_between_emails_seconds: int
-    sort_columns: list[str]
-    severity_order: list[str]
+    recipient_filter: RecipientFilterSettings
 
 
 @dataclass
@@ -85,6 +98,7 @@ class DispatchDirectorySettings:
     input_dir: str
     archive_dir: str | None
     delete_after_processing: bool
+    error_dir: str | None
 
 
 @dataclass
@@ -115,6 +129,7 @@ def load_settings(path: str | Path | None = None) -> Settings:
     dispatch = data['dispatch']
     search_directory = data.get('search_directory', {})
     dispatch_directory = data.get('dispatch_directory', {})
+    recipient_filter = dispatch.get('recipient_filter', {})
 
     password_env = ews['password_env']
     password = os.environ.get(password_env)
@@ -123,6 +138,12 @@ def load_settings(path: str | Path | None = None) -> Settings:
         raise ValueError(
             f'Не найдена переменная окружения с паролем: {password_env}'
         )
+
+    ldap_password_env = recipient_filter.get(
+        'ldap_password_env',
+        'VOC_PASSWORD',
+    )
+    ldap_password = os.environ.get(ldap_password_env, '')
 
     return Settings(
         read_mailbox=data.get('read_mailbox'),
@@ -180,26 +201,26 @@ def load_settings(path: str | Path | None = None) -> Settings:
             ),
             placeholder=dispatch.get('placeholder', 'text'),
             status_value=dispatch.get('status_value', 'Направлено'),
-            max_emails_per_run=dispatch.get('max_emails_per_run', 100),
+            max_emails_per_run=dispatch.get('max_emails_per_run', 0),
             pause_between_emails_seconds=dispatch.get(
                 'pause_between_emails_seconds',
                 2,
             ),
-
-            sort_columns=dispatch.get(
-                'sort_columns',
-                [],
+            recipient_filter=RecipientFilterSettings(
+                enabled=recipient_filter.get('enabled', False),
+                ldap_server=recipient_filter.get('ldap_server', ''),
+                ldap_user=recipient_filter.get('ldap_user', ews['username']),
+                ldap_password_env=ldap_password_env,
+                ldap_password=ldap_password,
+                search_base=recipient_filter.get('search_base', ''),
+                max_recipients=recipient_filter.get('max_recipients', 10),
+                fallback_to=recipient_filter.get('fallback_to', dispatch['to']),
+                fallback_cc=recipient_filter.get('fallback_cc'),
+                allowed_title_keywords=recipient_filter.get(
+                    'allowed_title_keywords',
+                    [],
+                ),
             ),
-
-            severity_order=dispatch.get(
-                'severity_order',
-                [
-                    'critical',
-                    'high',
-                    'medium',
-                    'low',
-                ]
-            )
         ),
 
         search_directory=SearchDirectorySettings(
@@ -217,6 +238,7 @@ def load_settings(path: str | Path | None = None) -> Settings:
             enabled=dispatch_directory.get('enabled', False),
             input_dir=dispatch_directory.get('input_dir', ''),
             archive_dir=dispatch_directory.get('archive_dir'),
+            error_dir=dispatch_directory.get('error_dir'),
             delete_after_processing=dispatch_directory.get(
                 'delete_after_processing',
                 False,
