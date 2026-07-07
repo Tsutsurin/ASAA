@@ -222,11 +222,19 @@ def normalize_api_row(row) -> dict:
         or ''
     )
 
+    service = (
+        row.get('service')
+        or row.get('Наименование ИС')
+        or row.get('Service')
+        or ''
+    )
+
     return {
         **row.to_dict(),
         'group': normalize_value(group),
         'leader_email': normalize_value(leader_email),
         'emails': normalize_value(emails),
+        'service': normalize_value(service),
     }
 
 
@@ -374,6 +382,7 @@ def build_output_report(
     group_col_idx = ensure_column(ws, 'Группа')
     leader_col_idx = ensure_column(ws, 'Лидер группы')
     email_col_idx = ensure_column(ws, 'Почты')
+    service_col_idx = ensure_column(ws, 'Наименование ИС')
 
     lookup_map = build_lookup_map(enriched_params)
 
@@ -412,6 +421,7 @@ def build_output_report(
         group = normalize_value(enriched_row.get('group'))
         leader = normalize_value(enriched_row.get('leader_email'))
         emails = normalize_value(enriched_row.get('emails'))
+        service = normalize_value(enriched_row.get('service'))
 
         ws.cell(
             row=row_idx,
@@ -431,6 +441,12 @@ def build_output_report(
             value=emails,
         )
 
+        ws.cell(
+            row=row_idx,
+            column=service_col_idx,
+            value=service,
+        )
+
         filled_count += 1
 
     reset_filters_and_show_rows(ws)
@@ -438,7 +454,7 @@ def build_output_report(
     wb.save(output_file)
 
     logger.info(
-        'Итоговый отчет сохрансохранен: %s | заполнено строк: %s',
+        'Итоговый отчет сохранен: %s | заполнено строк: %s',
         output_file,
         filled_count,
     )

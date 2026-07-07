@@ -32,6 +32,21 @@ def normalize(value: str) -> str:
     return str(value or '').strip().lower()
 
 
+def email_blocked(
+    email: str,
+    blocked_emails: list[str],
+) -> bool:
+    normalized_email = normalize(email)
+
+    blocked = {
+        normalize(value)
+        for value in blocked_emails
+        if normalize(value)
+    }
+
+    return normalized_email in blocked
+
+
 def title_allowed(
     title: str,
     allowed_titles: list[str],
@@ -111,6 +126,11 @@ def resolve_dispatch_recipients(
     if not settings.enabled:
         return raw_emails or default_to, None
 
+    logger.info(
+        'Фильтр получателей включен. Черный список: %s адресов',
+        len(settings.blocked_emails),
+    )
+
     source_emails = split_emails(raw_emails or default_to)
 
     if not source_emails:
@@ -126,6 +146,16 @@ def resolve_dispatch_recipients(
         allowed_emails = []
 
         for email in source_emails:
+            if email_blocked(
+                email=email,
+                blocked_emails=settings.blocked_emails,
+            ):
+                logger.warning(
+                    'Получатель заблокирован черным списком: %s',
+                    email,
+                )
+                continue
+
             user = get_user_by_email(
                 conn=conn,
                 search_base=settings.search_base,

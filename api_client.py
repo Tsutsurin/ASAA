@@ -41,13 +41,15 @@ class ResponsibleApiClient:
 
 def parse_group_and_emails(
     data: dict[str, Any] | None,
-) -> tuple[str, str, str]:
+) -> tuple[str, str, str, str]:
     if not data:
-        return '', '', ''
+        return '', '', '', ''
 
     groups_found: list[str] = []
     emails_found: list[str] = []
     leaders_found: list[str] = []
+
+    service = str(data.get('service') or '').strip()
 
     groups = data.get('groups', {})
     supported_by = groups.get('Supported by', {})
@@ -87,6 +89,7 @@ def parse_group_and_emails(
         '; '.join(unique_groups),
         '; '.join(unique_leaders),
         '; '.join(unique_emails),
+        service,
     )
 
 
@@ -112,7 +115,7 @@ def enrich_params_with_api(
             logger.info('Запрос API по hostname: %s', fqdn)
             data = client.request_by_hostname(fqdn)
 
-        group, leader, emails = parse_group_and_emails(data)
+        group, leader, emails, service = parse_group_and_emails(data)
 
         rows.append(
             {
@@ -121,6 +124,7 @@ def enrich_params_with_api(
                 'Группа': group,
                 'Лидер группы': leader,
                 'Почты': emails,
+                'Наименование ИС': service,
             }
         )
 

@@ -19,6 +19,7 @@ class GroupReport:
     ip_or_fqdn: str
     vulnerability_ids: str
     emails: str
+    service_name: str
 
 
 def safe_filename(value: str) -> str:
@@ -191,6 +192,11 @@ def split_report_by_group(
         column_name='Почты',
     )
 
+    service_real_column = find_optional_column(
+        columns=df.columns,
+        column_name='Наименование ИС',
+    )
+
     df[group_real_column] = df[group_real_column].apply(normalize_value)
 
     grouped = df.groupby(
@@ -238,6 +244,12 @@ def split_report_by_group(
             else ''
         )
 
+        service_name = (
+            unique_join(group_df[service_real_column])
+            if service_real_column
+            else ''
+        )
+
         group_report = GroupReport(
             group_name=group_name,
             display_name=display_name,
@@ -246,16 +258,18 @@ def split_report_by_group(
             ip_or_fqdn=ip_or_fqdn,
             vulnerability_ids=vulnerability_ids,
             emails=emails,
+            service_name=service_name,
         )
 
         result.append(group_report)
 
         logger.info(
-            'Создан отчет группы: %s | строк=%s | файл=%s | хостов=%s | emails=%s',
+            'Создан отчет группы: %s | строк=%s | файл=%s | хостов=%s | service=%s | emails=%s',
             display_name,
             len(group_df),
             output_file,
             len(ip_or_fqdn.split(';')) if ip_or_fqdn else 0,
+            service_name,
             emails,
         )
 

@@ -12,6 +12,10 @@ from exchange_client import (
 from exchange_sender import send_html_email
 from group_report_splitter import split_report_by_group
 from html_template import render_html_template
+from service_routing import (
+    get_service_recipients,
+    load_service_routing,
+)
 from ticket_number_service import (
     copy_report_to_ticket_folder,
     create_ticket_folder,
@@ -66,10 +70,15 @@ def process_dispatch_excel_file(
 
     normal_template_path = BASE_DIR / settings.dispatch.template_path
     no_group_template_path = BASE_DIR / settings.dispatch.no_group_template_path
+    service_template_path = BASE_DIR / settings.dispatch.service_template_path
 
     created_count = 0
     failed_count = 0
     max_emails = settings.dispatch.max_emails_per_run
+
+    service_routing = load_service_routing(
+        settings.dispatch.service_routing,
+    )
 
     for group_report in group_reports:
         if max_emails > 0 and created_count >= max_emails:
@@ -104,24 +113,49 @@ def process_dispatch_excel_file(
                     status=settings.dispatch.status_value,
                 )
 
-                html_body = render_html_template(
-                    template_path=normal_template_path,
-                    placeholder=settings.dispatch.placeholder,
-                    group_name=group_report.display_name,
+                service_recipients = get_service_recipients(
+                    service_name=group_report.service_name,
+                    routing=service_routing,
                 )
 
-                filtered_to, filtered_cc = resolve_dispatch_recipients(
-                    raw_emails=group_report.emails,
-                    default_to=settings.dispatch.to,
-                    settings=settings.dispatch.recipient_filter,
-                )
+                if service_recipients:
+                    filtered_to = '; '.join(service_recipients)
+                    filtered_cc = None
+                    template_path = service_template_path
 
-                logger.info(
-                    'Получатели после фильтрации для группы %s: to=%s | cc=%s',
-                    group_report.display_name,
-                    filtered_to,
-                    filtered_cc or settings.dispatch.cc,
-                )
+                    logger.info(
+                        'Использована маршрутизация по ИС для группы %s | ИС=%s | to=%s',
+                        group_report.display_name,
+                        group_report.service_name,
+                        filtered_to,
+                    )
+                else:
+                    filtered_to, filtered_cc = resolve_dispatch_recipients(
+                        raw_emails=group_report.emails,
+                        default_to=settings.dispatch.to,
+                        settings=settings.dispatch.recipient_filter,
+                    )
+                    template_path = normal_template_path
+
+                    logger.info(
+                        'Получатели после AD-фильтрации для группы %s: to=%s | cc=%s',
+                        group_report.display_name,
+                        filtered_to,
+                        filtered_cc or settings.dispatch.cc,
+                    )
+
+                if service_recipients:
+                    html_body = render_html_template(
+                        template_path=template_path,
+                        placeholder=settings.dispatch.placeholder,
+                        group_name=group_report.service_name,
+                    )
+                else:
+                    html_body = render_html_template(
+                        template_path=template_path,
+                        placeholder=settings.dispatch.placeholder,
+                        group_name=group_report.display_name,
+                    )
 
                 send_html_email(
                     account=account,

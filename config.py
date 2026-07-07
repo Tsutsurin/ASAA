@@ -54,14 +54,21 @@ class RecipientFilterSettings:
     max_recipients: int
     fallback_to: str
     fallback_cc: str | None
-    allowed_title_keywords: list[str]
+    allowed_titles: list[str]
+    blocked_emails: list[str]
 
+
+@dataclass
+class ServiceRoutingSettings:
+    enabled: bool
+    file: str
 
 @dataclass
 class DispatchSettings:
     enabled: bool
     template_path: str
     no_group_template_path: str
+    service_template_path: str
     to: str
     cc: str | None
     no_group_to: str
@@ -81,6 +88,7 @@ class DispatchSettings:
     max_emails_per_run: int
     pause_between_emails_seconds: int
     recipient_filter: RecipientFilterSettings
+    service_routing: ServiceRoutingSettings
 
 
 @dataclass
@@ -130,6 +138,7 @@ def load_settings(path: str | Path | None = None) -> Settings:
     search_directory = data.get('search_directory', {})
     dispatch_directory = data.get('dispatch_directory', {})
     recipient_filter = dispatch.get('recipient_filter', {})
+    service_routing = dispatch.get('service_routing', {})
 
     password_env = ews['password_env']
     password = os.environ.get(password_env)
@@ -182,6 +191,7 @@ def load_settings(path: str | Path | None = None) -> Settings:
             enabled=dispatch['enabled'],
             template_path=dispatch['template_path'],
             no_group_template_path=dispatch['no_group_template_path'],
+            service_template_path=dispatch['service_template_path'],
             to=dispatch['to'],
             cc=dispatch.get('cc'),
             no_group_to=dispatch['no_group_to'],
@@ -214,12 +224,23 @@ def load_settings(path: str | Path | None = None) -> Settings:
                 ldap_password=ldap_password,
                 search_base=recipient_filter.get('search_base', ''),
                 max_recipients=recipient_filter.get('max_recipients', 10),
-                fallback_to=recipient_filter.get('fallback_to', dispatch['to']),
+                fallback_to=recipient_filter.get(
+                    'fallback_to',
+                    dispatch.get('to', ''),
+                ),
                 fallback_cc=recipient_filter.get('fallback_cc'),
-                allowed_title_keywords=recipient_filter.get(
-                    'allowed_title_keywords',
+                allowed_titles=recipient_filter.get(
+                    'allowed_titles',
                     [],
                 ),
+                blocked_emails=recipient_filter.get(
+                    'blocked_emails',
+                    [],
+                ),
+            ),
+            service_routing=ServiceRoutingSettings(
+                enabled=service_routing.get('enabled', False),
+                file=service_routing.get('file', 'service_routing.json'),
             ),
         ),
 
