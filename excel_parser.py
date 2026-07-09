@@ -229,12 +229,26 @@ def normalize_api_row(row) -> dict:
         or ''
     )
 
+    service_owner = (
+        row.get('service_owner')
+        or row.get('Ответственный ИС')
+        or ''
+    )
+
+    service_admin = (
+        row.get('service_admin')
+        or row.get('Администратор ИС')
+        or ''
+    )
+
     return {
         **row.to_dict(),
         'group': normalize_value(group),
         'leader_email': normalize_value(leader_email),
         'emails': normalize_value(emails),
         'service': normalize_value(service),
+        'service_owner': normalize_value(service_owner),
+        'service_admin': normalize_value(service_admin),
     }
 
 
@@ -383,6 +397,8 @@ def build_output_report(
     leader_col_idx = ensure_column(ws, 'Лидер группы')
     email_col_idx = ensure_column(ws, 'Почты')
     service_col_idx = ensure_column(ws, 'Наименование ИС')
+    service_owner_col_idx = ensure_column(ws, 'Ответственный ИС')
+    service_admin_col_idx = ensure_column(ws, 'Администратор ИС')
 
     lookup_map = build_lookup_map(enriched_params)
 
@@ -422,6 +438,8 @@ def build_output_report(
         leader = normalize_value(enriched_row.get('leader_email'))
         emails = normalize_value(enriched_row.get('emails'))
         service = normalize_value(enriched_row.get('service'))
+        service_owner = normalize_value(enriched_row.get('service_owner'))
+        service_admin = normalize_value(enriched_row.get('service_admin'))
 
         ws.cell(
             row=row_idx,
@@ -445,6 +463,18 @@ def build_output_report(
             row=row_idx,
             column=service_col_idx,
             value=service,
+        )
+
+        ws.cell(
+            row=row_idx,
+            column=service_owner_col_idx,
+            value=service_owner,
+        )
+
+        ws.cell(
+            row=row_idx,
+            column=service_admin_col_idx,
+            value=service_admin,
         )
 
         filled_count += 1

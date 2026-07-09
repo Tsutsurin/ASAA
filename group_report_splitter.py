@@ -20,6 +20,8 @@ class GroupReport:
     vulnerability_ids: str
     emails: str
     service_name: str
+    service_owner_emails: str
+    service_admin_emails: str
 
 
 def safe_filename(value: str) -> str:
@@ -197,6 +199,16 @@ def split_report_by_group(
         column_name='Наименование ИС',
     )
 
+    service_owner_real_column = find_optional_column(
+        columns=df.columns,
+        column_name='Ответственный ИС',
+    )
+
+    service_admin_real_column = find_optional_column(
+        columns=df.columns,
+        column_name='Администратор ИС',
+    )
+
     df[group_real_column] = df[group_real_column].apply(normalize_value)
 
     grouped = df.groupby(
@@ -250,6 +262,18 @@ def split_report_by_group(
             else ''
         )
 
+        service_owner_emails = (
+            emails_join(group_df[service_owner_real_column])
+            if service_owner_real_column
+            else ''
+        )
+
+        service_admin_emails = (
+            emails_join(group_df[service_admin_real_column])
+            if service_admin_real_column
+            else ''
+        )
+
         group_report = GroupReport(
             group_name=group_name,
             display_name=display_name,
@@ -259,17 +283,21 @@ def split_report_by_group(
             vulnerability_ids=vulnerability_ids,
             emails=emails,
             service_name=service_name,
+            service_owner_emails=service_owner_emails,
+            service_admin_emails=service_admin_emails,
         )
 
         result.append(group_report)
 
         logger.info(
-            'Создан отчет группы: %s | строк=%s | файл=%s | хостов=%s | service=%s | emails=%s',
+            'Создан отчет группы: %s | строк=%s | файл=%s | хостов=%s | service=%s | owner=%s | admin=%s | emails=%s',
             display_name,
             len(group_df),
             output_file,
             len(ip_or_fqdn.split(';')) if ip_or_fqdn else 0,
             service_name,
+            service_owner_emails,
+            service_admin_emails,
             emails,
         )
 

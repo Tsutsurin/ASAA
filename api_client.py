@@ -39,15 +39,39 @@ class ResponsibleApiClient:
             return None
 
 
+def get_emails_from_users(users) -> list[str]:
+    result = []
+
+    if not isinstance(users, list):
+        return result
+
+    for user in users:
+        if not isinstance(user, dict):
+            continue
+
+        email = user.get('internet_e_mail')
+
+        if email:
+            result.append(str(email).strip())
+
+    return [
+        email
+        for email in result
+        if email
+    ]
+
+
 def parse_group_and_emails(
     data: dict[str, Any] | None,
-) -> tuple[str, str, str, str]:
+) -> tuple[str, str, str, str, str, str]:
     if not data:
-        return '', '', '', ''
+        return '', '', '', '', '', ''
 
     groups_found: list[str] = []
     emails_found: list[str] = []
     leaders_found: list[str] = []
+    service_owner_emails: list[str] = []
+    service_admin_emails: list[str] = []
 
     service = str(data.get('service') or '').strip()
 
@@ -81,15 +105,33 @@ def parse_group_and_emails(
         if email:
             emails_found.append(email)
 
+    serviceusers = data.get('serviceusers', {})
+
+    service_owner_emails.extend(
+        get_emails_from_users(
+            serviceusers.get('Owned by', []),
+        )
+    )
+
+    service_admin_emails.extend(
+        get_emails_from_users(
+            serviceusers.get('Supported by', []),
+        )
+    )
+
     unique_groups = list(dict.fromkeys(groups_found))
     unique_leaders = list(dict.fromkeys(leaders_found))
     unique_emails = list(dict.fromkeys(emails_found))
+    unique_service_owner_emails = list(dict.fromkeys(service_owner_emails))
+    unique_service_admin_emails = list(dict.fromkeys(service_admin_emails))
 
     return (
         '; '.join(unique_groups),
         '; '.join(unique_leaders),
         '; '.join(unique_emails),
         service,
+        '; '.join(unique_service_owner_emails),
+        '; '.join(unique_service_admin_emails),
     )
 
 
@@ -115,7 +157,14 @@ def enrich_params_with_api(
             logger.info('Запрос API по hostname: %s', fqdn)
             data = client.request_by_hostname(fqdn)
 
-        group, leader, emails, service = parse_group_and_emails(data)
+        (
+            group,
+            leader,
+            emails,
+            service,
+            service_owner,
+            service_admin,
+        ) = parse_group_and_emails(data)
 
         rows.append(
             {
@@ -125,6 +174,8 @@ def enrich_params_with_api(
                 'Лидер группы': leader,
                 'Почты': emails,
                 'Наименование ИС': service,
+                'Ответственный ИС': service_owner,
+                'Администратор ИС': service_admin,
             }
         )
 
