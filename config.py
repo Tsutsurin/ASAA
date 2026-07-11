@@ -63,6 +63,7 @@ class ServiceRoutingSettings:
     enabled: bool
     file: str
 
+
 @dataclass
 class DispatchSettings:
     enabled: bool
@@ -89,6 +90,7 @@ class DispatchSettings:
     pause_between_emails_seconds: int
     recipient_filter: RecipientFilterSettings
     service_routing: ServiceRoutingSettings
+    attachment_drop_columns: list[str]
 
 
 @dataclass
@@ -241,6 +243,10 @@ def load_settings(path: str | Path | None = None) -> Settings:
             service_routing=ServiceRoutingSettings(
                 enabled=service_routing.get('enabled', False),
                 file=service_routing.get('file', 'service_routing.json'),
+            ),
+            attachment_drop_columns=dispatch.get(
+                'attachment_drop_columns',
+                [],
             ),
         ),
 
