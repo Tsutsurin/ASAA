@@ -6,22 +6,30 @@ from pathlib import Path
 
 from openpyxl import load_workbook
 
-from src.ad_user_service import resolve_dispatch_recipients
-from src.blacklist_service import is_blocked, load_blacklist
-from src.config import BASE_DIR, Settings
-from src.exchange_sender import send_html_email
-from src.group_report_splitter import split_report_by_group
-from src.html_template import render_html_template
-from src.service_routing import get_service_recipients, load_service_routing
-from src.ticket_number_service import (
+from .ad_user_service import resolve_dispatch_recipients
+from .blacklist_service import is_blocked, load_blacklist
+from .config import BASE_DIR, Settings
+from .exchange_sender import send_html_email
+from .group_report_splitter import split_report_by_group
+from .html_template import render_html_template
+from .service_routing import get_service_recipients, load_service_routing
+from .ticket_number_service import (
     copy_report_to_ticket_folder,
     create_ticket_folder,
     get_max_ticket_number,
 )
-from src.ticket_registry import append_ticket_to_registry
-from src.utils import join_emails, normalize_text
+from .ticket_registry import append_ticket_to_registry
+from .utils import join_emails, normalize_text
 
 logger = logging.getLogger('auto_responsible.dispatch')
+
+_SENSITIVE_COLUMNS = [
+    'Члены группы',
+    'Наименование ИС',
+    'Ответственный ИС / Администратор ИС',
+    'Маршрутизация ИС',
+    'Ручной ввод',
+]
 
 
 def _build_ticket_subject(base: str, number: int) -> str:
@@ -69,7 +77,6 @@ def _remove_attachment_columns(file_path: Path, names: list[str]) -> None:
 
 
 def _filter_blocked(raw_emails: str, blacklist_file: str | None, context: str) -> list[str]:
-    """Фильтрация email по блэклисту."""
     blacklist = load_blacklist(blacklist_file)
     allowed = []
     for email in join_emails(raw_emails).split('; ') if raw_emails else []:
@@ -83,7 +90,6 @@ def _filter_blocked(raw_emails: str, blacklist_file: str | None, context: str) -
 
 
 def _filter_and_limit(raw_emails: str, settings: Settings, context: str) -> list[str]:
-    """Фильтрация по блэклисту + лимит количества получателей."""
     blacklist_file = settings.dispatch.recipient_filter.blacklist_file
     allowed = _filter_blocked(
         raw_emails=raw_emails,
@@ -109,15 +115,9 @@ def _resolve_recipients(
     settings: Settings,
     service_routing: dict[str, list[str]],
 ) -> tuple[str, str | None, Path, str, str]:
-    """Определение получателей по приоритетам.
-
-    Returns:
-        (to, cc, template_path, template_value, route_source)
-    """
     normal_tpl = BASE_DIR / settings.dispatch.template_path
     service_tpl = BASE_DIR / settings.dispatch.service_template_path
 
-    # 1. Ручной ввод — минуя всё, только блеклист
     if group_report.manual_emails:
         recipients = _filter_and_limit(
             raw_emails=group_report.manual_emails,
@@ -133,7 +133,6 @@ def _resolve_recipients(
                 'manual',
             )
 
-    # 2. Жёсткая маршрутизация ИС из столбца — только блеклист
     if group_report.service_routing_emails:
         recipients = _filter_and_limit(
             raw_emails=group_report.service_routing_emails,
@@ -149,7 +148,6 @@ def _resolve_recipients(
                 'service_routing_column',
             )
 
-    # 3. Маршрутизация ИС из JSON (service_routing.json) — только блеклист
     if service_routing and group_report.service_name:
         json_recipients = get_service_recipients(
             service_name=group_report.service_name,
@@ -170,7 +168,6 @@ def _resolve_recipients(
                     'service_routing_json',
                 )
 
-    # 4. Ответственный ИС / Администратор ИС — только блеклист
     if group_report.service_owner_admin:
         recipients = _filter_and_limit(
             raw_emails=group_report.service_owner_admin,
@@ -186,7 +183,6 @@ def _resolve_recipients(
                 'service_owner_admin',
             )
 
-    # 5. Члены группы — с AD-фильтрацией + блеклист
     if group_report.group_member_emails:
         to, cc = resolve_dispatch_recipients(
             raw_emails=group_report.group_member_emails,
@@ -201,7 +197,6 @@ def _resolve_recipients(
             'ad_filter',
         )
 
-    # 6. Fallback — legacy общие почты
     to, cc = resolve_dispatch_recipients(
         raw_emails=group_report.emails,
         default_to=settings.dispatch.to,
@@ -221,7 +216,6 @@ def process_dispatch_excel_file(
     account,
     source_file: Path,
 ) -> int:
-    """Обработка одного Excel-файла: разделение, создание заявок, рассылка."""
     output_dir = BASE_DIR / settings.dispatch.output_dir / source_file.stem
 
     group_reports = split_report_by_group(
@@ -285,7 +279,7 @@ def process_dispatch_excel_file(
 
                 _remove_attachment_columns(
                     file_path=group_report.file_path,
-                    names=settings.dispatch.attachment_drop_columns,
+                    names=_SENSITIVE_COLUMNS + settings.dispatch.attachment_drop_columns,
                 )
 
                 report_in_ticket = copy_report_to_ticket_folder(
@@ -301,7 +295,7 @@ def process_dispatch_excel_file(
                         settings.dispatch.subject,
                         ticket_number,
                     ),
-                html_body=html_body,
+                    html_body=html_body,
                     attachments=[group_report.file_path],
                 )
 
@@ -314,15 +308,14 @@ def process_dispatch_excel_file(
                 )
 
             else:
-                html_body = render_html_template(
-                    template_path=no_group_tpl,
+                html_body = render_html_template(template_path=no_group_tpl,
                     placeholder=settings.dispatch.placeholder,
                     group_name=group_report.display_name,
                 )
 
                 _remove_attachment_columns(
                     file_path=group_report.file_path,
-                    names=settings.dispatch.attachment_drop_columns,
+                    names=_SENSITIVE_COLUMNS + settings.dispatch.attachment_drop_columns,
                 )
 
                 send_html_email(

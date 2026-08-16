@@ -1,0 +1,102 @@
+{
+  "enrich_folder": "Обогащение",
+  "columns_config": "config\\columns.json",
+  "report_formatter_config": "config\\config.ini",
+  "backend_mapping_file": "config\\backend_mapping.json",
+  "subject_contains": null,
+  "only_unread": true,
+  "ews": {
+    "enabled": true,
+    "service_endpoint": "https://dln-exch14.corp.lukoil.com:444/EWS/Exchange.asmx",
+    "username": "CORP\\voc",
+    "password_env": "VOC_PASSWORD",
+    "email": "voc@lukoil.com",
+    "auth_type": "Basic",
+    "verify_ssl": false
+  },
+  "api": {
+    "enabled": true,
+    "base_url": "https://msk-devmon01.srv.lukoil.com:8026/httplistner/getsupportedby",
+    "verify_ssl": false,
+    "timeout": 30
+  },
+  "send_email": {
+    "enabled": true,
+    "to": "nikita.tsutsurin@lukoil.com; igor.v.akhidov@lukoil.com; Andrey.V.Denisov@lukoil.com; Vyacheslav.Kurzanov@lukoil.com",
+    "cc": null,
+    "subject": "Обогащенный отчет об уязвимостях",
+    "body": "<p>Отчет обогащен данными об ответственных.</p>"
+  },
+  "dispatch": {
+    "enabled": true,
+    "template_path": "pattern\\template.html",
+    "no_group_template_path": "pattern\\no_group_template.html",
+    "service_template_path": "pattern\\service_template.html",
+    "to": "nikita.tsutsurin@lukoil.com",
+    "cc": "VM@lukoil.com; Dmitry.Kozyrev@lukoil.com",
+    "no_group_to": "nikita.tsutsurin@lukoil.com; igor.v.akhidov@lukoil.com; Andrey.V.Denisov@lukoil.com; Vyacheslav.Kurzanov@lukoil.com",
+    "no_group_cc": null,
+    "subject": "Заявка на устранение уязвимостей №",
+    "no_group_subject": "Хосты без ответственной группы",
+    "output_dir": "temp\\dispatch",
+    "network_tasks_dir": "\\\\10.201.198.25\\tmp\\@ Устранение уязвимостей @\\@ ЗАЯВКИ @",
+    "registry_file": "\\\\10.201.198.25\\tmp\\@ Устранение уязвимостей @\\Общий учет заявок.xlsx",
+    "registry_columns": {
+      "ticket_number": "Заявка №",
+      "group": "Администраторы",
+      "host": "Уязвимые хосты",
+      "date": "Дата инициации",
+      "status": "Статус",
+      "vulnerability_id": "Идентификатор уязвимости VM"
+    },
+    "group_column": "Группа",
+    "ip_column": "IP-адрес",
+    "fqdn_column": "Доменное имя",
+    "vulnerability_column": "Идентификатор уязвимости VM",
+    "placeholder": "text",
+    "status_value": "Направлено",
+    "max_emails_per_run": 0,
+    "pause_between_emails_seconds": 2,
+    "recipient_filter": {
+      "enabled": true,
+      "ldap_server": "dln-dc001.corp.lukoil.com",
+      "ldap_user": "CORP\\voc",
+      "ldap_password_env": "VOC_PASSWORD",
+      "search_base": "DC=corp,DC=lukoil,DC=com",
+      "max_recipients": 10,
+      "fallback_to": "nikita.tsutsurin@lukoil.com",
+      "fallback_cc": null,
+      "allowed_titles": [
+        "Начальник отдела",
+        "Старший менеджер",
+        "Менеджер",
+        "Главный эксперт",
+        "Эксперт",
+        "Главный специалист",
+        "Ведущий специалист"
+      ],
+      "blacklist_file": "config\\blacklist.json"
+    },
+    "service_routing": "config\\service_routing.json",
+    "attachment_drop_columns": [
+      "Лидер группы",
+      "Почты",
+      "Ответственный ИС",
+      "Администратор ИС"
+    ]
+  },
+  "search_directory": {
+    "enabled": true,
+    "input_dir": "\\\\10.201.198.25\\tmp\\@ Устранение уязвимостей @\\Поиск",
+    "output_dir": "\\\\10.201.198.25\\tmp\\@ Устранение уязвимостей @\\Обогащенный",
+    "archive_dir": "\\\\10.201.198.25\\tmp\\@ Устранение уязвимостей @\\Поиск\\Архив",
+    "delete_after_processing": false
+  },
+  "dispatch_directory": {
+    "enabled": true,
+    "input_dir": "\\\\10.201.198.25\\tmp\\@ Устранение уязвимостей @\\Отработать",
+    "archive_dir": "\\\\10.201.198.25\\tmp\\@ Устранение уязвимостей @\\Отработать\\Архив",
+    "error_dir": "\\\\10.201.198.25\\tmp\\@ Устранение уязвимостей @\\Отработать\\Ошибка",
+    "delete_after_processing": false
+  }
+}

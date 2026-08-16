@@ -3,7 +3,7 @@ import logging
 import re
 from pathlib import Path
 
-from src.config import BASE_DIR, ServiceRoutingSettings
+from .config import BASE_DIR
 
 logger = logging.getLogger('auto_responsible.service_routing')
 
@@ -28,21 +28,20 @@ def split_service_names(value: str) -> list[str]:
 
 
 def load_service_routing(
-    settings: ServiceRoutingSettings,
+    file_path: str,
 ) -> dict[str, list[str]]:
-    if not settings.enabled:
-        logger.info('Маршрутизация по ИС отключена')
+    if not file_path:
+        logger.info('Маршрутизация по ИС не настроена')
         return {}
 
-    path = Path(settings.file)
+    path = Path(file_path)
 
     if not path.is_absolute():
         path = BASE_DIR / path
 
     if not path.exists():
-        raise RuntimeError(
-            f'Файл маршрутизации по ИС не найден: {path}'
-        )
+        logger.warning('Файл маршрутизации по ИС не найден: %s', path)
+        return {}
 
     with open(path, 'r', encoding='utf-8-sig') as file:
         raw_data = json.load(file)

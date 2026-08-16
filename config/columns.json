@@ -1,0 +1,16 @@
+{
+  "fqdn": [
+    "Host.Fqdn",
+    "Доменное имя",
+    "Доменное\nимя",
+    "fqdn",
+    "hostname",
+    "host"
+  ],
+  "ip": [
+    "IP-адрес",
+    "IP адрес",
+    "ip",
+    "ipaddress"
+  ]
+}

@@ -1,24 +1,23 @@
-"""Модуль обогащения параметров данными об ответственных через API."""
+"""Обогащение параметров данными об ответственных через API."""
 
 import logging
 
 import pandas as pd
 
-from src.api_client import (
+from .api_client import (
     ResponsibleApiClient,
     enrich_params_with_api,
     parse_group_and_emails,
 )
-from src.backend_service import get_backend_fqdns, load_backend_mapping
-from src.config import Settings
-from src.service_routing import get_service_recipients, load_service_routing
-from src.utils import normalize_value
+from .backend_service import get_backend_fqdns, load_backend_mapping
+from .config import Settings
+from .service_routing import get_service_recipients, load_service_routing
+from .utils import normalize_value
 
 logger = logging.getLogger('auto_responsible.service')
 
 
 def _dedupe_join(*values: str) -> str:
-    """Объединение строк через ';', удаление дублей и пустых."""
     emails = []
     for value in values:
         if not value:
@@ -31,11 +30,13 @@ def _dedupe_join(*values: str) -> str:
 
 
 def _fill_service_routing(result: pd.DataFrame, settings: Settings) -> None:
-    """Заполнение колонки 'Маршрутизация ИС' из JSON-файла маршрутизации."""
     service_routing = load_service_routing(settings.dispatch.service_routing)
 
     if not service_routing:
         return
+
+    if 'Маршрутизация ИС' not in result.columns:
+        result['Маршрутизация ИС'] = ''
 
     for idx, row in result.iterrows():
         service_name = normalize_value(row.get('Наименование ИС'))
@@ -56,7 +57,6 @@ def _fill_service_routing(result: pd.DataFrame, settings: Settings) -> None:
 
 
 def _backend_fallback(result: pd.DataFrame, settings: Settings) -> None:
-    """Fallback: если API не вернул данные, пробуем бэкэнд-маппинг + повторный API."""
     backend_mapping = load_backend_mapping(settings.backend_mapping_file)
 
     if not backend_mapping:
@@ -117,7 +117,6 @@ def _backend_fallback(result: pd.DataFrame, settings: Settings) -> None:
 
 
 def _get_unique_params(params: pd.DataFrame) -> pd.DataFrame:
-    """Дедупликация параметров по fqdn/ip."""
     df = params.copy()
     df['fqdn'] = df['fqdn'].apply(normalize_value)
     df['ip'] = df['ip'].apply(normalize_value)
@@ -126,7 +125,6 @@ def _get_unique_params(params: pd.DataFrame) -> pd.DataFrame:
 
 
 def _stub(params: pd.DataFrame) -> pd.DataFrame:
-    """Заглушка при отключённом API."""
     result = params.copy()
     result['Группа'] = 'TEST_GROUP'
     result['Члены группы'] = 'test@company.ru'
@@ -142,7 +140,6 @@ def enrich_with_responsibles(
     params: pd.DataFrame,
     settings: Settings,
 ) -> pd.DataFrame:
-    """Обогащение DataFrame данными об ответственных через API + backend fallback."""
     if params.empty:
         logger.warning('Пустой набор входных параметров')
         return params
@@ -170,11 +167,14 @@ def enrich_with_responsibles(
     _backend_fallback(result, settings)
     _fill_service_routing(result, settings)
 
+    backend_count = int((result['Бэкэнд сервер'] != '').sum()) if 'Бэкэнд сервер' in result.columns else 0
+    routing_count = int((result['Маршрутизация ИС'] != '').sum()) if 'Маршрутизация ИС' in result.columns else 0
+
     logger.info(
         'Обогащение завершено. Строк: %s | бэкэнд: %s | маршрутизация: %s',
         len(result),
-        (result.get('Бэкэнд сервер', '') != '').sum(),
-        (result.get('Маршрутизация ИС', '') != '').sum(),
+        backend_count,
+        routing_count,
     )
 
     return result

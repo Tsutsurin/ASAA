@@ -1,0 +1,2914 @@
+{
+  "irpktrade.corp.lukoil.com": "msk-irpktrade.srv.lukoil.com",
+  "pcd-dev.lukoil.com": "sapbpc01d.srv.lukoil.com",
+  "whereoil.lukoil.com": "kadme05srv.srv.lukoil.com",
+  "ritest2.lukoil.com": "ritest2.srv.lukoil.com",
+  "ritest2.corp.lukoil.com": "ritest2.srv.lukoil.com",
+  "desktops.lukoil.com": [
+    "srt-vdiuag01.srv.lukoil.com",
+    "srt-vdiuag03.srv.lukoil.com",
+    "srt-vdiuag02.srv.lukoil.com"
+  ],
+  "express.lukoil.com": "srt-expressfe01",
+  "speedint.lukoil.com": "srt-speedint.srv.lukoil.com",
+  "speedtest.lukoil.com": "srt-speedtest.srv.lukoil.com",
+  "support-prd.lukoil.com": [
+    "dln4-iss2dw01.srv.lukoil.com",
+    "dln4-iss2dw02.srv.lukoil.com",
+    "srt-iss2dw01.srv.lukoil.com",
+    "srt-iss2dw02.srv.lukoil.com"
+  ],
+  "support-rpt.lukoil.com": [
+    "dln4-iss2rpt01.srv.lukoil.com",
+    "srt-iss2rpt01.srv.lukoil.com"
+  ],
+  "support-cmdb.lukoil.com": [
+    "dln4-iss2ars01.srv.lukoil.com",
+    "dln4-iss2ars02.srv.lukoil.com",
+    "dln4-iss2ars03.srv.lukoil.com",
+    "dln4-iss2ars04.srv.lukoil.com",
+    "srt-iss2ars01.srv.lukoil.com",
+    "srt-iss2ars02.srv.lukoil.com",
+    "srt-iss2ars03.srv.lukoil.com",
+    "srt-iss2ars04.srv.lukoil.com"
+  ],
+  "support-tst.lukoil.com": [
+    "iss2tstdw02.srv.lukoil.com",
+    "iss2tstdw01.srv.lukoil.com"
+  ],
+  "support-cmdb-tst.lukoil.com": [
+    "iss2tstars02.srv.lukoil.com",
+    "iss2tstars01.srv.lukoil.com"
+  ],
+  "support-rpt-tst.lukoil.com": "iss2tstrpt01.srv.lukoil.com",
+  "emm-mdm.lukoil.com": [
+    "mdm-awdevsrv02.corp.lukoil.com",
+    "mdm-awdevsrv01.srv.lukoil.com",
+    "mdm-awdevsrv03.srv.lukoil.com"
+  ],
+  "deleted_emm-mdm.lukoil.com": "mdm-access01.srv.lukoil.com",
+  "deleted_airw-mdm.lukoil.com": "srt-airwfe.srv.lukoil.com",
+  "extlogcollector.pro.lukoil.com": "mf-vertica.srv.lukoil.com",
+  "sedprod1.corp.lukoil.com": [
+    "sedprod.srv.lukoil.com",
+    "sedprod-app.srv.lukoil.com"
+  ],
+  "sedprod.pro.lukoil.com": [
+    "sedprod-app1.srv.lukoil.com",
+    "sedprod-app02.srv.lukoil.com",
+    "sedprod-app.srv.lukoil.com"
+  ],
+  "sedprod.corp.lukoil.com": [
+    "sedprod-app1.srv.lukoil.com",
+    "sedprod-app02.srv.lukoil.com",
+    "sedprod-app.srv.lukoil.com"
+  ],
+  "eritestweb.lukoil.com": "eritestweb.srv.lukoil.com",
+  "eritest.pro.lukoil.com": "eritestweb.srv.lukoil.com",
+  "eriprodweb.lukoil.com": "eriprodweb.srv.lukoil.com",
+  "eriprod.pro.lukoil.com": "eriprodweb.srv.lukoil.com",
+  "ogt-test1.pro.lukoil.com": "msk-ogt-t-web-1.srv.lukoil.com",
+  "irpktrade.lukoil.com": "msk-irpktrade.srv.lukoil.com",
+  "icc-cluster.corp.lukoil.com": [
+    "vmicc1.corp.lukoil.com",
+    "vmicc2.corp.lukoil.com"
+  ],
+  "rpsp.pro.lukoil.com": "rpsp-mstr01.srv.lukoil.com",
+  "pasb.pro.lukoil.com": "pasb-lb01.srv.lukoil.com",
+  "ns-mskbd-sss.pro.lukoil.com": "MSKBD-SSS.srv.lukoil.com",
+  "ns-rtkbd-sss.pro.lukoil.com": "RTKBD-SSS.srv.lukoil.com",
+  "ns-msksss.pro.lukoil.com": "MSKSSS.corp.lukoil.com",
+  "ns-kngsss.pro.lukoil.com": "MSRV-OFFICE",
+  "ns-astsss.pro.lukoil.com": "srt-vdiuag02.srv.lukoil.com",
+  "ns-prmsss.pro.lukoil.com": "CORPPRMUMB02.corp.lukoil.com",
+  "ns-usnsss.pro.lukoil.com": "C-USNKOMIUMB.corp.lukoil.com",
+  "ecm-tst.pro.lukoil.com": "ecm-tst-fe01.srv.lukoil.com",
+  "ecm.pro.lukoil.com": [
+    "ecm-prd-fe01.srv.lukoil.com",
+    "ecm-prd-fe02.srv.lukoil.com",
+    "ecm-prd-fe03.srv.lukoil.com",
+    "ecm-prd-fe04.srv.lukoil.com",
+    "ecm-prd-fe05.srv.lukoil.com",
+    "ecm-prd-fe06.srv.lukoil.com",
+    "ecm-prd-fe07.srv.lukoil.com",
+    "ecm-prd-fe08.srv.lukoil.com",
+    "ecm-prd-fe09.srv.lukoil.com",
+    "ecm-prd-fe10.srv.lukoil.com"
+  ],
+  "ecm.lukoil.com": [
+    "ecm-prd-fe01.srv.lukoil.com",
+    "ecm-prd-fe02.srv.lukoil.com",
+    "ecm-prd-fe03.srv.lukoil.com",
+    "ecm-prd-fe04.srv.lukoil.com",
+    "ecm-prd-fe05.srv.lukoil.com",
+    "ecm-prd-fe06.srv.lukoil.com",
+    "ecm-prd-fe07.srv.lukoil.com",
+    "ecm-prd-fe08.srv.lukoil.com",
+    "ecm-prd-fe09.srv.lukoil.com",
+    "ecm-prd-fe10.srv.lukoil.com"
+  ],
+  "rpsp-api.lukoil.com": [
+    "rpsp-mstr01.srv.lukoil.com",
+    "pasb-mstr01.srv.lukoil.com"
+  ],
+  "pasb-api.lukoil.com": [
+    "rpsp-mstr01.srv.lukoil.com",
+    "pasb-mstr01.srv.lukoil.com"
+  ],
+  "confluence-lt.pro.lukoil.com_old": "confl-app02.srv.lukoil.com",
+  "jira-lt.pro.lukoil.com": "jira-app02.srv.lukoil.com",
+  "bitbucket-lt.pro.lukoil.com": "bitbkt-app02.srv.lukoil.com",
+  "whereoil.pro.lukoil.com": "kadme05srv.srv.lukoil.com",
+  "rkatest2.pro.lukoil.com": "rkatest-web01.srv.lukoil.com",
+  "urzm.pro.lukoil.com": "urzmbalancer01.srv.lukoil.com",
+  "jfrogart-lt.pro.lukoil.com": "atlauto-app01.srv.lukoil.com",
+  "jenkins-lt.pro.lukoil.com": "atlauto-app01.srv.lukoil.com",
+  "cark.pro.lukoil.com": [
+    "cark-psmgw01.corp.lukoil.com",
+    "cark-psmgw02.corp.lukoil.com"
+  ],
+  "tst-cn.pro.lukoil.com": "ehdtest.corp.lukoil.com",
+  "ehd.pro.lukoil.com": [
+    "ehd-n001.corp.lukoil.com",
+    "ehd-n002.corp.lukoil.com",
+    "ehd-n003.corp.lukoil.com",
+    "ehd-n004.corp.lukoil.com"
+  ],
+  "meridian.pro.lukoil.com": "meridian-web01.srv.lukoil.com",
+  "lumira.pro.lukoil.com": "saptm4.srv.lukoil.com",
+  "lumira-dev.pro.lukoil.com": "saptm4.srv.lukoil.com",
+  "miss.pro.lukoil.com": "miss-app01.srv.lukoil.com",
+  "hru.pro.lukoil.com": "npia-web02.srv.lukoil.com",
+  "hrutest.pro.lukoil.com": "npia-web12.srv.lukoil.com",
+  "devref.pro.lukoil.com": "sapdrsci.srv.lukoil.com",
+  "qasref.pro.lukoil.com": "saptrsci.srv.lukoil.com",
+  "refinery.pro.lukoil.com": "sapprs.srv.lukoil.com",
+  "oos.pro.lukoil.com": [
+    "vkp-prd-oos02.srv.lukoil.com",
+    "vkp-prd-oos03.srv.lukoil.com"
+  ],
+  "dso-test.pro.lukoil.com": "dso-test01.srv.lukoil.com",
+  "sonarqube-lt.pro.lukoil.com": "atlauto-app01.srv.lukoil.com",
+  "armrrmweb.pro.lukoil.com": "armweb-prd-app2.corp.lukoil.com",
+  "deleted_qas-armrrmweb.pro.lukoil.com": "qasapparmweb02.corp.lukoil.com",
+  "rmp-nwbc.pro.lukoil.com": [
+    "saprmpapp01.srv.lukoil.com",
+    "saprmpci.srv.lukoil.com"
+  ],
+  "rmq-nwbc.pro.lukoil.com": "saprmqci.srv.lukoil.com",
+  "rmd-nwbc.pro.lukoil.com": "saprmdci.srv.lukoil.com",
+  "cark-pvwa.pro.lukoil.com": [
+    "cark-pvwa-cpm01.corp.lukoil.com",
+    "cark-pvwa-cpm02.corp.lukoil.com",
+    "cark-pvwa-psm01.corp.lukoil.com",
+    "cark-pvwa-psm02.corp.lukoil.com"
+  ],
+  "epeo.pro.lukoil.com": "vmdm-r2.corp.lukoil.com",
+  "ehdopt.pro.lukoil.com": [
+    "ehd-n001.corp.lukoil.com",
+    "ehd-n002.corp.lukoil.com",
+    "ehd-n003.corp.lukoil.com",
+    "ehd-n004.corp.lukoil.com"
+  ],
+  "anr.pro.lukoil.com": "npia-web01.srv.lukoil.com",
+  "anrtest.pro.lukoil.com": "npia-web11.srv.lukoil.com",
+  "selenoid-lt.pro.lukoil.com": "lt-github.srv.lukoil.com",
+  "pasb-qas.pro.lukoil.com": "pasb-qas-lb01.srv.lukoil.com",
+  "riprodweb.pro.lukoil.com": "riprodweb.srv.lukoil.com",
+  "deleted_mrb.pro.lukoil.com": "ipmrb-app01.srv.lukoil.com",
+  "fserver.pro.lukoil.com": "mskmsg02fe.msk.lukoil.com",
+  "r02-nwbc.pro.lukoil.com": "sapr02cidb.srv.lukoil.com",
+  "kpm.pro.lukoil.com": "saped1ci.srv.lukoil.com",
+  "ed1-nwbc.pro.lukoil.com": "saped1ci.srv.lukoil.com",
+  "jira-lt-tst.pro.lukoil.com": "atlassian-tst01.srv.lukoil.com",
+  "api-armrrmweb.pro.lukoil.com": "armweb-prd-app1.srv.lukoil.com",
+  "api-qas-armrrmweb.pro.lukoil.com": "qasapparmweb01.srv.lukoil.com",
+  "rka.pro.lukoil.com": "rkaprod-web01.srv.lukoil.com",
+  "eq1-nwbc.pro.lukoil.com": "sapeq1ci.srv.lukoil.com",
+  "r24-nwbc.pro.lukoil.com": "sapr24cidb.srv.lukoil.com",
+  "express.pro.lukoil.com": [
+    "dln-exprweb01.srv.lukoil.com",
+    "srt-exprweb01.srv.lukoil.com"
+  ],
+  "rkstest.pro.lukoil.com": "Rstest-web01.srv.lukoil.com",
+  "rksprod.pro.lukoil.com": "Rsprod-web01.srv.lukoil.com",
+  "rsprodweb.lukoil.com": "Rsprod-web01.srv.lukoil.com",
+  "rsprodweb.corp.lukoil.com": "Rsprod-web01.srv.lukoil.com",
+  "projects.pro.lukoil.com": [
+    "ops15web01.srv.lukoil.com",
+    "ops15web02.srv.lukoil.com"
+  ],
+  "cmservice.pro.lukoil.com": [
+    "vmapp1.corp.lukoil.com",
+    "vmapp2.corp.lukoil.com"
+  ],
+  "bcservice.pro.lukoil.com": [
+    "vmapp1.corp.lukoil.com",
+    "vmapp2.corp.lukoil.com"
+  ],
+  "ecm-demo.pro.lukoil.com": "ecm-tst-fe02.srv.lukoil.com",
+  "crmllk-corp.pro.lukoil.com": "sapc64ci.srv.lukoil.com",
+  "smik2.pro.lukoil.com": "smik-bs-ee-app2.srv.lukoil.com",
+  "ep1-nwbc.pro.lukoil.com": "sapep1.srv.lukoil.com",
+  "r00-nwbc.pro.lukoil.com": "sapr20.srv.lukoil.com",
+  "smpprd.pro.lukoil.com": [
+    "sapmppapp01.srv.lukoil.com",
+    "sapmppapp02.srv.lukoil.com"
+  ],
+  "monitoring.pro.lukoil.com": [
+    "monweb01.msk.lukoil.net",
+    "monweb02.msk.lukoil.net"
+  ],
+  "llk-asusklad1.pro.lukoil.com": "c-prmwrhapp01.corp.lukoil.com",
+  "llk-asusklad2.pro.lukoil.com": "asusklapp.srv.lukoil.com",
+  "llk-asusklad3.pro.lukoil.com": "llk-skl-app01.srv.lukoil.com",
+  "egis-ns.pro.lukoil.com": "egis-app.srv.lukoil.com",
+  "ifield-msk.pro.lukoil.com": "web-ifgtm02.srv.lukoil.com",
+  "ids-in.pro.lukoil.com": "c-prmmesweb.corp.lukoil.com",
+  "ids-out.pro.lukoil.com": "c-prmmesweb.corp.lukoil.com",
+  "rpsp-qas.pro.lukoil.com": "pasb-qas-lb01.srv.lukoil.com",
+  "spik2.pro.lukoil.com": [
+    "shp19-prd-web01.srv.lukoil.com",
+    "shp19-prd-web02.srv.lukoil.com"
+  ],
+  "mysite19.pro.lukoil.com": [
+    "shp19-prd-web01.srv.lukoil.com",
+    "shp19-prd-web02.srv.lukoil.com"
+  ],
+  "oos19.pro.lukoil.com": "shp19-prd-oos01.srv.lukoil.com",
+  "spik2-t.pro.lukoil.com": "shp19-tst-web01.srv.lukoil.com",
+  "utd.pro.lukoil.com": "snab-web01.srv.lukoil.com",
+  "utdtest.pro.lukoil.com": "snab-web11.srv.lukoil.com",
+  "pbi.pro.lukoil.com": "iss2devbo.srv.lukoil.com",
+  "deleted_rcmkpi.pro.lukoil.com": "rcmkpi-app01.srv.lukoil.com",
+  "mysite19-t.pro.lukoil.com": "shp19-tst-web01.srv.lukoil.com",
+  "ipms-oos.pro.lukoil.com": "ling-isup-oos1.srv.lukoil.com",
+  "ipms.pro.lukoil.com": [
+    "ling-isup-web1.srv.lukoil.com",
+    "ling-isup-web2.srv.lukoil.com"
+  ],
+  "ipms-my.pro.lukoil.com": [
+    "ling-isup-web1.srv.lukoil.com",
+    "ling-isup-web2.srv.lukoil.com"
+  ],
+  "auth-armrrmweb.pro.lukoil.com": "armweb-prd-app1.srv.lukoil.com",
+  "auth-qas-armrrmweb.pro.lukoil.com": "qasapparmweb01.srv.lukoil.com",
+  "sudbsgid.pro.lukoil.com": "sudbsgidappprd.srv.lukoil.com",
+  "sudbsgidtst.pro.lukoil.com": "sudbsgidapp.srv.lukoil.com",
+  "spik2-reports.pro.lukoil.com": "shp19-prd-app01.srv.lukoil.com",
+  "spik2-reports-t.pro.lukoil.com": "shp19-tst-app01.srv.lukoil.com",
+  "crm-llk.pro.lukoil.com": "crm-b24-llk-app.srv.lukoil.com",
+  "crm-intesmo.pro.lukoil.com": "crm-b24-llk-app.srv.lukoil.com",
+  "crm-test.pro.lukoil.com": "crm-b24-llk-app.srv.lukoil.com",
+  "ns-advanta.pro.lukoil.com": "csbapdb.corp.lukoil.com",
+  "sedtest.pro.lukoil.com": "sedtest.srv.lukoil.com",
+  "ctx-director.pro.lukoil.com": [
+    "srt-ctxdir001.srv.lukoil.com",
+    "dln4-ctxdir001.srv.lukoil.com"
+  ],
+  "p6tm.pro.lukoil.com": "bnng-okr-ora.srv.lukoil.com",
+  "sedprod-app02.pro.lukoil.com": "sedprod-app02.srv.lukoil.com",
+  "sedprod-app.pro.lukoil.com": "sedprod-app.srv.lukoil.com",
+  "sedprod-app1.pro.lukoil.com": "sedprod-app1.srv.lukoil.com",
+  "teogtm.pro.lukoil.com": "web-ifgtm01.srv.lukoil.com",
+  "network.pro.lukoil.com": "riskpb-app.srv.lukoil.com",
+  "network2.pro.lukoil.com": "riskpb-app.srv.lukoil.com",
+  "network3.pro.lukoil.com": "riskpb-app.srv.lukoil.com",
+  "riskpb-tst.pro.lukoil.com": "sbr01test.srv.lukoil.com",
+  "network2-tst.pro.lukoil.com": "sbr01test.srv.lukoil.com",
+  "network3-tst.pro.lukoil.com": "sbr01test.srv.lukoil.com",
+  "nedra16-web1.pro.lukoil.com": "nedra16-web1.srv.lukoil.com",
+  "mskgeomaps.pro.lukoil.com": "mskgeomaps.srv.lukoil.com",
+  "jiraopt-lt.pro.lukoil.com": "jira-app01.srv.lukoil.com",
+  "support-tst.pro.lukoil.com": "iss2tstdw03.srv.lukoil.com",
+  "dct-nwbc.pro.lukoil.com": "sapdctci.srv.lukoil.com",
+  "qcr-nwbc.pro.lukoil.com": "sapqcrci.srv.lukoil.com",
+  "rcr-nwbc.pro.lukoil.com": "saprcr.srv.lukoil.com",
+  "oos19-3.pro.lukoil.com": "shp19-tst-oos03.srv.lukoil.com",
+  "luktech-dbviewer.pro.lukoil.com": "lt-github.srv.lukoil.com",
+  "mflash.pro.lukoil.com": "mflash-app01.srv.lukoil.com",
+  "seccloud.pro.lukoil.com": "seccloud-app01.srv.lukoil.com",
+  "qup-nwbc.pro.lukoil.com": "sapqupci.srv.lukoil.com",
+  "rup-nwbc.pro.lukoil.com": "saprup.srv.lukoil.com",
+  "oisif-sap.pro.lukoil.com": "sapifphdb01.srv.lukoil.com",
+  "imvrz.pro.lukoil.com": "imvrz-tst-top01.srv.lukoil.com",
+  "imvrv.pro.lukoil.com": "c-prmiwweb01.corp.lukoil.com",
+  "imvra.pro.lukoil.com": "imvra-tst-top01.srv.lukoil.com",
+  "websocket:": "imvra-tst-top01.srv.lukoil.com",
+  "kstphd.pro.lukoil.com": "kstphd-app21.corp.lukoil.com",
+  "absotheque.pro.lukoil.com": "absotheque-app1.srv.lukoil.com",
+  "absothequelib.pro.lukoil.com": "absotheque-lib1.srv.lukoil.com",
+  "kstpermasense.pro.lukoil.com": "kst-cormon-1",
+  "kstspm.pro.lukoil.com": "kstvibro-app01.corp.lukoil.com",
+  "ksteserver.pro.lukoil.com": "eServer",
+  "kismo2.pro.lukoil.com": "mo-report01.srv.lukoil.com",
+  "deleted_x2a-nwbc.pro.lukoil.com": "sapx2acidb.srv.lukoil.com",
+  "deleted_x62-nwbc.pro.lukoil.com": "sapx62cidb.srv.lukoil.com",
+  "confluence-lt-tst.pro.lukoil.com": "atlassian-tst01.srv.lukoil.com",
+  "bitbucket-lt-tst.pro.lukoil.com": "atlassian-tst01.srv.lukoil.com",
+  "kikmsdtest.pro.lukoil.com": [
+    "kikmsdtest.corp.lukoil.com",
+    "kikmstest.corp.lukoil.com"
+  ],
+  "kikmsdprod.pro.lukoil.com": [
+    "kikmsdprod.corp.lukoil.com",
+    "kikmsprod.corp.lukoil.com"
+  ],
+  "irpkopt2.pro.lukoil.com": "msk-irpk.srv.lukoil.com",
+  "spdtest.pro.lukoil.com": "spdtest-app01.srv.lukoil.com",
+  "spdprod.pro.lukoil.com": "spdprod-app01.srv.lukoil.com",
+  "ecm-fe-tst.pro.lukoil.com": [
+    "ecm-tst-fe01.srv.lukoil.com",
+    "ecm-tst-be01.srv.lukoil.com"
+  ],
+  "wopi-tst.pro.lukoil.com": [
+    "ecm-tst-be01.srv.lukoil.com",
+    "ecm-tst-app01.srv.lukoil.com"
+  ],
+  "oos-tst.pro.lukoil.com": "vkp-prd-oos01.srv.lukoil.com",
+  "ecm-tst-fe.pro.lukoil.com": "ecm-tst-fe01.srv.lukoil.com",
+  "spik-t.pro.lukoil.com": "shp19-tst-web01.srv.lukoil.com",
+  "lt-gitlab.pro.lukoil.com": "lt-github.srv.lukoil.com",
+  "pup-nwbc.pro.lukoil.com": "sappup.srv.lukoil.com",
+  "kpao-dev.pro.lukoil.com": "saptm4.srv.lukoil.com",
+  "tm2-nwbc.pro.lukoil.com": "saptm2ci.srv.lukoil.com",
+  "kpao-test.pro.lukoil.com": "saptm4.srv.lukoil.com",
+  "tm3-nwbc.pro.lukoil.com": "saptm3ci.srv.lukoil.com",
+  "kpao.pro.lukoil.com": "saptm4.srv.lukoil.com",
+  "kpao-nalog.pro.lukoil.com": "saptm4.srv.lukoil.com",
+  "kpao-nalog.corp.lukoil.com": "saptm4.srv.lukoil.com",
+  "tm4-nwbc.pro.lukoil.com": "saptm4.srv.lukoil.com",
+  "bw1-nwbc.pro.lukoil.com": "sapbw1cidb.srv.lukoil.com",
+  "bw5-nwbc.pro.lukoil.com": "sapbw5cidb.srv.lukoil.com",
+  "bw4-nwbc.pro.lukoil.com": "sapbw4.srv.lukoil.com",
+  "ecm-tst-snbx.pro.lukoil.com": [
+    "vmrs1.srv.lukoil.com",
+    "ecm-tst-appfe01.srv.lukoil.com"
+  ],
+  "ecm-qa.pro.lukoil.com": [
+    "ecm-qa-fe01.srv.lukoil.com",
+    "ecm-qa-fe02.srv.lukoil.com",
+    "ecm-qa-fe03.srv.lukoil.com",
+    "ecm-qa-fe05.srv.lukoil.com",
+    "ecm-qa-fe06.srv.lukoil.com"
+  ],
+  "ksssdev.pro.lukoil.com": "ksss-dev-as01.srv.lukoil.com",
+  "old_portal.lukoil.com": "portal.lukoil.com",
+  "old_portal.pro.lukoil.com": "portal.lukoil.com",
+  "dso.pro.lukoil.com": "dso-app01.srv.lukoil.com",
+  "ecm-tst-snbx-be01.pro.lukoil.com": "ecm-tst-appfe01.srv.lukoil.com",
+  "lukoilppm.pro.lukoil.com": "mskppm.srv.lukoil.com",
+  "deleted_vopru.pro.lukoil.com": "vopru.srv.lukoil.com",
+  "pprrb.pro.lukoil.com": "mskpprrb.srv.lukoil.com",
+  "smp.pro.lukoil.com": "smik-bs-ee-smp.srv.lukoil.com",
+  "docsvision.pro.lukoil.com": "aeroed-app02.srv.lukoil.com",
+  "deleted_scm.pro.lukoil.com": "scm-app01.srv.lukoil.com",
+  "boardmaps.pro.lukoil.com": "boardmaps-web.srv.lukoil.com",
+  "sasreport.pro.lukoil.com": "sasreportapp01.srv.lukoil.com",
+  "kg-ol7.pro.lukoil.com": "kglm-olimpoks07.srv.lukoil.com",
+  "kg-ol7-9001.pro.lukoil.com": "kglm-olimpoks07.srv.lukoil.com",
+  "crd-nwbc.pro.lukoil.com": "sapcrdci.srv.lukoil.com",
+  "crt-nwbc.pro.lukoil.com": "sapcrtci.srv.lukoil.com",
+  "crp-nwbc.pro.lukoil.com": [
+    "sapcrpci.srv.lukoil.com",
+    "sapcrpapp01.srv.lukoil.com"
+  ],
+  "domino1.pro.lukoil.com": "domino1.srv.lukoil.com",
+  "domino1-1.pro.lukoil.com": "domino1-1.srv.lukoil.com",
+  "domino1-2.pro.lukoil.com": "domino1-2.srv.lukoil.com",
+  "domino4.pro.lukoil.com": "domino4.srv.lukoil.com",
+  "domino4-1.pro.lukoil.com": "domino4-1.srv.lukoil.com",
+  "domino4-2.pro.lukoil.com": "domino4-2.srv.lukoil.com",
+  "notes1.pro.lukoil.com": "notes1.srv.lukoil.com",
+  "notes1-1.pro.lukoil.com": "notes1-1.srv.lukoil.com",
+  "notes1-2.pro.lukoil.com": "notes1-2.srv.lukoil.com",
+  "lt-sez.pro.lukoil.com": [
+    "c-ln66.srv.lukoil.com",
+    "c-ln66-1.srv.lukoil.com"
+  ],
+  "cmtestservice.pro.lukoil.com": [
+    "vmrmt1.corp.lukoil.com",
+    "vmrmt2.corp.lukoil.com"
+  ],
+  "vision.pro.lukoil.com": [
+    "vmapp1.corp.lukoil.com",
+    "vmapp2.corp.lukoil.com"
+  ],
+  "tst-services.pro.lukoil.com": [
+    "vmrmt1.corp.lukoil.com",
+    "vmrmt2.corp.lukoil.com"
+  ],
+  "kg-ol7-19001.pro.lukoil.com": "kglm-olimpoks07.srv.lukoil.com",
+  "deleted_ltsm.pro.lukoil.com": "ltsm-app01.srv.lukoil.com",
+  "deleted_ltsmtst.pro.lukoil.com": "ltsmtst-app01.srv.lukoil.com",
+  "mskmdmprod2.pro.lukoil.com": "cscd2-p1c.srv.lukoil.com",
+  "ptrweb.pro.lukoil.com": "ptrweb01.srv.lukoil.com",
+  "ptrweb.lukoil.com": "ptrweb01.srv.lukoil.com",
+  "deleted_luk_eserv-do.pro.lukoil.com": "appsql1clensv.srv.lukoil.com",
+  "conf.pro.lukoil.com": "conf.srv.lukoil.com",
+  "conf.lukoil.com": "conf.srv.lukoil.com",
+  "deleted_x63-nwbc.pro.lukoil.com": "sapx63.srv.lukoil.com",
+  "deleted_x3a-nwbc.pro.lukoil.com": "sapx3acidb.srv.lukoil.com",
+  "deleted_x3b-nwbc.pro.lukoil.com": "sapx3bcidb.srv.lukoil.com",
+  "deleted_x3c-nwbc.pro.lukoil.com": "sapx3ccidb.srv.lukoil.com",
+  "deleted_x3d-nwbc.pro.lukoil.com": "sapx3dcidb.srv.lukoil.com",
+  "x64-nwbc.pro.lukoil.com": "sapx64.srv.lukoil.com",
+  "x4a-nwbc.pro.lukoil.com": "sapx4acidb.srv.lukoil.com",
+  "deleted_x4b-nwbc.pro.lukoil.com": "sapx4bcidb.srv.lukoil.com",
+  "x4c-nwbc.pro.lukoil.com": "sapx4ccidb.srv.lukoil.com",
+  "deleted_x4d-nwbc.pro.lukoil.com": "sapx4dcidb.srv.lukoil.com",
+  "deleted_x4e-nwbc.pro.lukoil.com": "sapx4ecidb.srv.lukoil.com",
+  "deleted_x4f-nwbc.pro.lukoil.com": "sapx4fcidb.srv.lukoil.com",
+  "deleted_x3s-nwbc.pro.lukoil.com": "sapx3scidb.srv.lukoil.com",
+  "deleted_x4s-nwbc.pro.lukoil.com": "sapx4scidb.srv.lukoil.com",
+  "deleted_xdi-nwbc.pro.lukoil.com": "sapxdicidb.srv.lukoil.com",
+  "x61-nwbc.pro.lukoil.com": "sapx61cidb.srv.lukoil.com",
+  "x1a-nwbc.pro.lukoil.com": "sapx1acidb.srv.lukoil.com",
+  "x66-nwbc.pro.lukoil.com": "sapx66.srv.lukoil.com",
+  "x6a-nwbc.pro.lukoil.com": "sapx6acidb.srv.lukoil.com",
+  "x6s-nwbc.pro.lukoil.com": "sapx6scidb.srv.lukoil.com",
+  "sups.pro.lukoil.com": "c-prmsupslp.corp.lukoil.com",
+  "pki1.ext.lukoil.com": [
+    "pki1n1.corp.lukoil.com",
+    "pki1n2.corp.lukoil.com"
+  ],
+  "pki2.ext.lukoil.com": [
+    "pki1n1.corp.lukoil.com",
+    "pki1n2.corp.lukoil.com"
+  ],
+  "dso.ext.lukoil.com": "dso-app02.srv.lukoil.com",
+  "meridian.ext.lukoil.com": "meridian-web01.srv.lukoil.com",
+  "ceuq.ext.lukoil.com": "smtp10.corp.lukoil.com",
+  "a2fa.ext.lukoil.com": [
+    "srt-jms-a2fa01.srv.lukoil.com",
+    "dln-jms-a2fa01.srv.lukoil.com"
+  ],
+  "sps.ext.lukoil.com": [
+    "srt-jms-sps01.srv.lukoil.com",
+    "dln-jms-sps01.srv.lukoil.com"
+  ],
+  "pki.lukoil.com": [
+    "srt-pkicdp01.srv.lukoil.com",
+    "srt-pkicdp02.srv.lukoil.com",
+    "dln-pkicdp01.srv.lukoil.com",
+    "dln-pkicdp02.srv.lukoil.com"
+  ],
+  "pki1.lukoil.com": [
+    "srt-pkicdp01.srv.lukoil.com",
+    "srt-pkicdp02.srv.lukoil.com",
+    "dln-pkicdp01.srv.lukoil.com",
+    "dln-pkicdp02.srv.lukoil.com"
+  ],
+  "pki2.lukoil.com": [
+    "srt-pkicdp01.srv.lukoil.com",
+    "srt-pkicdp02.srv.lukoil.com",
+    "dln-pkicdp01.srv.lukoil.com",
+    "dln-pkicdp02.srv.lukoil.com"
+  ],
+  "(ext.lukoil.com)": [
+    "srt-pkicdp01.srv.lukoil.com",
+    "srt-pkicdp02.srv.lukoil.com",
+    "dln-pkicdp01.srv.lukoil.com",
+    "dln-pkicdp02.srv.lukoil.com"
+  ],
+  "ecm-tst.lukoil.com": "ecm-tst-fe01.srv.lukoil.com",
+  "testcn.corp.lukoil.com": "ehdtest.corp.lukoil.com",
+  "test-core-entrypoint.srv.lukoil.com": "test-core-entrypoint.srv.lukoil.com",
+  "vkp.lukoil.com": "test-core-entrypoint.srv.lukoil.com",
+  "keycloak.vkp.lukoil.com": "test-core-entrypoint.srv.lukoil.com",
+  "keycloak.lukoil.com": "test-core-entrypoint.srv.lukoil.com",
+  "network2.riskpb-tst.corp.lukoil.com": "eco-platform-server-tst",
+  "network2-tst.corp.lukoil.com": "eco-platform-server-tst",
+  "network3.riskpb-tst.corp.lukoil.com": "eco-platform-server-tst",
+  "network3-tst.corp.lukoil.com": "eco-platform-server-tst",
+  "testapp.lukoil.com": "ritest2.srv.lukoil.com",
+  "docsvision.lukoil.com": "aero-ed-app01.srv.lukoil.com",
+  "deleted_airw-vpn-test.lukoil.com": "srt-airwTEP.srv.lukoil.com",
+  "deleted_emm-vpn.lukoil.com": [
+    "mdm-uagtunnel01.srv.lukoil.com",
+    "mdm-uagtunnel02.srv.lukoil.com"
+  ],
+  "deleted_airw-seg-test.lukoil.com": "srt-airwTEP.srv.lukoil.com",
+  "deleted_emm-seg.lukoil.com": [
+    "mdm-uagtunnel01.srv.lukoil.com",
+    "mdm-uagtunnel02.srv.lukoil.com"
+  ],
+  "webportal-t.corp.lukoil.com": [
+    "sp13-vi-t-cidb1.srv.lukoil.com",
+    "sp13-vi-t-wadb1.srv.lukoil.com"
+  ],
+  "irpkopt.lukoil.com": "msk-irpk.srv.lukoil.com",
+  "irpkopt.pro.lukoil.com": [
+    "msk-irpk.srv.lukoil.com",
+    "msk-irpk2.srv.lukoil.com"
+  ],
+  "gslb:cark-pvwa.corp.lukoil.com": [
+    "Cark-pvwa-cpm01.corp.lukoil.com",
+    "Cark-pvwa-psm01.corp.lukoil.com",
+    "Cark-pvwa-cpm02.corp.lukoil.com",
+    "Cark-pvwa-psm02.corp.lukoil.com"
+  ],
+  "gslb:cark-psm.corp.lukoil.com": [
+    "Cark-pvwa-psm01.corp.lukoil.com",
+    "Cark-pvwa-psm02.corp.lukoil.com"
+  ],
+  "ns-kglsss.pro.lukoil.com": "c-kglsss.corp.lukoil.com",
+  "ns-asoducfr01.lukoil.com": "asoducfr-docker01.srv.lukoil.com",
+  "sudbsgid.lukoil.com": "sudbsgidapp.srv.lukoil.com",
+  "luk-t.lukoil.com": [
+    "sp13-vi-t-wadb1.srv.lukoil.com",
+    "vp-t-wbdb.srv.lukoil.com"
+  ],
+  "luk-t.pro.lukoil.com": [
+    "sp13-vi-t-wadb1.srv.lukoil.com",
+    "vp-t-wbdb.srv.lukoil.com"
+  ],
+  "smik-bs-ee.lukoil.com": "smik-bs-ee-app1.srv.lukoil.com",
+  "crm-llk.lukoil.com": "llk-btx24-app01.srv.lukoil.com",
+  "epeo-ope.corp.lukoil.com": "vmdm-r1.corp.lukoil.com",
+  "lt-gitlab.corp.lukoil.com": "lt-github.srv.lukoil.com",
+  "irpktep.pro.lukoil.com": [
+    "irpktep-app01.srv.lukoil.com",
+    "irpktep-app02.srv.lukoil.com",
+    "irpktep-app03.srv.lukoil.com"
+  ],
+  "irpktep-admin.pro.lukoil.com": [
+    "irpktep-app01.srv.lukoil.com",
+    "irpktep-app02.srv.lukoil.com",
+    "irpktep-app03.srv.lukoil.com"
+  ],
+  "monitoring-tarf.pro.lukoil.com": "tcr2.msk.lukoil.net",
+  "taskmngr.pro.lukoil.com": [
+    "vmcn1.corp.lukoil.com",
+    "vmcn2.corp.lukoil.com"
+  ],
+  "oos19-2.pro.lukoil.com": "shp19-tst-oos02.srv.lukoil.com",
+  "ecm-tst-snbx-app01.pro.lukoil.com": "ecm-tst-appfe01.srv.lukoil.com",
+  "ipms.corp.lukoil.com": "ling-isup-web-nlb.srv.lukoil.com",
+  "ipms-oos.corp.lukoil.com": "ipms-oos.corp.lukoil.com",
+  "ifield.lukoil.com": "c-prmifprdweb1.corp.lukoil.com",
+  "ifield.pro.lukoil.com": "c-prmifprdweb1.corp.lukoil.com",
+  "ifield-prd2.lukoil.com": "c-prmifprdweb2.corp.lukoil.com",
+  "api-ois.pro.lukoil.com": "prm-oisif01.srv.lukoil.com",
+  "kg-ol1.pro.lukoil.com": "kglm-olimpoks01.srv.lukoil.com",
+  "corpeuq-ovs.lukoil.com": [
+    "smtp16.corp.lukoil.com",
+    "smtp26.corp.lukoil.com",
+    "smtp36.corp.lukoil.com"
+  ],
+  "corpeuq.lukoil.com": [
+    "smtp18.corp.lukoil.com",
+    "smtp17.corp.lukoil.com",
+    "smtp19.corp.lukoil.com",
+    "smtp28.corp.lukoil.com",
+    "smtp29.corp.lukoil.com"
+  ],
+  "euqdigest.lukoil.com": "smtp17.corp.lukoil.com",
+  "srt-wsaproxy.srv.lukoil.com": [
+    "srt-wsaproxy01.srv.lukoil.com",
+    "srt-wsaproxy02.srv.lukoil.com"
+  ],
+  "dln4-wsaproxy.srv.lukoil.com": [
+    "dln4-wsaproxy01.srv.lukoil.com",
+    "dln4-wsaproxy02.srv.lukoil.com"
+  ],
+  "wsaproxy.pro.lukoil.com": [
+    "srt-wsaproxy01.srv.lukoil.com",
+    "srt-wsaproxy02.srv.lukoil.com",
+    "dln4-wsaproxy01.srv.lukoil.com",
+    "dln4-wsaproxy02.srv.lukoil.com"
+  ],
+  "jms.pro.lukoil.com": [
+    "srt-jms01.srv.lukoil.com",
+    "dln-jms01.srv.lukoil.com"
+  ],
+  "a2fa.pro.lukoil.com": [
+    "srt-jms-a2fa01.srv.lukoil.com",
+    "dln-jms-a2fa01.srv.lukoil.com"
+  ],
+  "crl.lukoil.com": [
+    "srt-pkicdp01.srv.lukoil.com",
+    "srt-pkicdp02.srv.lukoil.com",
+    "dln-pkicdp01.srv.lukoil.com",
+    "dln-pkicdp02.srv.lukoil.com"
+  ],
+  "saps4jira.pro.lukoil.com": "saps4jira-01.srv.lukoil.com",
+  "aurora.pro.lukoil.com": [
+    "aurora-app01.srv.lukoil.com",
+    "aurora-db01.srv.lukoil.com"
+  ],
+  "jas.pro.lukoil.com": [
+    "srt-jms01.srv.lukoil.com",
+    "dln-jms01.srv.lukoil.com"
+  ],
+  "roambi.pro.lukoil.com": "svpbsgidapp.srv.lukoil.com",
+  "ehdtestservice.pro.lukoil.com": [
+    "vmrmt1.corp.lukoil.com",
+    "vmrmt2.corp.lukoil.com"
+  ],
+  "ehdservice.pro.lukoil.com": [
+    "vmapp1.corp.lukoil.com",
+    "vmapp2.corp.lukoil.com"
+  ],
+  "oisif-sap-auth.pro.lukoil.com": "oisif-prd-sys01.srv.lukoil.com",
+  "yougile.pro.lukoil.com": "yougile.srv.lukoil.com",
+  "sm1-nwbc.pro.lukoil.com": "sapsm1cidb.srv.lukoil.com",
+  "sm3-nwbc.pro.lukoil.com": "sapsm3.srv.lukoil.com",
+  "sapsm3web.lukoil.com": "sapsm3.srv.lukoil.com",
+  "idealspimex.pro.lukoil.com": "srt-spimexapp01.srv.lukoil.com",
+  "sez-aero.pro.lukoil.com": "avialn2.srv.lukoil.com",
+  "sez-stavrolen.pro.lukoil.com": "budlts02.corp.lukoil.com",
+  "sez-trading-1.pro.lukoil.com": "c-ln01-1.corp.lukoil.com",
+  "sez-lukenergo.pro.lukoil.com": "c-ln02-1.srv.lukoil.com",
+  "sez-yanshu.pro.lukoil.com": "c-ln06-1.srv.lukoil.com",
+  "sez-uhtasrv.pro.lukoil.com": "c-ln10-1.corp.lukoil.com",
+  "sez-vlgnp.pro.lukoil.com": "c-ln11-1.corp.lukoil.com",
+  "sez-yugnp.pro.lukoil.com": "c-ln12-1.corp.lukoil.com",
+  "sez-lukchm.pro.lukoil.com": "c-ln13-1.corp.lukoil.com",
+  "sez-aero2.pro.lukoil.com": "c-ln14-1.corp.lukoil.com",
+  "sez-chznp.pro.lukoil.com": "c-ln16-1.srv.lukoil.com",
+  "sez-kuban-1.pro.lukoil.com": "c-ln20-1.corp.lukoil.com",
+  "sez-lukperm.pro.lukoil.com": "c-ln21-1.corp.lukoil.com",
+  "sez-energoinzh.pro.lukoil.com": "c-ln22-1.corp.lukoil.com",
+  "sez-pnos.pro.lukoil.com": "c-ln24-1.corp.lukoil.com",
+  "sez-aik.pro.lukoil.com": "c-ln25-1.corp.lukoil.com",
+  "sez-nvn.pro.lukoil.com": "c-ln26-1.corp.lukoil.com",
+  "sez-ritek.pro.lukoil.com": "c-ln27-1.srv.lukoil.com",
+  "sez-permnipineft.pro.lukoil.com": "c-ln28-1.corp.lukoil.com",
+  "sez-urcprm-1.pro.lukoil.com": "c-ln29-1.srv.lukoil.com",
+  "sez-lukkgpz.pro.lukoil.com": "c-ln31-1.corp.lukoil.com",
+  "sez-lukinzh.pro.lukoil.com": "c-ln32-1.corp.lukoil.com",
+  "sez-avia.pro.lukoil.com": "c-ln33-1.corp.lukoil.com",
+  "sez-knt.pro.lukoil.com": "c-ln34-1.corp.lukoil.com",
+  "sez-lzs.pro.lukoil.com": "c-ln35-1.srv.lukoil.com",
+  "sez-varterm-1.pro.lukoil.com": "c-ln36-1.srv.lukoil.com",
+  "sez-itk.pro.lukoil.com": "c-ln37-1.srv.lukoil.com",
+  "sez-lukvolg.pro.lukoil.com": "c-ln38-1.corp.lukoil.com",
+  "sez-holding.pro.lukoil.com": "c-ln43-1.corp.lukoil.com",
+  "sez-rostovenergo.pro.lukoil.com": "c-ln45-1.corp.lukoil.com",
+  "sez-lukcur.pro.lukoil.com": "c-ln46-1.corp.lukoil.com",
+  "sez-energoservice.pro.lukoil.com": "c-ln47-1.corp.lukoil.com",
+  "sez-permnp.pro.lukoil.com": "c-ln48-1.corp.lukoil.com",
+  "sez-uralnp.pro.lukoil.com": "c-ln49-1.srv.lukoil.com",
+  "sez-bunker.pro.lukoil.com": "c-ln50-1.corp.lukoil.com",
+  "sez-intesmo.pro.lukoil.com": "c-ln51-1.srv.lukoil.com",
+  "sez-ecoenergo.pro.lukoil.com": "c-ln52-1.srv.lukoil.com",
+  "sez-uraloil.pro.lukoil.com": "c-ln53-1.srv.lukoil.com",
+  "sez-lukuttist.pro.lukoil.com": "c-ln54-1.srv.lukoil.com",
+  "sez-liuw.pro.lukoil.com": "c-ln55-1.srv.lukoil.com",
+  "sez-astrenergo.pro.lukoil.com": "c-ln56-1.srv.lukoil.com",
+  "sez-luknnos.pro.lukoil.com": "c-ln57-1.srv.lukoil.com",
+  "sez-stavenrg.pro.lukoil.com": "c-ln58-1.srv.lukoil.com",
+  "sez-nniinfpr.pro.lukoil.com": "c-ln59-1.srv.lukoil.com",
+  "sez-nvtrk.pro.lukoil.com": "c-ln60-1.srv.lukoil.com",
+  "sez-lukepu.pro.lukoil.com": "c-ln61-1.srv.lukoil.com",
+  "sez-lukpers.pro.lukoil.com": "c-ln62-1.srv.lukoil.com",
+  "sez-sznp-1.pro.lukoil.com": "c-ln63-1.srv.lukoil.com",
+  "sez-sors.pro.lukoil.com": "c-ln64-1.srv.lukoil.com",
+  "sez-lukoilsng.pro.lukoil.com": "c-ln67-1.srv.lukoil.com",
+  "sez-tppuht.pro.lukoil.com": "c-ln68-1.srv.lukoil.com",
+  "sez-tppusn-1.pro.lukoil.com": "c-ln69-1.srv.lukoil.com",
+  "sez-ugpzusn-1.pro.lukoil.com": "c-ln70-1.srv.lukoil.com",
+  "sez-komi-1.pro.lukoil.com": "c-ln71-1.srv.lukoil.con",
+  "sez-komi-2.pro.lukoil.com": "c-ln72-1.srv.lukoil.com",
+  "sez-rpkv.pro.lukoil.com": "c-ln73-1.srv.lukoil.com",
+  "sez-cpb.pro.lukoil.com": "c-ln74-1.srv.lukoil.com",
+  "sez-lafe.pro.lukoil.com": "c-ln75-1.srv.lukoil.com",
+  "sez-ats.pro.lukoil.com": "c-ln76.srv.lukoil.com",
+  "sez-inform.pro.lukoil.com": "informln2.srv.lukoil.com",
+  "sez-lukkmn.pro.lukoil.com": "kldlm2.kld.lukoil.com",
+  "sez-cnp-1.pro.lukoil.com": "lcnp-apl2.srv.lukoil.com",
+  "sez-llk.pro.lukoil.com": "llkln2.srv.lukoil.com",
+  "sez-vlgenergo-1.pro.lukoil.com": "lnvlg-e2.corp.lukoil.com",
+  "sez-luktrans.pro.lukoil.com": "ltransln2.corp.lukoil.com",
+  "sez-luninvest.pro.lukoil.com": "lun-invest.srv.lukoil.com",
+  "sez-licard.pro.lukoil.com": "msk01-delovid.licard.com",
+  "ipms-t.pro.lukoil.com": "ling-isup-t-webdev.corp.lukoil.com",
+  "aurora.ext.lukoil.com": "aurora-app01.srv.lukoil.com",
+  "msk-pkp.pro.lukoil.com": "msk-pkptest.srv.lukoil.com",
+  "yougile.ext.lukoil.com": "yougile.srv.lukoil.com",
+  "pcr-nwbc.pro.lukoil.com": "sappcr.srv.lukoil.com",
+  "rsd-nwbc.pro.lukoil.com": "saprsd.srv.lukoil.com",
+  "psd-nwbc.pro.lukoil.com": "sappsd.srv.lukoil.com",
+  "rcr-nwbc-basic.pro.lukoil.com": "saprcr.srv.lukoil.com",
+  "ecm-fe.pro.lukoil.com": [
+    "ecm-prd-fe01.srv.lukoil.com",
+    "ecm-prd-fe02.srv.lukoil.com",
+    "ecm-prd-fe03.srv.lukoil.com",
+    "ecm-prd-fe04.srv.lukoil.com",
+    "ecm-prd-fe05.srv.lukoil.com",
+    "ecm-prd-fe06.srv.lukoil.com",
+    "ecm-prd-fe07.srv.lukoil.com",
+    "ecm-prd-fe08.srv.lukoil.com",
+    "ecm-prd-fe09.srv.lukoil.com",
+    "ecm-prd-fe10.srv.lukoil.com"
+  ],
+  "wopi.pro.lukoil.com": [
+    "ecm-prd-app01.srv.lukoil.com",
+    "ecm-prd-app02.srv.lukoil.com",
+    "ecm-prd-app03.srv.lukoil.com"
+  ],
+  "ecm-tst-app.pro.lukoil.com": [
+    "ecm-tst-be01.srv.lukoil.com",
+    "ecm-tst-app01.srv.lukoil.com"
+  ],
+  "ecm-fe-qa.pro.lukoil.com": [
+    "ecm-qa-fe01.srv.lukoil.com",
+    "ecm-qa-fe02.srv.lukoil.com",
+    "ecm-qa-fe03.srv.lukoil.com",
+    "ecm-qa-fe04.srv.lukoil.com",
+    "ecm-qa-fe05.srv.lukoil.com",
+    "ecm-qa-fe06.srv.lukoil.com"
+  ],
+  "wopi-qa.pro.lukoil.com": [
+    "ecm-qa-app01.srv.lukoil.com",
+    "ecm-qa-app02.srv.lukoil.com"
+  ],
+  "otds-qa.pro.lukoil.com": [
+    "ecm-qa-app01.srv.lukoil.com",
+    "ecm-qa-app02.srv.lukoil.com"
+  ],
+  "ecm-brava-qa.pro.lukoil.com": [
+    "ecm-qa-app01.srv.lukoil.com",
+    "ecm-qa-app02.srv.lukoil.com"
+  ],
+  "ecm-as-qa.pro.lukoil.com": [
+    "ecm-qa-as01.srv.lukoil.com",
+    "ecm-qa-as02.srv.lukoil.com"
+  ],
+  "otds.pro.lukoil.com": [
+    "ecm-prd-app01.srv.lukoil.com",
+    "ecm-prd-app02.srv.lukoil.com"
+  ],
+  "ecm-as.pro.lukoil.com": [
+    "ecm-prd-as01.srv.lukoil.com",
+    "ecm-prd-as02.srv.lukoil.com"
+  ],
+  "deleted_prem.pro.lukoil.com": "mskpremsqlprd.srv.lukoil.com",
+  "geoman-prd.pro.lukoil.com": "mskprmgeomanprd.srv.lukoil.com",
+  "lk.ext.lukoil.com": [
+    "vkp-prd-cgate01.srv.lukoil.com",
+    "vkp-prd-cgate02.srv.lukoil.com"
+  ],
+  "lk-test.ext.lukoil.com": "test-vkp-cgate1.srv.lukoil.com",
+  "smik3.pro.lukoil.com": "smik-bs-ee-app2.srv.lukoil.com",
+  "kssstest.pro.lukoil.com": "ksss-tst-c.srv.lukoil.com",
+  "kssspreprod.pro.lukoil.com": "ksss-p-prd-c.srv.lukoil.com",
+  "ksssprod.pro.lukoil.com": "ksss-prd-c.srv.lukoil.com",
+  "rcr-nwbc-temp.pro.lukoil.com": "saprcrci.srv.lukoil.com",
+  "premdev.pro.lukoil.com": "mskpremsqldev.srv.lukoil.com",
+  "geoman-dev.pro.lukoil.com": "mspremgeomandev.srv.lukoil.com",
+  "vip-t.pro.lukoil.com": "sp13-vi-t-cidb1.srv.lukoil.com",
+  "vip-test.lukoil.com": "sp13-vi-t-cidb1.srv.lukoil.com",
+  "admvip-t.pro.lukoil.com": "sp13-vi-t-cidb1.srv.lukoil.com",
+  "admvip-test.lukoil.com": "sp13-vi-t-cidb1.srv.lukoil.com",
+  "llk-rndlims.pro.lukoil.com": "llklims-web01.srv.lukoil.com",
+  "llk-rndlims-rep.pro.lukoil.com": "llklims-app01.srv.lukoil.com",
+  "smbk.pro.lukoil.com": "smbkprd-app01.srv.lukoil.com",
+  "smbk-auth.pro.lukoil.com": "saps54idp.srv.lukoil.com",
+  "ehdtask.pro.lukoil.com": [
+    "vmcn1.corp.lukoil.com",
+    "vmcn2.corp.lukoil.com"
+  ],
+  "qsd-nwbc.pro.lukoil.com": "sapqsdci.srv.lukoil.com",
+  "ac4-nwbc.pro.lukoil.com": "sapac4.srv.lukoil.com",
+  "sen.pro.lukoil.com": "sapenaapp01.srv.lukoil.com",
+  "crmllk.pro.lukoil.com": "sapc64ci.srv.lukoil.com",
+  "stage.pro.lukoil.com": [
+    "stage-nlb.srv.lukoil.com",
+    "stage-wfe1.srv.lukoil.com",
+    "stage-wfe2.srv.lukoil.com"
+  ],
+  "web.pro.lukoil.com": [
+    "c-web-nlb.srv.lukoil.com",
+    "c-web-wfe1.srv.lukoil.com",
+    "c-web-wfe2.srv.lukoil.com"
+  ],
+  "web-preview.pro.lukoil.com": [
+    "c-web-nlb.srv.lukoil.com",
+    "c-web-wfe1.srv.lukoil.com",
+    "c-web-wfe2.srv.lukoil.com"
+  ],
+  "mdmtesteu.pro.lukoil.com": "cscd-eu-t1c.srv.lukoil.com",
+  "mdmprodeu.pro.lukoil.com": "cscd-eu-p1c.srv.lukoil.com",
+  "workorders.pro.lukoil.com": [
+    "srt-sndorapp01.srv.lukoil.com",
+    "sndorapp01.srv.lukoil.com",
+    "gltb-sndorapp01.srv.lukoil.com"
+  ],
+  "cok.pro.lukoil.com": "sdo-cok.srv.lukoil.com",
+  "vip.pro.lukoil.com": [
+    "vi-p-web01.srv.lukoil.com",
+    "vi-p-web02.srv.lukoil.com"
+  ],
+  "admvip.pro.lukoil.com": [
+    "vi-p-web01.srv.lukoil.com",
+    "vi-p-web02.srv.lukoil.com"
+  ],
+  "ipms-my-t.pro.lukoil.com": "ling-isup-t-web.corp.lukoil.com",
+  "cok.ext.lukoil.com": "sdo-cok.srv.lukoil.com",
+  "luktrans.pro.lukoil.com": [
+    "idealapps.srv.lukoil.com",
+    "vnot-app01.srv.lukoil.com"
+  ],
+  "luktrans-tst.pro.lukoil.com": "appbrokerppstst.srv.lukoil.com",
+  "kpao-bw1.pro.lukoil.com": "saptm4.srv.lukoil.com",
+  "kpao-bw5.pro.lukoil.com": "saptm4.srv.lukoil.com",
+  "kpao-bw4.pro.lukoil.com": "saptm4.srv.lukoil.com",
+  "sdo-wt.pro.lukoil.com": "sdo-wt.srv.lukoil.com",
+  "spr-tst.pro.lukoil.com": "jeffit-tst-app01.srv.lukoil.com",
+  "sprdoc-tst.pro.lukoil.com": "jeffit-tst-app02.srv.lukoil.com",
+  "deleted_scm-monitoring.pro.lukoil.com": "scm-mon01.srv.lukoil.com",
+  "scm-monitoring-tst.pro.lukoil.com": "dev-bi-prognoz.srv.lukoil.com",
+  "crm-stage-llk.pro.lukoil.com": "crm-b24-llk-app.srv.lukoil.com",
+  "lcr-nwbc.pro.lukoil.com": "saplcr.srv.lukoil.com",
+  "lup-nwbc.pro.lukoil.com": "saplup.srv.lukoil.com",
+  "nlb-llk-dir-test.pro.lukoil.com": "nlb-llk-dir-test.corp.lukoil.com",
+  "ptrbi.pro.lukoil.com": "ptrolapapp2.srv.lukoil.com",
+  "ifield-msk-qas.pro.lukoil.com": "oisif-qas-web01.srv.lukoil.com",
+  "kikprod.pro.lukoil.com": "kikprod.srv.lukoil.com",
+  "kiktest.pro.lukoil.com": "kiktest.srv.lukoil.com",
+  "corprepo.pro.lukoil.com": "corpdev01.srv.lukoil.com",
+  "crmllk.ext.lukoil.com": "sapc64app01.srv.lukoil.com",
+  "lukportal.pro.lukoil.com": [
+    "mskmosweb1.corp.lukoil.com",
+    "mskmosweb2.corp.lukoil.com"
+  ],
+  "informportal.pro.lukoil.com": [
+    "mskmosweb1.corp.lukoil.com",
+    "mskmosweb2.corp.lukoil.com"
+  ],
+  "myportal.pro.lukoil.com": [
+    "mskmosweb1.corp.lukoil.com",
+    "mskmosweb2.corp.lukoil.com"
+  ],
+  "ecm-brava.pro.lukoil.com": [
+    "ecm-prd-app01.srv.lukoil.com",
+    "ecm-prd-app02.srv.lukoil.com",
+    "ecm-prd-app03.srv.lukoil.com"
+  ],
+  "pdsp.pro.lukoil.com": "pdsp.srv.lukoil.com",
+  "ritest.pro.lukoil.com": "ritest.srv.lukoil.com",
+  "catalystmanagement.pro.lukoil.com": "link-qr-app01.srv.lukoil.com",
+  "jira.pro.lukoil.com": "mskwlc.msk.lukoil.com",
+  "srmportaldev.pro.lukoil.com": "sapsj2cidb.srv.lukoil.com",
+  "tenderdev.pro.lukoil.com": "saps52cidb.srv.lukoil.com",
+  "srmportaltest.pro.lukoil.com": "sapsj3cidb.srv.lukoil.com",
+  "tendertest.pro.lukoil.com": "saps53cidb.srv.lukoil.com",
+  "srmportal.ext.lukoil.com": "sapsj4.msk.lukoil.com",
+  "tender.ext.lukoil.com": "saps54.msk.lukoil.com",
+  "tenders.lukoil.com": "saps54.msk.lukoil.com",
+  "auction.ext.lukoil.com": "tendersap1.srv.lukoil.com",
+  "auction-tst.ext.lukoil.com": "tendersaptest.corp.lukoil.com",
+  "extra.pro.lukoil.com": [
+    "c-extra-web1.corp.lukoil.com",
+    "c-extra-web2.corp.lukoil.com"
+  ],
+  "extra-eae.pro.lukoil.com": [
+    "c-extra-web1.corp.lukoil.com",
+    "c-extra-web2.corp.lukoil.com"
+  ],
+  "deleted_mobil.pro.lukoil.com": "geomnglk.srv.lukoil.com",
+  "ritest2.pro.lukoil.com": "ritest2.srv.lukoil.com",
+  "ldisk.pro.lukoil.com": [
+    "msk-ldisk-web01.srv.lukoil.com",
+    "msk-ldisk-web02.srv.lukoil.com"
+  ],
+  "ldisk.lukoil.com": [
+    "msk-ldisk-web01.srv.lukoil.com",
+    "msk-ldisk-web02.srv.lukoil.com",
+    "msk-ldisk-web05.srv.lukoil.com",
+    "msk-ldisk-web06.srv.lukoil.com"
+  ],
+  "lkidisk.pro.lukoil.com": "msk-ldisk-web04.srv.lukoil.com",
+  "directumrx-llk.pro.lukoil.com": "nlb-llk-dir-test.corp.lukoil.com",
+  "ldisk-ns.pro.lukoil.com": [
+    "msk-ldisk-db02.srv.lukoil.com",
+    "msk-ldisk-web01.srv.lukoil.com",
+    "msk-ldisk-web02.srv.lukoil.com"
+  ],
+  "lkidisk-ns.pro.lukoil.com": [
+    "msk-ldisk-web03 .srv.lukoil.com",
+    "msk-ldisk-we04.srv.lukoil.com",
+    "msk-ldisk-db04.srv.lukoil.com"
+  ],
+  "global.pro.lukoil.com": [
+    "c-mos2010-web1.corp.lukoil.com",
+    "c-mos2010-web2.corp.lukoil.com"
+  ],
+  "lukduet.pro.lukoil.com": [
+    "c-mos2010-web1.corp.lukoil.com",
+    "c-mos2010-web2.corp.lukoil.com"
+  ],
+  "lukduet.corp.lukoil.com": [
+    "c-mos2010-web1.corp.lukoil.com",
+    "c-mos2010-web2.corp.lukoil.com"
+  ],
+  "gidportal2013.pro.lukoil.com": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "portalsp.pro.lukoil.com": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "portal.corp.lukoil.com(tmg)": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "spapps.pro.lukoil.com": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "spik.pro.lukoil.com": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "spik.corp.lukoil.com(tmg)": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "tenders.ext.lukoil.com": "saps54.msk.lukoil.com",
+  "stage-preview.pro.lukoil.com": [
+    "stage-nlb.srv.lukoil.com",
+    "stage-wfe1.srv.lukoil.com",
+    "stage-wfe2.srv.lukoil.com"
+  ],
+  "dso2-tst.pro.lukoil.com": "dso2-int-ap-t.srv.lukoil.com",
+  "lrnp-tst.pro.lukoil.com": "idealbrlrnp.srv.lukoil.com",
+  "emm-seg.lukoil.com": [
+    "mdm-uagtunnel01.srv.lukoil.com",
+    "mdm-uagtunnel02.srv.lukoil.com"
+  ],
+  "emm-vpn.lukoil.com": [
+    "mdm-uagtunnel01.srv.lukoil.com",
+    "mdm-uagtunnel02.srv.lukoil.com"
+  ],
+  "deleted_emm-vpn.lukoil.com12345": [
+    "mdm-uagtunnel01.srv.lukoil.com",
+    "mdm-uagtunnel02.srv.lukoil.com"
+  ],
+  "deleted_airw-seg.lukoil.com": [
+    "srt-airwtep01.srv.lukoil.com",
+    "srt-airwtep02.srv.lukoil.com"
+  ],
+  "deleted_airw-seg.lukoil.com10443": [
+    "srt-airwtep01.srv.lukoil.com",
+    "srt-airwtep02.srv.lukoil.com"
+  ],
+  "deleted_airw-seg.lukoil.com12345": [
+    "srt-airwtep01.srv.lukoil.com",
+    "srt-airwtep02.srv.lukoil.com"
+  ],
+  "deleted_emm-tunnel.lukoil.com10443": [
+    "mdm-uagtunnel01.srv.lukoil.com",
+    "mdm-uagtunnel02.srv.lukoil.com"
+  ],
+  "deleted_emm-tunnel.lukoil.com12345": [
+    "mdm-uagtunnel01.srv.lukoil.com",
+    "mdm-uagtunnel02.srv.lukoil.com"
+  ],
+  "lukisuportal.pro.lukoil.com": "sape54cidb.srv.lukoil.com",
+  "lukisuportal.pro.lukoil.com(tmg)": "sape54cidb.srv.lukoil.com",
+  "webportal-p.pro.lukoil.com": [
+    "vp-web1.srv.lukoil.com",
+    "vp-web2.srv.lukoil.com"
+  ],
+  "alpha.pro.lukoil.com": "alpha-app01.srv.lukoil.com",
+  "mskmdmtest2.pro.lukoil.com": "cscd2-t1c.srv.lukoil.com",
+  "mskmdmdev2.pro.lukoil.com": "cscd2-d1as1.srv.lukoil.com",
+  "spr.pro.lukoil.com": [
+    "jeffit-prd-app01.srv.lukoil.com",
+    "jeffit-prd-app02.srv.lukoil.com"
+  ],
+  "sprdoc.pro.lukoil.com": "jeffit-prd-dz.srv.lukoil.com",
+  "sapds-dev.pro.lukoil.com": "sapds2.srv.lukoil.com",
+  "sapds-test.pro.lukoil.com": "sapds3.srv.lukoil.com",
+  "sapds.pro.lukoil.com": [
+    "sapds4.srv.lukoil.com",
+    "sapds41.srv.lukoil.com"
+  ],
+  "lrnp.pro.lukoil.com": "idealapplrnp.srv.lukoil.com",
+  "dso2.pro.lukoil.com": "dso2-int-ap-p.srv.lukoil.com",
+  "ogt.pro.lukoil.com": "msk-ogt-web-01.srv.lukoil.com",
+  "ogt-test.pro.lukoil.com": "msk-ogt-t-web-1.srv.lukoil.com",
+  "collzsprd-app01.pro.lukoil.com": "collzsprd-app01.srv.lukoil.com",
+  "ritekasodu.pro.lukoil.com": "c-vgdasodu-web01.corp.lukoil.com",
+  "ekptst.pro.lukoil.com": "ekptst-app01.srv.lukoil.com",
+  "deleted_portal-test.pro.lukoil.com": [
+    "vkp-prd-entrypoint01.srv.lukoil.com",
+    "vkp-prd-entrypoint02.srv.lukoil.com"
+  ],
+  "hr-dev.pro.lukoil.com": "saphdwcidb.srv.lukoil.com",
+  "hr-dev.srv.lukoil.com": "saphdwcidb.srv.lukoil.com",
+  "hr-test.pro.lukoil.com": "saphw1cidb.srv.lukoil.com",
+  "hr-test.srv.lukoil.com": "saphw1cidb.srv.lukoil.com",
+  "hrportal.pro.lukoil.com": "saph74.srv.lukoil.com",
+  "hrportal.srv.lukoil.com": "saph74.srv.lukoil.com",
+  "nexus-lt.pro.lukoil.com": "lt-github.srv.lukoil.com",
+  "sas.pro.lukoil.com": [
+    "gltb-sas01.srv.lukoil.com",
+    "gltb-sas02.srv.lukoil.com",
+    "gltb-sas03.srv.lukoil.com",
+    "gltb-sas04.srv.lukoil.com",
+    "srt-sas01.srv.lukoil.com",
+    "srt-sas02.srv.lukoil.com",
+    "srt-sas03.srv.lukoil.com",
+    "srt-sas04.srv.lukoil.com",
+    "dln4-sas01.srv.lukoil.com",
+    "dln4-sas02.srv.lukoil.com",
+    "dln4-sas03.srv.lukoil.com",
+    "dln4-sas04.srv.lukoil.com"
+  ],
+  "sas.ext.lukoil.com": [
+    "gltb-sas01.srv.lukoil.com",
+    "gltb-sas02.srv.lukoil.com",
+    "gltb-sas03.srv.lukoil.com",
+    "gltb-sas04.srv.lukoil.com",
+    "srt-sas01.srv.lukoil.com",
+    "srt-sas02.srv.lukoil.com",
+    "srt-sas03.srv.lukoil.com",
+    "srt-sas04.srv.lukoil.com",
+    "dln4-sas01.srv.lukoil.com",
+    "dln4-sas02.srv.lukoil.com",
+    "dln4-sas03.srv.lukoil.com",
+    "dln4-sas04.srv.lukoil.com"
+  ],
+  "sas.lukoil.com": [
+    "gltb-sas01.srv.lukoil.com",
+    "gltb-sas02.srv.lukoil.com",
+    "gltb-sas03.srv.lukoil.com",
+    "gltb-sas04.srv.lukoil.com",
+    "srt-sas01.srv.lukoil.com",
+    "srt-sas02.srv.lukoil.com",
+    "srt-sas03.srv.lukoil.com",
+    "srt-sas04.srv.lukoil.com",
+    "dln4-sas01.srv.lukoil.com",
+    "dln4-sas02.srv.lukoil.com",
+    "dln4-sas03.srv.lukoil.com",
+    "dln4-sas04.srv.lukoil.com"
+  ],
+  "ekppre.pro.lukoil.com": "ekppre-app01.srv.lukoil.com",
+  "deleted_ling-dm.pro.lukoil.com": "appsql1cling1.srv.lukoil.com",
+  "deleted_lei83-do.pro.lukoil.com": "appsql1cleners1.srv.lukoil.com",
+  "officewa.pro.lukoil.com": "c-mos2013-wap1.srv.lukoil.com",
+  "officewa.corp.lukoil.com(tmg)": "c-mos2013-wap1.srv.lukoil.com",
+  "mysite13.pro.lukoil.com": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "mysite13.corp.lukoil.com(tmg)": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "extraotp.pro.lukoil.com": [
+    "c-extra-web1.corp.lukoil.com",
+    "c-extra-web2.corp.lukoil.com"
+  ],
+  "extra.corp.lukoil.com(tmg)": [
+    "c-extra-web1.corp.lukoil.com",
+    "c-extra-web2.corp.lukoil.com",
+    "c-extra-web1",
+    "c-extra-web2"
+  ],
+  "eurotek-ugra.pro.lukoil.com": "appenergotest2.srv.lukoil.com",
+  "maximo-prd.pro.lukoil.com": [
+    "maximoprdapp01.srv.lukoil.com",
+    "maximoprdapp02.srv.lukoil.com"
+  ],
+  "maximo-prd.lukoil.com(tmg)": [
+    "maximoprdapp01.srv.lukoil.com",
+    "maximoprdapp02.srv.lukoil.com"
+  ],
+  "maximo-tst.pro.lukoil.com": [
+    "maximotstapp01.srv.lukoil.com",
+    "maximotstapp02.srv.lukoil.com"
+  ],
+  "maximo-tst.lukoil.com(tmg)": [
+    "maximotstapp01.srv.lukoil.com",
+    "maximotstapp02.srv.lukoil.com"
+  ],
+  "smbk-test.pro.lukoil.com": "smbkapptest.srv.lukoil.com",
+  "imvr-tst.pro.lukoil.com": [
+    "imvr-tst-app01.srv.lukoil.com",
+    "imvr-tst-app02.srv.lukoil.com",
+    "imvr-tst-app03.srv.lukoil.com"
+  ],
+  "seddev.pro.lukoil.com": "seddev.srv.lukoil.com",
+  "gidportal.pro.lukoil.com": [
+    "c-mos2010-web1.corp.lukoil.com",
+    "c-mos2010-web2.corp.lukoil.com"
+  ],
+  "gidportal.pro.lukoil.com(tmg)": [
+    "c-mos2010-web1.corp.lukoil.com",
+    "c-mos2010-web2.corp.lukoil.com"
+  ],
+  "deleted_airw-assist.lukoil.com": [
+    "srt-assist01.srv.lukoil.com",
+    "airw-assist.lukoil.com"
+  ],
+  "psd-ritekasodu.pro.lukoil.com": "c-vgdasodu-trm01.corp.lukoil.com",
+  "agora.pro.lukoil.com(old)": "b2bex-tst-app03.srv.lukoil.com",
+  "agora.ext.lukoil.com": "b2bex-tst-app03.srv.lukoil.com",
+  "itg-api-tst.pro.lukoil.com": "sudbsgidapp.srv.lukoil.com",
+  "ptrkasuzabbix.pro.lukoil.com": "ptrkasuzabbix.srv.lukoil.com",
+  "agora.pro.lukoil.com": "b2bin-tst-app06.srv.lukoil.com",
+  "esunpp.pro.lukoil.com": "esunpp.srv.lukoil.com",
+  "translate.pro.lukoil.com": "c-mos2010-prom.srv.lukoil.com",
+  "smik4.pro.lukoil.com": "smik-bs-ee-app1.srv.lukoil.com",
+  "ecm-dev.pro.lukoil.com": "ecm-dev-fe01.srv.lukoil.com",
+  "confluence.pro.lukoil.com": "mskwlc.msk.lukoil.com",
+  "lkidisk.ext.lukoil.com": "msk-ldisk-web03.srv.lukoil.com",
+  "lkidisk.lukoil.com": "msk-ldisk-web03.srv.lukoil.com",
+  "ecm-prd-fe01.pro.lukoil.com": "ecm-prd-fe01.srv.lukoil.com",
+  "ecm-prd-fe02.pro.lukoil.com": "ecm-prd-fe02.srv.lukoil.com",
+  "ecm-prd-fe03.pro.lukoil.com": "ecm-prd-fe03.srv.lukoil.com",
+  "ecm-prd-fe04.pro.lukoil.com": "ecm-prd-fe04.srv.lukoil.com",
+  "ecm-prd-fe05.pro.lukoil.com": "ecm-prd-fe05.srv.lukoil.com",
+  "ecm-prd-fe06.pro.lukoil.com": "ecm-prd-fe06.srv.lukoil.com",
+  "ecm-qa-fe01.pro.lukoil.com": "ecm-qa-fe01.srv.lukoil.com",
+  "ecm-qa-fe02.pro.lukoil.com": "ecm-qa-fe02.srv.lukoil.com",
+  "ecm-qa-fe03.pro.lukoil.com": "ecm-qa-fe03.srv.lukoil.com",
+  "ecm-qa-fe04.pro.lukoil.com": "ecm-qa-fe04.srv.lukoil.com",
+  "ecm-qa-fe05.pro.lukoil.com": "ecm-qa-fe05.srv.lukoil.com",
+  "ecm-qa-fe06.pro.lukoil.com": "ecm-qa-fe06.srv.lukoil.com",
+  "dso2.ext.lukoil.com": "dso2-ext-ap-p.srv.lukoil.com",
+  "vkteams-s3.pro.lukoil.com": [
+    "msk-vkt-s3-01.srv.lukoil.com",
+    "msk-vkt-s3-02.srv.lukoil.com",
+    "msk-vkt-s3-03.srv.lukoil.com",
+    "msk-vkt-s3-04.srv.lukoil.com"
+  ],
+  "deleted_mdm-remote.lukoil.com34": "mdm-remote01.srv.lukoil.com",
+  "deleted_mdm-remote.lukoil.com44444": "mdm-remote01.srv.lukoil.com",
+  "deleted_mdm-remote.lukoil.com35": "mdm-remote01.srv.lukoil.com",
+  "deleted_mdm-remote.lukoil.com": "mdm-remote01.srv.lukoil.com",
+  "ctx-director-test1.pro.lukoil.com": [
+    "ctx-director02.srv.lukoil.com",
+    "ctx-director01.srv.lukoil.com"
+  ],
+  "vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "u.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "ub.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "s.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "webim.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "api.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "admin.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "dl.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "di.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "di-dark.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "biz.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "call.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "calendar.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "mobile-calendar.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "stentor.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "miniapp-723e575c-9eb0-4990-b366-de179dc40dde.vkteams.ext.lukoil.com": [
+    "msk-vkt-fnt01.srv.lukoil.com",
+    "msk-vkt-fnt02.srv.lukoil.com",
+    "msk-vkt-fnt03.srv.lukoil.com",
+    "msk-vkt-fnt04.srv.lukoil.com",
+    "msk-vkt-fnt05.srv.lukoil.com",
+    "msk-vkt-fnt06.srv.lukoil.com",
+    "msk-vkt-fnt07.srv.lukoil.com",
+    "msk-vkt-fnt08.srv.lukoil.com",
+    "msk-vkt-fnt09.srv.lukoil.com",
+    "msk-vkt-fnt10.srv.lukoil.com",
+    "msk-vkt-fnt11.srv.lukoil.com",
+    "msk-vkt-fnt12.srv.lukoil.com",
+    "msk-vkt-fnt13.srv.lukoil.com",
+    "msk-vkt-fnt14.srv.lukoil.com"
+  ],
+  "irpktrading.pro.lukoil.com": "msk-irpktrade2.srv.lukoil.com",
+  "deleted_emm-sso.lukoil.com": [
+    "mdm-uagtunnel01.srv.lukoil.com",
+    "mdm-uagtunnel02.srv.lukoil.com"
+  ],
+  "lukisuportal.ext.lukoil.com": "sape54cidb.srv.lukoil.com",
+  "lukisuportal.corp.lukoil.com(tmg)": "sape54cidb.srv.lukoil.com",
+  "msksooi01.pro.lukoil.com": "msksooi01n.srv.lukoil.com",
+  "snab.pro.lukoil.com": "snab.srv.lukoil.com",
+  "snabtest.pro.lukoil.com": "snab.srv.lukoil.com",
+  "portalapps.pro.lukoil.com": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "portalapps.corp.lukoil.com(tmg)": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "project16.pro.lukoil.com": "c-mosprj2016t.srv.lukoil.com",
+  "project16.corp.lukoil.com(tmg)": "c-mosprj2016t.srv.lukoil.com",
+  "vgt2tep.pro.lukoil.com": "msk-irpk4.srv.lukoil.com",
+  "icc-cluster.pro.lukoil.com": [
+    "vmicc1.corp.lukoil.com",
+    "vmicc2.corp.lukoil.com"
+  ],
+  "ipms-old.pro.lukoil.com": [
+    "c-extra-web1.corp.lukoil.com",
+    "c-extra-web2.corp.lukoil.com"
+  ],
+  "icc-test.pro.lukoil.com": "ehdtest.corp.lukoil.com",
+  "deleted_podbor-analogov.pro.lukoil.com": "sokrat-prd-app1.srv.lukoil.com",
+  "deleted_qas-podbor-analogov.pro.lukoil.com": "sokrat-qas-app01.srv.lukoil.com",
+  "ritestrefx.pro.lukoil.com": "ritestrefx.srv.lukoil.com",
+  "mpno.pro.lukoil.com": "npia-web03.srv.lukoil.com",
+  "mpnotest.pro.lukoil.com": "msknpaprodweb.corp.lukoil.com",
+  "upbnng-prd-web02.pro.lukoil.com": "upbnng-prd-web02.srv.lukoil.com",
+  "upbnng-prd-web03.pro.lukoil.com": "upbnng-prd-web03.srv.lukoil.com",
+  "upbnng-adm-web03.pro.lukoil.com": "upbnng-prd-web03.srv.lukoil.com",
+  "x62-nwbc-int.pro.lukoil.com": "sapx62cidb.srv.lukoil.com",
+  "x63-nwbc-int.pro.lukoil.com": "sapx63.srv.lukoil.com",
+  "x64-nwbc-int.pro.lukoil.com": "sapx64.srv.lukoil.com",
+  "lrnp.ext.lukoil.com": "lrnp-ext-app01.srv.lukoil.com",
+  "develop-lt.pro.lukoil.com3000": "lt-github.srv.lukoil.com",
+  "develop-lt.pro.lukoil.com3443": "lt-github.srv.lukoil.com",
+  "idealspimex-tst.pro.lukoil.com": "exchangetst.srv.lukoil.com",
+  "b2b-aero.ext.lukoil.com": "b2bex-prd-app03.srv.lukoil.com",
+  "b2b-aero.pro.lukoil.com": "b2bin-prd-app06.srv.lukoil.com",
+  "invest1c.pro.lukoil.com": "invest1c-db01.srv.lukoil.com",
+  "ns-kpi.pro.lukoil.com": "csbapdb.corp.lukoil.com",
+  "pdm-base.pro.lukoil.com": "edm-app04.srv.lukoil.com",
+  "pdm-tst.pro.lukoil.com": "edm-tst-app01.srv.lukoil.com",
+  "pdm-tst-kueg.pro.lukoil.com": "edm-tst-app01.srv.lukoil.com",
+  "vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "u.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "ub.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "s.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "webim.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "api.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "admin.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "dl.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "di.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "di-dark.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "biz.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "call.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "calendar.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "mobile-calendar.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "stentor.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "outlook-plugin.vkteams-test.ext.lukoil.com": [
+    "msk-vkt-t-fnt01.srv.lukoil.com",
+    "msk-vkt-t-fnt02.srv.lukoil.com",
+    "msk-vkt-t-fnt03.srv.lukoil.com",
+    "msk-vkt-t-fnt04.srv.lukoil.com"
+  ],
+  "vkteams-test-s3.pro.lukoil.com": [
+    "msk-vkt-t-s3-01.srv.lukoil.com",
+    "msk-vkt-t-s3-02.srv.lukoil.com",
+    "msk-vkt-t-s3-03.srv.lukoil.com",
+    "msk-vkt-t-s3-04.srv.lukoil.com"
+  ],
+  "vkteams-test-sip.pro.lukoil.com": [
+    "msk-vkt-t-app01.srv.lukoil.com",
+    "msk-vkt-t-app02.srv.lukoil.com",
+    "msk-vkt-t-app03.srv.lukoil.com",
+    "msk-vkt-t-app04.srv.lukoil.com",
+    "msk-vkt-t-app05.srv.lukoil.com",
+    "msk-vkt-t-app06.srv.lukoil.com"
+  ],
+  "deleted_mdm-safemobile.mdm.lukoil.com": "sm-app01.srv.lukoil.com",
+  "deleted_sm-mdm.lukoil.com": "sm-app01.srv.lukoil.com",
+  "deleted_mdm-ngate.mdm.lukoil.com": "sm-ng01.srv.lukoil.com",
+  "deleted_sm-ng.lukoil.com": "sm-ng01.srv.lukoil.com",
+  "luktrans.ext.lukoil.com": "ltsm-ext-app.srv.lukoil.com",
+  "alfabet.pro.lukoil.com": "alfabetsql-prd.srv.lukoil.com",
+  "es.pro.lukoil.com": "esk8s-prd-node1.corp.lukoil.com",
+  "smbk-tracker.pro.lukoil.com": "lkappprd01.srv.lukoil.com",
+  "dcw-nwbc.pro.lukoil.com": "sapdcwci.srv.lukoil.com",
+  "qcw-nwbc.pro.lukoil.com": "sapqcwci.srv.lukoil.com",
+  "rcw-nwbc.pro.lukoil.com": [
+    "saprcw.srv.lukoil.com",
+    "saprcwci.srv.lukoil.com"
+  ],
+  "pcw-nwbc.pro.lukoil.com": "sappcw.srv.lukoil.com",
+  "lk-dev.ext.lukoil.com": "qlkdev-app01.srv.lukoil.com",
+  "upbnng-prd-app02.pro.lukoil.com": "upbnng-prd-app02.srv.lukoil.com",
+  "itc.pro.lukoil.com": [
+    "c-extra-web1.corp.lukoil.com",
+    "c-extra-web2.corp.lukoil.com"
+  ],
+  "ar.ext.lukoil.com": "ar.srv.lukoil.com",
+  "ar.lukoil.com(tmg)": "ar.srv.lukoil.com",
+  "smbk-dev.pro.lukoil.com": "smbkdev-app01.srv.lukoil.com",
+  "llk-uvp-infapp.pro.lukoil.com": "llk-uvp-infapp.srv.lukoil.com",
+  "lk-preprod.ext.lukoil.com": "vkp-preprod-cgate01.srv.lukoil.com",
+  "lktest.ext.lukoil.com": "backendsmbk.srv.lukoil.com",
+  "lktest.lukoil.com(wap)": "backendsmbk.srv.lukoil.com",
+  "lkk.ext.lukoil.com": "qlkprd-app01.srv.lukoil.com",
+  "lk.lukoil.com(wap)": "qlkprd-app01.srv.lukoil.com",
+  "ideal-supertst.pro.lukoil.com": "scm-test01.srv.lukoil.com",
+  "lt-loadit.pro.lukoil.com": "lt-github.srv.lukoil.com",
+  "ideal-super.pro.lukoil.com": "scm-app02.srv.lukoil.com",
+  "smbk-log.pro.lukoil.com": "lkdbprd01.srv.lukoil.com",
+  "pdm-kueg.pro.lukoil.com": "edm-app01.srv.lukoil.com",
+  "pdm-d33.pro.lukoil.com": "edm-app02.srv.lukoil.com",
+  "luk.pro.lukoil.com": "msk-lpro-w01.srv.lukoil.com",
+  "luk-pro.lukoil.com": "msk-lpro-w01.srv.lukoil.com",
+  "tst-luk.pro.lukoil.com": "msk-lpro-t-w01.srv.lukoil.com",
+  "ecm-prd-fe01-tst.pro.lukoil.com": "ecm-prd-fe01.srv.lukoil.com",
+  "fusion.pro.lukoil.com": "fusionrv.srv.lukoil.com",
+  "llk-uvp-infapp-api.pro.lukoil.com": "llk-uvp-infapp.srv.lukoil.com",
+  "llk-uvp-infapp-grid.pro.lukoil.com": "llk-uvp-infapp.srv.lukoil.com",
+  "llk-uvp-infapp-sts.pro.lukoil.com": "llk-uvp-infapp.srv.lukoil.com",
+  "deleted_hr-test.ext.lukoil.com": "test-vkp-cgate1.srv.lukoil.com",
+  "imvr.pro.lukoil.com": "imvr-app01.srv.lukoil.com",
+  "unp-pipqrid-web.pro.lukoil.com": "unp-pipqrid-web.srv.lukoil.com",
+  "qr.ext.lukoil.com": "srt-iss2qr01.srv.lukoil.com",
+  "uter.pro.lukoil.com": "uter-prd-app01.srv.lukoil.com",
+  "edu.ext.lukoil.com": "edu.srv.lukoil.com",
+  "edu.lukoil.com(tmg)": "edu.srv.lukoil.com",
+  "lkm.ext.lukoil.com": [
+    "vkp-prd-cgate01.srv.lukoil.com",
+    "vkp-prd-cgate02.srv.lukoil.com"
+  ],
+  "lkm-preprod.ext.lukoil.com": "vkp-preprod-cgate01.srv.lukoil.com",
+  "lkm-test.ext.lukoil.com": "test-vkp-cgate1.srv.lukoil.com",
+  "deleted_vkp-preprod.pro.lukoil.com": [
+    "vkp-preprod-entrypoint01.srv.lukoil.com",
+    "vkp-preprod-entrypoint02.srv.lukoil.com"
+  ],
+  "imvr-tmp.pro.lukoil.com": "imvr-app01.srv.lukoil.com",
+  "ekpprd.pro.lukoil.com": "ekp-prd-app01.srv.lukoil.com",
+  "surd-tst.pro.lukoil.com": "surd-tst-bln01.srv.lukoil.com",
+  "llk-uvp-infapp-api.pro.lukoil.com7443": "llk-uvp-infapp.srv.lukoil.com",
+  "llk-uvp-infapp-grid.pro.lukoil.com9543": "llk-uvp-infapp.srv.lukoil.com",
+  "llk-uvp-infapp-sts.pro.lukoil.com9553": "llk-uvp-infapp.srv.lukoil.com",
+  "laerotest16.pro.lukoil.com": "appenergotest.srv.lukoil.com",
+  "kgis-tst.pro.lukoil.com": "kgis-tst-app01.srv.lukoil.com",
+  "scm-tst.pro.lukoil.com": "scmtest.srv.lukoil.com",
+  "subp-tst.pro.lukoil.com": "subp-tst-app01.srv.lukoil.com",
+  "surd-webdav-tst.pro.lukoil.com": "surd-tst-bln01.srv.lukoil.com",
+  "extra.ext.lukoil.com": [
+    "c-extra-web1",
+    "c-extra-web2"
+  ],
+  "itc.ext.lukoil.com": [
+    "c-extra-web1",
+    "c-extra-web2"
+  ],
+  "kstvan.pro.lukoil.com": [
+    "kst-van01.corp.lukoil.com",
+    "kst-van02.corp.lukoil.com"
+  ],
+  "pdm-pelican.pro.lukoil.com": "pdm-pelican.srv.lukoil.com",
+  "tst-id-smrpnr.pro.lukoil.com": "tst-id-smrpnr.srv.lukoil.com",
+  "prd-id-smrpnr.pro.lukoil.com": "prd-id-smrpnr.srv.lukoil.com",
+  "surd-prd.pro.lukoil.com": "surd-prd-bln01.srv.lukoil.com",
+  "surd-webdav-prd.pro.lukoil.com": "surd-prd-bln01.srv.lukoil.com",
+  "ssmb-prd-ro.pro.lukoil.com": "ssmb-prd-app01.srv.lukoil.com",
+  "ssmb-prd-mls.pro.lukoil.com": "ssmb-prd-app01.srv.lukoil.com",
+  "fondim.pro.lukoil.com": "fondim-app.srv.lukoil.com",
+  "llk-icnt-app02.pro.lukoil.com": "llk-icnt-app02.srv.lukoil.com",
+  "mob.pro.lukoil.com": "kismob-prd-app01.srv.lukoil.com",
+  "llk-bookingportal.pro.lukoil.com": "llk-crtg-app01.srv.lukoil.com",
+  "pcd-nwbc.pro.lukoil.com": "sapbpc01d.srv.lukoil.com",
+  "pcs-nwbc.pro.lukoil.com": "sappcsci.srv.lukoil.com",
+  "pcp-nwbc.pro.lukoil.com": "sappcp.srv.lukoil.com",
+  "lt-testit.pro.lukoil.com": "lt-github.srv.lukoil.com",
+  "llk-bookingportal.ext.lukoil.com": "llk-crtg-app01.srv.lukoil.com",
+  "llk-icnt-app02.ext.lukoil.com": "llk-icnt-app02.srv.lukoil.com",
+  "sbp-nwbc.pro.lukoil.com": "sapsbpci.srv.lukoil.com",
+  "dis.pro.lukoil.com": "dis.srv.lukoil.com",
+  "adaptation.pro.lukoil.com": "kurs.srv.lukoil.com",
+  "deleted_laero_samara.pro.lukoil.com": "appsql1claero.srv.lukoil.com",
+  "elma-test.pro.lukoil.com": [
+    "crm-tst-wrk01.srv.lukoil.com",
+    "crm-tst-wrk02.srv.lukoil.com",
+    "crm-tst-wrk03.srv.lukoil.com",
+    "crm-tst-mstr01.srv.lukoil.com",
+    "crm-tst-mstr02.srv.lukoil.com",
+    "crm-tst-mstr03.srv.lukoil.com"
+  ],
+  "elma.pro.lukoil.com": [
+    "crm-prd-wrk01.srv.lukoil.com",
+    "crm-tst-wrk02.srv.lukoil.com",
+    "crm-prd-wrk03.srv.lukoil.com",
+    "crm-prd-mstr01.srv.lukoil.com",
+    "crm-prd-mstr02.srv.lukoil.com",
+    "crm-prd-mstr03.srv.lukoil.com"
+  ],
+  "subp.pro.lukoil.com": [
+    "subp-prd-app01.srv.lukoil.com",
+    "subp-prd-app02.srv.lukoil.com"
+  ],
+  "msk-irpktraddb2.pro.lukoil.com": "msk-irpktraddb2.srv.lukoil.com",
+  "deleted_hr-preprod.ext.lukoil.com": "vkp-preprod-cgate01.srv.lukoil.com",
+  "deleted_hr.ext.lukoil.com": [
+    "vkp-prd-cgate01.srv.lukoil.com",
+    "vkp-prd-cgate02.srv.lukoil.com"
+  ],
+  "crm24.pro.lukoil.com": "crm-b24-llk-apppd.srv.lukoil.com",
+  "crm24-test.pro.lukoil.com": [
+    "crm-b24-llk-apppd.srv.lukoil.com",
+    "crm-b24-llk-apptst.srv.lukoil.com"
+  ],
+  "b2b.ext.lukoil.com": "b2b-llk-app1tst.srv.lukoil.com",
+  "b2b-test.ext.lukoil.com": "b2b-llk-app1tst.srv.lukoil.com",
+  "irp.pro.lukoil.com": "rvisionmaster.srv.lukoil.com",
+  "crdpdk-nwbc.pro.lukoil.com": "sapcrdci.srv.lukoil.com",
+  "crtpdk-nwbc.pro.lukoil.com": "sapcrtci.srv.lukoil.com",
+  "pdk.pro.lukoil.com": [
+    "sapcrpci.srv.lukoil.com",
+    "sapcrpapp01.srv.lukoil.com"
+  ],
+  "crppdk-nwbc.pro.lukoil.com": "sapcrp.srv.lukoil.com",
+  "astradesktops.pro.lukoil.com": "srt-tdngx01.ald3.lukoil.com",
+  "smbk-git.ext.lukoil.com": "lkdbprd02.srv.lukoil.com",
+  "r7.pro.lukoil.com": "r7.ald.lukoil.com",
+  "nnos-nic-cam.pro.lukoil.com": "nnos-nic-cam.corp.lukoil.com",
+  "ssmb-prd-rs.pro.lukoil.com": "ssmb-prd-app01.srv.lukoil.com",
+  "nglib1.pro.lukoil.com": "nglib1.srv.lukoil.com",
+  "ldisk.ext.lukoil.com": [
+    "msk-ldisk-web05.srv.lukoil.com",
+    "msk-ldisk-web06.srv.lukoil.com"
+  ],
+  "c-okoapp.pro.lukoil.com": "c-okoapp.corp.lukoil.com",
+  "lkm2.ext.lukoil.com": [
+    "vkp-prd-cgate01.srv.lukoil.com",
+    "vkp-prd-cgate02.srv.lukoil.com"
+  ],
+  "ecm-prd-fe07.pro.lukoil.com": "ecm-prd-fe07.srv.lukoil.com",
+  "ecm-prd-fe08.pro.lukoil.com": "ecm-prd-fe08.srv.lukoil.com",
+  "b2b.llk.lukoil.com": "b2b-llk-app1prd.srv.lukoil.com",
+  "pgadmin-lt.pro.lukoil.com": "lt-github.srv.lukoil.com",
+  "spapps2.pro.lukoil.com": [
+    "shp19-prd-web01.srv.lukoil.com",
+    "shp19-prd-web02.srv.lukoil.com"
+  ],
+  "inmetrics.pro.lukoil.com": "srt-monvmetrics.srv.lukoil.com",
+  "selenoid-lt-api.pro.lukoil.com": "lt-github.srv.lukoil.com",
+  "oismntr.pro.lukoil.com": "oismon-prd-ws01.srv.lukoil.com",
+  "lisaapp-lk.pro.lukoil.com": "lisaapp-lk.srv.lukoil.com",
+  "sen-dev.pro.lukoil.com": "sapenaapp02.srv.lukoil.com",
+  "csc-tst.pro.lukoil.com": "cmc-tst-app01.srv.lukoil.com",
+  "kucolimp.ext.lukoil.com": "kucolimp-app01.srv.lukoil.com",
+  "ots-web02.pro.lukoil.com": "ots-tst-web02.srv.lukoil.com",
+  "ots-db01.pro.lukoil.com": "ots-tst-db01.srv.lukoil.com",
+  "deleted_col-app.pro.lukoil.com": "collzsprd-app01.srv.lukoil.com",
+  "kismo3.pro.lukoil.com": "mo-report02.srv.lukoil.com",
+  "kst-lab.pro.lukoil.com": "kst-lab.corp.lukoil.com",
+  "ssmb-prd-is1.pro.lukoil.com": "ssmb-prd-app01.srv.lukoil.com",
+  "ssmb-prd-is2.pro.lukoil.com": "ssmb-prd-app01.srv.lukoil.com",
+  "ssmb-prd-rdl1.pro.lukoil.com": "ssmb-prd-app01.srv.lukoil.com",
+  "ssmb-prd-rdl2.pro.lukoil.com": "ssmb-prd-app01.srv.lukoil.com",
+  "llklims.pro.lukoil.com": "llklims-web01.srv.lukoil.com",
+  "llklims-rep.pro.lukoil.com": "llklims-app01.srv.lukoil.com",
+  "leng-reports.pro.lukoil.com": "ling-isup-app1.srv.lukoil.com",
+  "pao-van.pro.lukoil.com": "van-prd-app01.srv.lukoil.com",
+  "imvr-inet.pro.lukoil.com": "imvr-app01.srv.lukoil.com",
+  "bim-gis.pro.lukoil.com": "bimms-prd-app02.srv.lukoil.com",
+  "bim-xd.pro.lukoil.com": "bimms-prd-app02.srv.lukoil.com",
+  "bim-shell.pro.lukoil.com": "bimms-prd-app02.srv.lukoil.com",
+  "deleted_bim-msfadm.pro.lukoil.com": "bimpms-app01.srv.lukoil.com",
+  "app-nvn.pro.lukoil.com": [
+    "app-nvn11.srv.lukoil.com",
+    "app-nvn22.srv.lukoil.com"
+  ],
+  "tnin.pro.lukoil.com": "c-tninmoss2010.srv.lukoil.com",
+  "gid-git.pro.lukoil.com": "imvr-dev-git01.srv.lukoil.com",
+  "gid-ci.pro.lukoil.com": "imvr-dev-ci01.srv.lukoil.com",
+  "csc-bi.pro.lukoil.com": [
+    "bi-prd-app01.srv.lukoil.com",
+    "bi-prd-app02.srv.lukoil.com"
+  ],
+  "ots-tst-web02.pro.lukoil.com": "ots-tst-web02.srv.lukoil.com",
+  "airw-mdm.lukoil.com": "srt-airwfe.srv.lukoil.com",
+  "airw-mdm.lukoil.com2001": "srt-airwfe.srv.lukoil.com",
+  "airw-seg.lukoil.com": [
+    "srt-airwtep.srv.lukoil.com",
+    "srt-airwtep02.srv.lukoil.com"
+  ],
+  "airw-vpn.lukoil.com": [
+    "srt-airwtep.srv.lukoil.com",
+    "srt-airwtep02.srv.lukoil.com"
+  ],
+  "airw-cg.lukoil.com": [
+    "srt-airwtep01.srv.lukoil.com",
+    "srt-airwtep02.srv.lukoil.com"
+  ],
+  "lsd-nwbc.pro.lukoil.com": "saplsd.srv.lukoil.com",
+  "spapps2-t.pro.lukoil.com": "shp19-tst-web01.srv.lukoil.com",
+  "mskppm.pro.lukoil.com": "mskppm.srv.lukoil.com",
+  "sp2019.pro.lukoil.com": [
+    "shp19-prd-web01.srv.lukoil.com",
+    "shp19-prd-web02.srv.lukoil.com"
+  ],
+  "(балансирует": [
+    "c-mos2010-web1.corp.lukoil.com",
+    "c-mos2010-web2.corp.lukoil.com",
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "gidportal.corp.lukoil.com": [
+    "c-mos2010-web1.corp.lukoil.com",
+    "c-mos2010-web2.corp.lukoil.com"
+  ],
+  "myportal-2010.corp.lukoil.com)": [
+    "c-mos2010-web1.corp.lukoil.com",
+    "c-mos2010-web2.corp.lukoil.com"
+  ],
+  "lukduet.corp.lukoil.com8449": [
+    "c-mos2010-web1.corp.lukoil.com",
+    "c-mos2010-web2.corp.lukoil.com"
+  ],
+  "ppm-bi.pro.lukoil.com": "ppm-bi-prod.srv.lukoil.com",
+  "auction-tst.pro.lukoil.com": "tendersaptest.corp.lukoil.com",
+  "projects.corp.lukoil.com": [
+    "ops15web01.srv.lukoil.com",
+    "ops15web02.srv.lukoil.com"
+  ],
+  "spik.corp.lukoil.com": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "mysite13.corp.lukoil.com": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "portalapps.corp.lukoil.com": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "imvr-tsti.pro.lukoil.com": [
+    "imvr-tst-app01.srv.lukoil.com",
+    "imvr-tst-app02.srv.lukoil.com",
+    "imvr-tst-app03.srv.lukoil.com"
+  ],
+  "ots-prd-web02.pro.lukoil.com": "ots-prd-web02.srv.lukoil.com",
+  "ots-prd-db01.pro.lukoil.com": "ots-prd-db01.srv.lukoil.com",
+  "disup-dev.pro.lukoil.com": "disup-dev-app1.srv.lukoil.com",
+  "mskppm-bgt.pro.lukoil.com": "mskppm.srv.lukoil.com",
+  "portal.corp.lukoil.com": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "gidportal2013.corp.lukoil.com": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "(балансирует portal.corp.lukoil.com": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "spapps.corp.lukoil.com": [
+    "c-mos2013-web1.srv.lukoil.com",
+    "c-mos2013-web2.srv.lukoil.com"
+  ],
+  "disup-dev-back.pro.lukoil.com": "disup-dev-app1.srv.lukoil.com",
+  "appikkp-tst.pro.lukoil.com": "pkp-dev-app01.srv.lukoil.com",
+  "appikkp-dev.pro.lukoil.com": "pkp-dev-web01.srv.lukoil.com",
+  "appikkp.pro.lukoil.com": "pkp-prd-web01.srv.lukoil.com",
+  "appikkp-prd.pro.lukoil.com": "pkp-prd-app01.srv.lukoil.com",
+  "app-oislk.pro.lukoil.com": [
+    "app-oislk1.srv.lukoil.com",
+    "app-oislk2.srv.lukoil.com",
+    "app-oislk3.srv.lukoil.com"
+  ],
+  "csc.pro.lukoil.com": "cmc-prd-app01.srv.lukoil.com",
+  "emm-cg.lukoil.com": [
+    "mdm-uagtunnel01.srv.lukoil.com",
+    "mdm-uagtunnel02.srv.lukoil.com"
+  ],
+  "global.corp.lukoil.com": [
+    "c-mos2010-web1.corp.lukoil.com",
+    "c-mos2010-web2.corp.lukoil.com"
+  ],
+  "oisritekapp.pro.lukoil.com": [
+    "oisritek-app01.srv.lukoil.com",
+    "oisritek-app02.srv.lukoil.com",
+    "oisritek-app03.srv.lukoil.com"
+  ],
+  "bsp.pro.lukoil.com": "cmc-prd-app01.srv.lukoil.com",
+  "pkkd.pro.lukoil.com": "qtportalapp.srv.lukoil.com",
+  "bsp-tst.pro.lukoil.com": "cmc-tst-app01.srv.lukoil.com",
+  "csc-ca-tst.pro.lukoil.com": "cmc-tst-app01.srv.lukoil.com",
+  "csc-ca.pro.lukoil.com": "cmc-prd-app01.srv.lukoil.com",
+  "oismntr-sso.pro.lukoil.com": "oismon-prd-ws01.srv.lukoil.com",
+  "sm-ng.lukoil.com": "sm-ng01.srv.lukoil.com",
+  "sm.lukoil.com": "sm-app01.srv.lukoil.com",
+  "iprm-test.pro.lukoil.com": "iprm-tst-intf01.srv.lukoil.com",
+  "app-wrlzs.pro.lukoil.com": [
+    "app-wrlzs01.srv.lukoil.com",
+    "app-wrlzs02.srv.lukoil.com",
+    "app-wrlzs03.srv.lukoil.com"
+  ],
+  "app-lzs.pro.lukoil.com": [
+    "app-oislzs1.srv.lukoil.com",
+    "app-oislzs2.srv.lukoil.com",
+    "app-oislzs3.srv.lukoil.com",
+    "app-oislzs4.srv.lukoil.com",
+    "app-oislzs5.srv.lukoil.com",
+    "app-oislzs6.srv.lukoil.com"
+  ],
+  "sps-dev.pro.lukoil.com": "1csps-dev-app01.srv.lukoil.com",
+  "sps-prd.pro.lukoil.com": "1csps-prd-app01.srv.lukoil.com",
+  "oisif-sap-qas.pro.lukoil.com": "sapifuhdb01.srv.lukoil.com",
+  "oisif-sap-auth-qas.pro.lukoil.com": [
+    "oisif-tst-sys01.srv.lukoil.com",
+    "oisif-tst-int01.srv.lukoil.com",
+    "sapifuhdb01.srv.lukoil.com"
+  ],
+  "disup-proxy.pro.lukoil.com": "disup-dev-app1.srv.lukoil.com",
+  "kr-dev.pro.lukoil.com": "metr-qs01.srv.lukoil.com",
+  "kr-test.pro.lukoil.com": "metr-tst-dm01.srv.lukoil.com",
+  "kr.pro.lukoil.com": "metr-dm01.srv.lukoil.com",
+  "palitra-id-dev.pro.lukoil.com": "metr-qs01.srv.lukoil.com",
+  "palitra-id-test.pro.lukoil.com": "metr-tst-dm01.srv.lukoil.com",
+  "palitra-id.pro.lukoil.com": "metr-dm01.srv.lukoil.com",
+  "oko-tst.pro.lukoil.com": "oko-tst-app1.srv.lukoil.com",
+  "oko.pro.lukoil.com": [
+    "oko-prd-app1.srv.lukoil.com",
+    "oko-prd-app2.srv.lukoil.com"
+  ],
+  "csc-kk.pro.lukoil.com": "cmc-prd-api01.srv.lukoil.com",
+  "smbk-repo.ext.lukoil.com": "lkdbprd02.srv.lukoil.com",
+  "pdm-graf.pro.lukoil.com": "edm-app03.srv.lukoil.com",
+  "pdm-arch.pro.lukoil.com": "edm-app05.srv.lukoil.com",
+  "kstsus.pro.lukoil.com": "KSTAMSWEB",
+  "selenoid-lt2.pro.lukoil.com": "lt-jmeter01.srv.lukoil.com",
+  "selenoid-lt2-api.pro.lukoil.com": "lt-jmeter01.srv.lukoil.com",
+  "lyncdiscover.lukoil.com": [
+    "srt-lyncfe01.srv.lukoil.com",
+    "srt-lyncfe02.srv.lukoil.com",
+    "srt-lyncfe03.srv.lukoil.com",
+    "srt-lyncfe04.srv.lukoil.com",
+    "srt-lyncfe05.srv.lukoil.com",
+    "srt-lyncfe06.srv.lukoil.com",
+    "srt-lyncfe07.srv.lukoil.com",
+    "srt-lyncfe08.srv.lukoil.com",
+    "srt-lyncfe09.srv.lukoil.com",
+    "dln-lyncfe01.srv.lukoil.com",
+    "dln-lyncfe02.srv.lukoil.com",
+    "dln-lyncfe03.srv.lukoil.com",
+    "dln-lyncfe04.srv.lukoil.com",
+    "dln-lyncfe05.srv.lukoil.com",
+    "dln-lyncfe06.srv.lukoil.com",
+    "dln-lyncfe07.srv.lukoil.com"
+  ],
+  "dialin.lukoil.com": [
+    "srt-lyncfe01.srv.lukoil.com",
+    "srt-lyncfe02.srv.lukoil.com",
+    "srt-lyncfe03.srv.lukoil.com",
+    "srt-lyncfe04.srv.lukoil.com",
+    "srt-lyncfe05.srv.lukoil.com",
+    "srt-lyncfe06.srv.lukoil.com",
+    "srt-lyncfe07.srv.lukoil.com",
+    "srt-lyncfe08.srv.lukoil.com",
+    "srt-lyncfe09.srv.lukoil.com",
+    "dln-lyncfe01.srv.lukoil.com",
+    "dln-lyncfe02.srv.lukoil.com",
+    "dln-lyncfe03.srv.lukoil.com",
+    "dln-lyncfe04.srv.lukoil.com",
+    "dln-lyncfe05.srv.lukoil.com",
+    "dln-lyncfe06.srv.lukoil.com",
+    "dln-lyncfe07.srv.lukoil.com"
+  ],
+  "lyncreport.lukoil.com": [
+    "srt-lyncfe01.srv.lukoil.com",
+    "srt-lyncfe02.srv.lukoil.com",
+    "srt-lyncfe03.srv.lukoil.com",
+    "srt-lyncfe04.srv.lukoil.com",
+    "srt-lyncfe05.srv.lukoil.com",
+    "srt-lyncfe06.srv.lukoil.com",
+    "srt-lyncfe07.srv.lukoil.com",
+    "srt-lyncfe08.srv.lukoil.com",
+    "srt-lyncfe09.srv.lukoil.com",
+    "dln-lyncfe01.srv.lukoil.com",
+    "dln-lyncfe02.srv.lukoil.com",
+    "dln-lyncfe03.srv.lukoil.com",
+    "dln-lyncfe04.srv.lukoil.com",
+    "dln-lyncfe05.srv.lukoil.com",
+    "dln-lyncfe06.srv.lukoil.com",
+    "dln-lyncfe07.srv.lukoil.com"
+  ],
+  "meet.lukoil.com": [
+    "srt-lyncfe01.srv.lukoil.com",
+    "srt-lyncfe02.srv.lukoil.com",
+    "srt-lyncfe03.srv.lukoil.com",
+    "srt-lyncfe04.srv.lukoil.com",
+    "srt-lyncfe05.srv.lukoil.com",
+    "srt-lyncfe06.srv.lukoil.com",
+    "srt-lyncfe07.srv.lukoil.com",
+    "srt-lyncfe08.srv.lukoil.com",
+    "srt-lyncfe09.srv.lukoil.com",
+    "dln-lyncfe01.srv.lukoil.com",
+    "dln-lyncfe02.srv.lukoil.com",
+    "dln-lyncfe03.srv.lukoil.com",
+    "dln-lyncfe04.srv.lukoil.com",
+    "dln-lyncfe05.srv.lukoil.com",
+    "dln-lyncfe06.srv.lukoil.com",
+    "dln-lyncfe07.srv.lukoil.com"
+  ],
+  "scheduler.lukoil.com": [
+    "srt-lyncfe01.srv.lukoil.com",
+    "srt-lyncfe02.srv.lukoil.com",
+    "srt-lyncfe03.srv.lukoil.com",
+    "srt-lyncfe04.srv.lukoil.com",
+    "srt-lyncfe05.srv.lukoil.com",
+    "srt-lyncfe06.srv.lukoil.com",
+    "srt-lyncfe07.srv.lukoil.com",
+    "srt-lyncfe08.srv.lukoil.com",
+    "srt-lyncfe09.srv.lukoil.com",
+    "dln-lyncfe01.srv.lukoil.com",
+    "dln-lyncfe02.srv.lukoil.com",
+    "dln-lyncfe03.srv.lukoil.com",
+    "dln-lyncfe04.srv.lukoil.com",
+    "dln-lyncfe05.srv.lukoil.com",
+    "dln-lyncfe06.srv.lukoil.com",
+    "dln-lyncfe07.srv.lukoil.com"
+  ],
+  "lyncws01.lukoil.com": [
+    "dln-lyncfe01.srv.lukoil.com",
+    "dln-lyncfe02.srv.lukoil.com",
+    "dln-lyncfe03.srv.lukoil.com",
+    "dln-lyncfe04.srv.lukoil.com",
+    "dln-lyncfe05.srv.lukoil.com",
+    "dln-lyncfe06.srv.lukoil.com",
+    "dln-lyncfe07.srv.lukoil.com"
+  ],
+  "lyncws02.lukoil.com": [
+    "srt-lyncfe01.srv.lukoil.com",
+    "srt-lyncfe02.srv.lukoil.com",
+    "srt-lyncfe03.srv.lukoil.com",
+    "srt-lyncfe04.srv.lukoil.com",
+    "srt-lyncfe05.srv.lukoil.com",
+    "srt-lyncfe06.srv.lukoil.com",
+    "srt-lyncfe07.srv.lukoil.com",
+    "srt-lyncfe08.srv.lukoil.com",
+    "srt-lyncfe09.srv.lukoil.com"
+  ],
+  "wacweb01.lukoil.com": [
+    "dln-lyncweb01.srv.lukoil.com",
+    "dln-lyncweb02.srv.lukoil.com"
+  ],
+  "wacweb02.lukoil.com": [
+    "srt-lyncweb01.srv.lukoil.com",
+    "srt-lyncweb02.srv.lukoil.com"
+  ],
+  "(crl.lukoil.com": [
+    "srt-pkicdp01.srv.lukoil.com",
+    "srt-pkicdp02.srv.lukoil.com",
+    "dln-pkicdp01.srv.lukoil.com",
+    "dln-pkicdp02.srv.lukoil.com"
+  ],
+  "pki2.lukoil.com)": [
+    "srt-pkicdp01.srv.lukoil.com",
+    "srt-pkicdp02.srv.lukoil.com",
+    "dln-pkicdp01.srv.lukoil.com",
+    "dln-pkicdp02.srv.lukoil.com"
+  ],
+  "megawebrtkvlg.pro.lukoil.com": "megaweb",
+  "oismntr-qas.pro.lukoil.com": "oismon-qas-ws01.srv.lukoil.com",
+  "oismntr-qas-sso.pro.lukoil.com": "oismon-qas-ws01.srv.lukoil.com",
+  "td.pro.lukoil.com": "10.249.72.22",
+  "portal-t.pro.lukoil.com": "c-mos2013t.srv.lukoil.com",
+  "ci.ext.lukoil.com": "b2b-llk-appccd.srv.lukoil.com",
+  "(contentswitching": "b2b-llk-appccd.srv.lukoil.com",
+  "srt-ext.lukoil.com-b2b-llk-https-cs": "b2b-llk-appccd.srv.lukoil.com",
+  "dln4-ext.lukoil.com-b2b-llk-https-cs)": "b2b-llk-appccd.srv.lukoil.com",
+  "mon.ext.lukoil.com": "b2b-llk-appccd.srv.lukoil.com",
+  "ssmb-prd-saps4.pro.lukoil.com": "ssmb-prd-app01.srv.lukoil.com",
+  "mfa.lukoil.com-443-ssl": [
+    "srt-mfa-sas01.srv.lukoil.com",
+    "srt-mfa-sas02.srv.lukoil.com",
+    "dln4-mfa-sas01.srv.lukoil.com",
+    "dln4-mfa-sas02.srv.lukoil.com"
+  ],
+  "mfa.lukoil.com-1812-radius": [
+    "srt-mfa-sas01.srv.lukoil.com",
+    "srt-mfa-sas02.srv.lukoil.com",
+    "dln4-mfa-sas01.srv.lukoil.com",
+    "dln4-mfa-sas02.srv.lukoil.com"
+  ],
+  "kisumt-dev.pro.lukoil.com": "sitr-dev-auth01.srv.lukoil.com",
+  "kisumt-1c-dev.pro.lukoil.com": "sitr-dev-1c01.srv.lukoil.com",
+  "ecm-tst-as01.pro.lukoil.com": "ecm-tst-as01.srv.lukoil.com",
+  "ecm-demo-as01.pro.lukoil.com": "ecm-demo-as01.srv.lukoil.com",
+  "ecm-qa-as01.pro.lukoil.com": "ecm-qa-as01.srv.lukoil.com",
+  "ecm-prd-as01.pro.lukoil.com": "ecm-prd-as01.srv.lukoil.com",
+  "support-srt-tst-back.lukoil.com": [
+    "iss2tstars02.srv.lukoil.com",
+    "iss2tstars01.srv.lukoil.com"
+  ],
+  "support-dln4-tst-back.lukoil.com": [
+    "iss2tstars02.srv.lukoil.com",
+    "iss2tstars01.srv.lukoil.com"
+  ],
+  "support-sso-tst.lukoil.com": "iss2tstrsso01.srv.lukoil.com",
+  "support-sso-prd.lukoil.com": [
+    "dln4-iss2rsso01.srv.lukoil.com",
+    "srt-iss2rsso01.srv.lukoil.com"
+  ],
+  "support-srt-prd-back.lukoil.com": [
+    "dln4-iss2ars01.srv.lukoil.com",
+    "dln4-iss2ars02.srv.lukoil.com",
+    "dln4-iss2ars03.srv.lukoil.com",
+    "dln4-iss2ars04.srv.lukoil.com",
+    "srt-iss2ars01.srv.lukoil.com",
+    "srt-iss2ars02.srv.lukoil.com",
+    "srt-iss2ars03.srv.lukoil.com",
+    "srt-iss2ars04.srv.lukoil.com"
+  ],
+  "support-dln4-prd-back.lukoil.com": [
+    "dln4-iss2ars01.srv.lukoil.com",
+    "dln4-iss2ars02.srv.lukoil.com",
+    "dln4-iss2ars03.srv.lukoil.com",
+    "dln4-iss2ars04.srv.lukoil.com",
+    "srt-iss2ars01.srv.lukoil.com",
+    "srt-iss2ars02.srv.lukoil.com",
+    "srt-iss2ars03.srv.lukoil.com",
+    "srt-iss2ars04.srv.lukoil.com"
+  ],
+  "disup-dev-proxy.pro.lukoil.com": "disup-dev-app1.srv.lukoil.com",
+  "agora-stage2.ext.lukoil.com": "b2bex-tst-app03.srv.lukoil.com",
+  "agora-stage2.pro.lukoil.com": "b2bin-tst-app06.srv.lukoil.com",
+  "acme-ecdsa.pro.lukoil.com": "srt-pkiacme01.srv.lukoil.com",
+  "acme-rsa.pro.lukoil.com": "srt-pkiacme01.srv.lukoil.com",
+  "ksh1c-qas.pro.lukoil.com": [
+    "ksh1c-pre-bus01.srv.lukoil.com",
+    "ksh1c-pre-bus02.srv.lukoil.com"
+  ],
+  "ksh1c-dev.pro.lukoil.com": "ksh1c-dev-bus01.srv.lukoil.com",
+  "ksh1c-gitlab.pro.lukoil.com": "ksh1c-dev-ci01.srv.lukoil.com",
+  "ksh1c-sonar.pro.lukoil.com": "ksh1c-dev-ci01.srv.lukoil.com",
+  "ksh1c-allure.pro.lukoil.com": "ksh1c-dev-ci01.srv.lukoil.com",
+  "ksh1c-int-qas.pro.lukoil.com": [
+    "ksh1c-pre-bus01.srv.lukoil.com",
+    "ksh1c-pre-bus02.srv.lukoil.com"
+  ],
+  "kisumt-ais-dev.pro.lukoil.com": "sitr-dev-frnt01.srv.lukoil.com",
+  "prm-van.pro.lukoil.com": [
+    "prmvan01.corp.lukoil.com",
+    "prmvan02.corp.lukoil.com"
+  ],
+  "csc-pre.pro.lukoil.com": "cmc-pre-app01.srv.lukoil.com",
+  "csc-ca-pre.pro.lukoil.com": "cmc-pre-app01.srv.lukoil.com",
+  "acme-ecdsa.lukoil.com": "srt-pkiacme01.srv.lukoil.com",
+  "acme-rsa.lukoil.com": "srt-pkiacme01.srv.lukoil.com",
+  "smbk-nexus.ext.lukoil.com": "lkdbprd02.srv.lukoil.com",
+  "disup-dev2.pro.lukoil.com": "disup-dev-app1.srv.lukoil.com",
+  "disup-dev2-back.pro.lukoil.com": "disup-dev-app1.srv.lukoil.com",
+  "sasreport-tst.pro.lukoil.com": "sasreportapp02.srv.lukoil.com",
+  "vnp-van.pro.lukoil.com": "vnpvan01.corp.lukoil.com",
+  "unp-van.pro.lukoil.com": "unpvan01.corp.lukoil.com",
+  "ksh1c.pro.lukoil.com": [
+    "ksh1c-prd-bus01.srv.lukoil.com",
+    "ksh1c-prd-bus02.srv.lukoil.com",
+    "ksh1c-prd-bus03.srv.lukoil.com",
+    "ksh1c-prd-bus04.srv.lukoil.com"
+  ],
+  "deleted_sm.lukoil.com": "sm-app01.srv.lukoil.com",
+  "mfa.ext.lukoil.com": [
+    "srt-mfa-se01.srv.lukoil.com",
+    "dln4-mfa-se01.srv.lukoil.com"
+  ],
+  "mfa.lukoil.com": [
+    "srt-mfa-se01.srv.lukoil.com",
+    "dln4-mfa-se01.srv.lukoil.com"
+  ],
+  "ahointegration-t.pro.lukoil.com": "c-mos2013t.srv.lukoil.com",
+  "web.lukoil.ru": [
+    "srtcgpfe01",
+    "srtcgpfe02.corp.lukoil.com"
+  ],
+  "pop.lukoil.ru": [
+    "srtcgpfe01",
+    "srtcgpfe02.corp.lukoil.com"
+  ],
+  "imap.lukoil.ru": [
+    "srtcgpfe01",
+    "srtcgpfe02.corp.lukoil.com"
+  ],
+  "mail.lukoil.ru": [
+    "srtcgpfe01",
+    "srtcgpfe02.corp.lukoil.com"
+  ],
+  "app.lukoil.com": [
+    "srt-ctxsfint01.srv.lukoil.com",
+    "srt-ctxsfint02.srv.lukoil.com",
+    "dln4-ctxsfint01.srv.lukoil.com",
+    "dln4-ctxsfint02.srv.lukoil.com"
+  ],
+  "owa.pro.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "autodiscover.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "db24-owaotp.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "srt-owaotp.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "db24-owa.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "srt-owa.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "db24-mapi.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "srt-mapi.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "db24-ews.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "srt-ews.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "db24-any.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "srt-any.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "owa.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "prm-owa.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "prm-ews.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "prm-any.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "prm-as.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "vgd-owa.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "vgd-ews.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "vgd-any.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "vgd-as.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "spb-owaotp.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "spb-ews.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "spb-any.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "nm-owa.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "nm-ews.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "nm-any.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "nm-as.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "uht-owa.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "uht-ews.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "uht-any.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "uht-as.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "usn-owa.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "usn-ews.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "usn-any.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "usn-as.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "kst-owa.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "kst-ews.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "kst-any.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "kst-as.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "kgl-owa.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "kgl-ews.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "kgl-any.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "kgl-as.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "spb-owa.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "gltb-owaotp.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "gltb-owa.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "gltb-ews.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "kgl-mapi.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "prm-mapi.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "kst-mapi.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "nm-mapi.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "spb-mapi.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "uht-mapi.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "usn-mapi.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "vgd-mapi.lukoil.com": [
+    "srt-exch05.corp.lukoil.com",
+    "srt-exch06.corp.lukoil.com"
+  ],
+  "kisumt-auth-dev.pro.lukoil.com": "sitr-dev-auth01.srv.lukoil.com",
+  "ads.pro.lukoil.com": "ads-prd-app01.srv.lukoil.com",
+  "ads-tst.pro.lukoil.com": "ads-tst-app01.srv.lukoil.com",
+  "sors-van.pro.lukoil.com": "sorsvan01.corp.lukoil.com",
+  "disup-test.pro.lukoil.com": "disup-test-app1.srv.lukoil.com",
+  "disup-test-back.pro.lukoil.com": "disup-test-app1.srv.lukoil.com",
+  "docsvisiontest.pro.lukoil.com": "aeroed-app03.srv.lukoil.com",
+  "kisumt-1c01-prd.pro.lukoil.com": "sitr-prd-1c01.srv.lukoil.com",
+  "kisumt-1c02-prd.pro.lukoil.com": "sitr-prd-1c02.srv.lukoil.com",
+  "kisumt-dmz-dev.pro.lukoil.com": "sitr-dev-dmz01.srv.lukoil.com",
+  "smbk-nexus-docker.ext.lukoil.com": "lkdbprd02.srv.lukoil.com",
+  "mtell-aoi.pro.lukoil.com": "mtell-aoi01.srv.lukoil.com",
+  "oko-api.pro.lukoil.com": [
+    "cmc-dwh-api01.srv.lukoil.com",
+    "cmc-dwh-api02.srv.lukoil.com"
+  ],
+  "mob-api.pro.lukoil.com": "cmc-prd-mob1.srv.lukoil.com",
+  "oisif-sap-hub.pro.lukoil.com": "sapifphdb01.srv.lukoil.com",
+  "csc-kk-pre.pro.lukoil.com": "cmc-pre-api01.srv.lukoil.com",
+  "kisumt-test.ext.lukoil.com": "sitr-dev-dmz01.srv.lukoil.com",
+  "surd-prd-qr.ext.lukoil.com": "surd-prd-qr01.srv.lukoil.com",
+  "surd-tst-qr.ext.lukoil.com": "surd-tst-qr01.srv.lukoil.com",
+  "disrtkvlg.pro.lukoil.com": "rtkdis-db01.srv.lukoil.com",
+  "aux-uter.pro.lukoil.com": "uter-prd-app01.srv.lukoil.com",
+  "sp2019-t.pro.lukoil.com": "shp19-tst-web01.srv.lukoil.com",
+  "alfabet-tr.pro.lukoil.com": "alfabet-pdb.srv.lukoil.com",
+  "kasu2-prd.pro.lukoil.com": "kasu2-prd-app01.srv.lukoil.com",
+  "kasu2-tst.pro.lukoil.com": "kasu2-tst-app01.srv.lukoil.com",
+  "kpm-gid.pro.lukoil.com": "kiskpm-prd-app01.srv.lukoil.com",
+  "ecp-aud.pro.lukoil.com": "sudbsgidappprd.srv.lukoil.com",
+  "ecp-audtst.pro.lukoil.com": "sudbsgidapp.srv.lukoil.com",
+  "ogt-fv.pro.lukoil.com": [
+    "ogt-prd-fv-app1.srv.lukoil.com",
+    "ogt-prd-fv-app2.srv.lukoil.com"
+  ],
+  "kisumt-prod.ext.lukoil.com": "sitr-prd-dmz01.srv.lukoil.com",
+  "fondim-qas.pro.lukoil.com": "fondim-app.srv.lukoil.com",
+  "ksh1c-aux.pro.lukoil.com": [
+    "ksh1c-aux-bus01.srv.lukoil.com",
+    "ksh1c-aux-bus02.srv.lukoil.com"
+  ],
+  "ksh1c-allure-service.pro.lukoil.com": "ksh1c-dev-ci01.srv.lukoil.com",
+  "kisumt-auth-prd.pro.lukoil.com": "sitr-prd-aut01.srv.lukoil.com",
+  "suptd.pro.lukoil.com": "dms01f.srv.lukoil.com",
+  "suptd-tst.pro.lukoil.com": "dmstst01f.srv.lukoil.com",
+  "oit-qas-usoi.pro.lukoil.com": "oisur-qas-au01.srv.lukoil.com",
+  "oit-qas-sso.pro.lukoil.com": "oisur-qas-au01.srv.lukoil.com",
+  "oit-qas-srv1.pro.lukoil.com": "oisur-qas-au01.srv.lukoil.com",
+  "oit-qas-actmgmt.pro.lukoil.com": "oisur-qas-au01.srv.lukoil.com",
+  "oit-qas.pro.lukoil.com": "oisur-qas-gw02.srv.lukoil.com",
+  "esbproxy.pro.lukoil.com": [
+    "esbproxy01.srv.lukoil.com",
+    "esbproxy02.srv.lukoil.com"
+  ],
+  "disrtkvlg.ext.lukoil.com": "rtkdis-db01.srv.lukoil.com",
+  "bitbucket-lt.ext.lukoil.com": "bitbkt-app01.srv.lukoil.com",
+  "promine.pro.lukoil.com": "promineprd-app01.srv.lukoil.com",
+  "ehdtaxmon.pro.lukoil.com": [
+    "vmapp3.corp.lukoil.com",
+    "vmapp4.corp.lukoil.com"
+  ],
+  "cycleopid-qas.pro.lukoil.com": "epu-clpid-qas01.srv.lukoil.com",
+  "cycleopid.pro.lukoil.com": "epu-clpid-prd01.srv.lukoil.com",
+  "elma-mock.pro.lukoil.com": [
+    "crm-mock-mstr01.srv.lukoil.com",
+    "crm-mock-mstr02.srv.lukoil.com",
+    "crm-mock-mstr03.srv.lukoil.com"
+  ],
+  "elma-mock.lukoil.com": [
+    "crm-mock-mstr01.srv.lukoil.com",
+    "crm-mock-mstr02.srv.lukoil.com",
+    "crm-mock-mstr03.srv.lukoil.com"
+  ],
+  "mskppm-ksp.pro.lukoil.com": "ppm-bi-prod.srv.lukoil.com",
+  "geonav.pro.lukoil.com": "oss-app01.srv.lukoil.com",
+  "uim-tst.pro.lukoil.com": "uim-tst-app01.srv.lukoil.com",
+  "ppm-ksp-adm.pro.lukoil.com": "ppm-bi-prod.srv.lukoil.com",
+  "ppm-ksp.pro.lukoil.com": "ppm-bi-prod.srv.lukoil.com",
+  "asums-dev.pro.lukoil.com": "metr-qs01.srv.lukoil.com",
+  "asums-test.pro.lukoil.com": "metr-tst-dm01.srv.lukoil.com",
+  "asums.pro.lukoil.com": "metr-dm01.srv.lukoil.com",
+  "imvrp-tst.pro.lukoil.com": "imvrp-tst-app02.srv.lukoil.com",
+  "oit-qas-pipe.pro.lukoil.com": "oisur-qas-au02.srv.lukoil.com",
+  "oit-qas-ois-plus.pro.lukoil.com": "oisur-qas-ao01.srv.lukoil.com",
+  "lisatest.pro.lukoil.com": "c-lisatest.corp.lukoil.com",
+  "okotest.pro.lukoil.com": "c-okotest.corp.lukoil.com",
+  "wp-test.pro.lukoil.com": "wp-test.srv.lukoil.com",
+  "wp-test.ext.lukoil.com": "wp-test.srv.lukoil.com",
+  "app.pro.lukoil.com": "sprint-web01.srv.lukoil.com",
+  "au.pro.lukoil.com": "sprint-node01.srv.lukoil.com",
+  "csc-jnk.pro.lukoil.com": "cmc-prd-jnk01.srv.lukoil.com",
+  "promine-keycloak.pro.lukoil.com": "promineprd-app01.srv.lukoil.com",
+  "kisumt-ais-prd.pro.lukoil.com": "sitr-prd-frnt01.srv.lukoil.com",
+  "pdk2.pro.lukoil.com": [
+    "sapcrpci.srv.lukoil.com",
+    "sapcrpapp01.srv.lukoil.com"
+  ],
+  "ppm-ksp-auth.pro.lukoil.com": "ppm-bi-prod.srv.lukoil.com",
+  "ppm-ksp-wrapper.pro.lukoil.com": "ppm-bi-prod.srv.lukoil.com",
+  "ppm-ksp-objdef.pro.lukoil.com": "ppm-bi-prod.srv.lukoil.com",
+  "ppm-ksp-objnmxf.pro.lukoil.com": "ppm-bi-prod.srv.lukoil.com",
+  "ppm-ksp-contr.pro.lukoil.com": "ppm-bi-prod.srv.lukoil.com",
+  "ppm-ksp-cnp.pro.lukoil.com": "ppm-bi-prod.srv.lukoil.com",
+  "ppm-ksp-std.pro.lukoil.com": "ppm-bi-prod.srv.lukoil.com",
+  "ppm-ksp-adm-rem.pro.lukoil.com": "ppm-bi-prod.srv.lukoil.com",
+  "ecm-prd-be.pro.lukoil.com": [
+    "ecm-prd-be01.srv.lukoil.com",
+    "ecm-prd-be03.srv.lukoil.com",
+    "ecm-prd-be04.srv.lukoil.com",
+    "ecm-prd-be05.srv.lukoil.com",
+    "ecm-prd-be06.srv.lukoil.com"
+  ],
+  "clientwarm.pro.lukoil.com": [
+    "srt-vdiconn01.srv.lukoil.com",
+    "srt-vdiconn02.srv.lukoil.com",
+    "srt-vdiconn03.srv.lukoil.com",
+    "srt-vdiconn04.srv.lukoil.com"
+  ],
+  "portal.pro.lukoil.com": [
+    "vkp-prd-entrypoint01.srv.lukoil.com",
+    "vkp-prd-entrypoint02.srv.lukoil.com"
+  ],
+  "portal.lukoil.com": [
+    "vkp-prd-entrypoint01.srv.lukoil.com",
+    "vkp-prd-entrypoint02.srv.lukoil.com"
+  ],
+  "portal-test.pro.lukoil.com": "test-core-entrypoint.srv.lukoil.com",
+  "lt-devprom.pro.lukoil.com": "lt-github.srv.lukoil.com",
+  "lt-teamstorm.pro.lukoil.com": "lt-jmeter01.srv.lukoil.com",
+  "iam.pro.lukoil.com": "idm-app.srv.lukoil.com",
+  "trade-tst.pro.lukoil.com": "tst-irpktrade2.srv.lukoil.com",
+  "oitin-qas-wr.pro.lukoil.com": "oisdr-tst-app01.srv.lukoil.com",
+  "dt.ext.lukoil.com": "b2b-llk-appccd.srv.lukoil.com",
+  "oitin-wr.pro.lukoil.com": "oisin-app01.srv.lukoil.com",
+  "csc-argus.pro.lukoil.com": "cmc-prd-geo01.srv.lukoil.com",
+  "sce.llk.lukoil.com": "llk-sce-app01.srv.lukoil.com",
+  "suptd-as.pro.lukoil.com": "dms01ar.srv.lukoil.com",
+  "suptd-tst-as.pro.lukoil.com": "dmstst01ar.srv.lukoil.com",
+  "oitin-qas-usoi.pro.lukoil.com": "oisus-tst-app01.srv.lukoil.com",
+  "oitin-qas-sso.pro.lukoil.com": "oisin-tst-gw01.srv.lukoil.com",
+  "iprm.pro.lukoil.com": "iprm-prd-intf01.srv.lukoil.com",
+  "disup.pro.lukoil.com": "disup-prod-app1.srv.lukoil.com",
+  "disup-back.pro.lukoil.com": "disup-prod-app1.srv.lukoil.com",
+  "ecm-prd-fe09.pro.lukoil.com": "ecm-prd-fe09.srv.lukoil.com",
+  "ecm-prd-fe10.pro.lukoil.com": "ecm-prd-fe10.srv.lukoil.com",
+  "kpao-snd.pro.lukoil.com": "saptm4.srv.lukoil.com",
+  "oitin-usoi.pro.lukoil.com": "oisin-aus01.srv.lukoil.com",
+  "oitin-sso.pro.lukoil.com": "oisin-gw01.srv.lukoil.com",
+  "lengportal.pro.lukoil.com": "tmn-app-lportal.corp.lukoil.com",
+  "maplun.pro.lukoil.com": "lunud-app01.srv.lukoil.com",
+  "uim.pro.lukoil.com": "uim-app01.srv.lukoil.com",
+  "csc-idm.pro.lukoil.com": [
+    "bi-prd-idm1.srv.lukoil.com",
+    "bi-prd-idm2.srv.lukoil.com"
+  ],
+  "csc-idm-tst.pro.lukoil.com": "bi-tst-idm1.srv.lukoil.com",
+  "lnvn.pro.lukoil.com": "cmc-prd-geo01.srv.lukoil.com",
+  "checkerboard.pro.lukoil.com": "cmc-prd-geo01.srv.lukoil.com",
+  "oko-srv.pro.lukoil.com": [
+    "oko-prd-app1.srv.lukoil.com",
+    "oko-prd-app2.srv.lukoil.com"
+  ],
+  "oko-srv-tst.pro.lukoil.com": "oko-tst-app1.srv.lukoil.com",
+  "newpdsp.pro.lukoil.com": "pdsp.srv.lukoil.com",
+  "ecm-prd-mob01.pro.lukoil.com": "ecm-prd-mob01.srv.lukoil.com",
+  "skpiksinp.pro.lukoil.com": "skpi-prd-app01.srv.lukoil.com",
+  "skpiksinp-tst.pro.lukoil.com": "skpi-tst-app01.srv.lukoil.com",
+  "skpiksinp-slk.pro.lukoil.com": "skpi-prd-lic01.srv.lukoil.com",
+  "allure-ui-lt.pro.lukoil.com": "lt-github.srv.lukoil.com",
+  "allure-ui-api-lt.pro.lukoil.com": "lt-github.srv.lukoil.com",
+  "asuskltor-app02.pro.lukoil.com": "asuskltor-app02.srv.lukoil.com",
+  "lukoilgpt.pro.lukoil.com": "prm-ts-app-01.corp.lukoil.com",
+  "maplunapi.pro.lukoil.com": "lunud-app01.srv.lukoil.com",
+  "kisumt-1c01-dev.pro.lukoil.com": "sitr-prd-1c01.srv.lukoil.com",
+  "olimp.pro.lukoil.com": "lims-app01.srv.lukoil.com",
+  "kpao-snd2.pro.lukoil.com": "saptm4.srv.lukoil.com",
+  "ecp-data-api.pro.lukoil.com": "ecp-prd-api1.srv.lukoil.com",
+  "ecp-data.pro.lukoil.com": "ecp-prd-app1.srv.lukoil.com",
+  "oit-qas-obzor.pro.lukoil.com": "oisur-qas-od01.srv.lukoil.com",
+  "ekptst2.pro.lukoil.com": "ekp-tst2-app01.srv.lukoil.com",
+  "qas-armrrmweb.pro.lukoil.com": "qasapparmweb02.corp.lukoil.com",
+  "geonavrep.ext.lukoil.com": "geonavrep-app01.srv.lukoil.com",
+  "pdm-tst-klmk.pro.lukoil.com": "edm-tst-app01.srv.lukoil.com",
+  "kisumt-prd.pro.lukoil.com": "sitr-prd-aut01.srv.lukoil.com",
+  "tender.pro.lukoil.com": "saps54.msk.lukoil.com",
+  "srmportal.pro.lukoil.com": "sapsj4.msk.lukoil.com",
+  "urzm-qas.pro.lukoil.com": "urzmbalancertst.srv.lukoil.com",
+  "oko-api-tst.pro.lukoil.com": "cmc-dwh-t-app01.srv.lukoil.com",
+  "kasu.pro.lukoil.com": "iasorem-app01.srv.lukoil.com",
+  "dis-kasu.pro.lukoil.com": "iasorem-app01.srv.lukoil.com",
+  "isp.pro.lukoil.com": "isp-prd-app01.srv.lukoil.com",
+  "isptst.pro.lukoil.com": "isp-tst-app01.srv.lukoil.com",
+  "gas2005.pro.lukoil.com": "corpprmen02lp.corp.lukoil.com",
+  "gas2005resources.pro.lukoil.com": "c-prmlab12.corp.lukoil.com",
+  "pdm-klmk.pro.lukoil.com": "edm-app03.srv.lukoil.com",
+  "olimp-tst.pro.lukoil.com": "lims-tst-app01.srv.lukoil.com",
+  "sap-idp.pro.lukoil.com": "sapidp.srv.lukoil.com",
+  "mob-api-tst.pro.lukoil.com": "cmc-prd-mob2.srv.lukoil.com",
+  "csc-ids.pro.lukoil.com": "ids-prd-app01.srv.lukoil.com",
+  "csc-idm-adm.pro.lukoil.com": [
+    "bi-prd-idm1.srv.lukoil.com",
+    "bi-prd-idm2.srv.lukoil.com"
+  ],
+  "csc-idm-adm-tst.pro.lukoil.com": "bi-tst-idm1.srv.lukoil.com",
+  "iskb.pro.lukoil.com": "ins-prd-app1.srv.lukoil.com",
+  "csc-fv.pro.lukoil.com": "ins-prd-app1.srv.lukoil.com",
+  "csc-wiki.pro.lukoil.com": "cmc-pre-app01.srv.lukoil.com",
+  "ifield-msk-qas2.pro.lukoil.com": "oisif-qas-sys01.srv.lukoil.com",
+  "ksp-centri.pro.lukoil.com": "ppm-bi-prod.srv.lukoil.com",
+  "spr-qa.pro.lukoil.com": [
+    "jeffit-qa-app01.srv.lukoil.com",
+    "jeffit-qa-app02.srv.lukoil.com"
+  ],
+  "sprdoc-qa.pro.lukoil.com": "jeffit-qa-dz.srv.lukoil.com",
+  "ritekasodu-drw.pro.lukoil.com": "srv-asodu04.corp.lukoil.com",
+  "kst-rm.pro.lukoil.com": "kst-lab.corp.lukoil.com",
+  "olimpokslp.pro.lukoil.com": "c-prmtechexplp.corp.lukoil.com",
+  "link-jhub.pro.lukoil.com": "link-jhub.srv.lukoil.com",
+  "link-llm-ui.pro.lukoil.com": "link-llm-ui.srv.lukoil.com",
+  "imvrp.pro.lukoil.com": "imvrp-prd-app02.srv.lukoil.com",
+  "upbnng-tst-frontko.pro.lukoil.com": "upbnng-tst-web01.srv.lukoil.com",
+  "upbnng-tst-frontbi.pro.lukoil.com": "upbnng-tst-app01.srv.lukoil.com",
+  "log.pro.lukoil.com": "tnav-lnx01.srv.lukoil.com",
+  "otsap-prd-as01.pro.lukoil.com": "otsap-prd-as01.srv.lukoil.com",
+  "ots4-prd-as02.pro.lukoil.com": "ots4-prd-as02.srv.lukoil.com",
+  "exp-dev.pro.lukoil.com": "metr-qs01.srv.lukoil.com",
+  "exp-test.pro.lukoil.com": "mert-tst-dm01.srv.lukoil.com",
+  "exp.pro.lukoil.com": "metr-dm01.srv.lukoil.com",
+  "aircloud.pro.lukoil.com": "aircloudvip01.srv.lukoil.com",
+  "innovations.ext.lukoil.com": "sp13-lk-p-edmz.srv.lukoil.com",
+  "innovations.lukoil.com": "sp13-lk-p-edmz.srv.lukoil.com",
+  "qas-fond.pro.lukoil.com": "fond-app-qas01.srv.lukoil.com",
+  "oit-qas-tm.pro.lukoil.com": [
+    "oit-qas-di1.srv.lukoil.com",
+    "oit-qas-di2.srv.lukoil.com",
+    "oit-qas-di3.srv.lukoil.com"
+  ],
+  "hr-test-dmz.ext.lukoil.com": "vkp-tst-cand-cgate01.srv.lukoil.com",
+  "confluence-lt.pro.lukoil.com": "confl-app02.srv.lukoil.com",
+  "nscons.pro.lukoil.com": "srt-ctx-cons01.srv.lukoil.com",
+  "ritekasodu-trend.pro.lukoil.com": "c-vgdasodu-web01.corp.lukoil.com",
+  "ritekasodu-int.pro.lukoil.com": "srv-asodu04.corp.lukoil.com",
+  "linkgraf-app01.pro.lukoil.com": "linkgraf-app01.srv.lukoil.com",
+  "seddevmp.pro.lukoil.com": "seddevmp-app01.srv.lukoil.com",
+  "unp-docflow.pro.lukoil.com": "uhtboo.corp.lukoil.com",
+  "hd1-nwbc.pro.lukoil.com": "saphd1cidb.srv.lukoil.com",
+  "hq1-nwbc.pro.lukoil.com": "saphq1.srv.lukoil.com",
+  "hq2-nwbc.pro.lukoil.com": "saphq2.srv.lukoil.com",
+  "hq7-nwbc.pro.lukoil.com": "saphq7cidb.srv.lukoil.com",
+  "hp1-nwbc.pro.lukoil.com": "saphp1.srv.lukoil.com",
+  "ritekasodu-prv.pro.lukoil.com": "c-vgdasodu-web01.corp.lukoil.com",
+  "ritekasodu-kvd.pro.lukoil.com": "c-vgdasodu-web01.corp.lukoil.com",
+  "pdm-tst-d33.pro.lukoil.com": "edm-tst-app01.srv.lukoil.com",
+  "nexusrm.pro.lukoil.com": "nexusrmtst01.srv.lukoil.com",
+  "ocean.pro.lukoil.com": "ocean-emm01.srv.lukoil.com",
+  "oit.pro.lukoil.com": [
+    "oisur-gw01.srv.lukoil.com",
+    "oisur-gw02.srv.lukoil.com"
+  ],
+  "nce.ext.lukoil.com": [
+    "srt-nce04.msk.lukoil.net", 
+    "srt-nce05.msk.lukoil.net", 
+    "srt-nce06.msk.lukoil.net"
+  ],
+  "goreport.pro.lukoil.com": "oss-app01.srv.lukoil.com",
+  "godash.pro.lukoil.com": "oss-app01.srv.lukoil.com",
+  "auth.pro.lukoil.com": "oss-app01.srv.lukoil.com",
+  "rcmkpi.pro.lukoil.com": "rcmkpi-app01.srv.lukoil.com",
+  "mobil.pro.lukoil.com": "geomnglk.srv.lukoil.com",
+  "portal-vk.pro.lukoil.com": [
+    "ecp-dev-kw15.srv.lukoil.com",
+    "ecp-dev-kw16.srv.lukoil.com",
+    "ecp-dev-kw17.srv.lukoil.com",
+    "ecp-dev-kw18.srv.lukoil.com",
+    "ecp-dev-kw19.srv.lukoil.com"
+  ],
+  "track-vk.pro.lukoil.com": "ecp-dev-dm02.srv.lukoil.com",
+  "track-vk.pro.lukoil.com81": "ecp-dev-dm02.srv.lukoil.com",
+  "ssmb-prd-rdl3.pro.lukoil.com": "ssmb-prd-app01.srv.lukoil.com",
+  "pkkdtst.pro.lukoil.com": "qtportalapp.srv.lukoil.com",
+  "bgm.pro.lukoil.com": "bgm-prd-app01.srv.lukoil.com",
+  "bgmtst.pro.lukoil.com": "bgm-tst-app01.srv.lukoil.com",
+  "deleted_ksmm-test.pro.lukoil.com": "ksmm-tst.srv.lukoil.com",
+  "hr-dmz.ext.lukoil.com": [
+    "vkp-prd-cand-cgate01.srv.lukoil.com",
+    "vkp-prd-cand-cgate02.srv.lukoil.com"
+  ],
+  "hr-preprod-dmz.ext.lukoil.com": "vkp-preprod-cand-cgate01.srv.lukoil.com",
+  "ecm-qa-opensrch.pro.lukoil.com": [
+    "ecm-qa-opensrch01.srv.lukoil.com",
+    "ecm-qa-opensrch02.srv.lukoil.com",
+    "ecm-qa-opensrch03.srv.lukoil.com"
+  ],
+  "ecm-prd-opensrch.pro.lukoil.com": [
+    "ecm-prd-opensrch01.srv.lukoil.com",
+    "ecm-prd-opensrch02.srv.lukoil.com",
+    "ecm-prd-opensrch03.srv.lukoil.com"
+  ],
+  "git-log.pro.lukoil.com": "uim-git01.srv.lukoil.com",
+  "app-lzsqas.pro.lukoil.com": "app-oislzsqas1.srv.lukoil.com",
+  "oit-tm.pro.lukoil.com": "oisur-di01.srv.lukoil.com",
+  "jen-log.pro.lukoil.com": "uim-git01.srv.lukoil.com",
+  "auth.ext.lukoil.com": "geonavrep-app01.srv.lukoil.com",
+  "passwork.pro.lukoil.com": [
+    "srt-pwrk01.srv.lukoil.com",
+    "dln4-pwrk01.srv.lukoil.com"
+  ],
+  "dmsk.pro.lukoil.com": [
+    "10.201.193.54",
+    "10.201.193.56"
+  ],
+  "ssmb-tst-saps4.pro.lukoil.com": [
+    "ssmb-tst01.corp.lukoil.com",
+    "ssmb-tst01.srv.lukoil.com"
+  ],
+  "ksmm-test.ext.lukoil.com": "ksmm-tst.srv.lukoil.com",
+  "supr.pro.lukoil.com": "linksps-app01.srv.lukoil.com",
+  "pr.pro.lukoil.com": "linksps-app01.srv.lukoil.com",
+  "surv.pro.lukoil.com": "linksps-app01.srv.lukoil.com",
+  "okr.pro.lukoil.com": "linksps-app01.srv.lukoil.com",
+  "csc-gitlab.pro.lukoil.com": "cmc-prd-svc1.srv.lukoil.com",
+  "csc-minio.pro.lukoil.com": "cmc-prd-minio01.srv.lukoil.com",
+  "oko-mon.pro.lukoil.com": [
+    "oko-prd-app1.srv.lukoil.com",
+    "oko-prd-app2.srv.lukoil.com"
+  ],
+  "csc-mluk.pro.lukoil.com": "cmc-tst-app01.srv.lukoil.com",
+  "kc-sps.pro.lukoil.com": "1csps-ks-app01.srv.lukoil.com",
+  "olimpol.pro.lukoil.com": "limsol-prd-app1.srv.lukoil.com",
+  "qas-ecpdoc.pro.lukoil.com": "q-ecpdoc-app01.srv.lukoil.com",
+  "swg-asodu.lukoil.com": "c-mskadcsdmapp1.srv.lukoil.com",
+  "fond.pro.lukoil.com": "fondim-app.srv.lukoil.com",
+  "devreport.pro.lukoil.com": "oss-tst-app01.srv.lukoil.com",
+  "devlibrary1.pro.lukoil.com": "oss-tst-app01.srv.lukoil.com",
+  "devlibrary2.pro.lukoil.com": "oss-tst-app01.srv.lukoil.com",
+  "devlibrary-b.pro.lukoil.com": "oss-tst-app01.srv.lukoil.com",
+  "devauth.pro.lukoil.com": "oss-tst-app01.srv.lukoil.com",
+  "devanalytics.pro.lukoil.com": "oss-tst-app01.srv.lukoil.com",
+  "devhub.pro.lukoil.com": "oss-tst-app01.srv.lukoil.com",
+  "devdash.pro.lukoil.com": "oss-tst-app01.srv.lukoil.com",
+  "ipam.pro.lukoil.com": "ipam2.srv.lukoil.com",
+  "ctxlic.pro.lukoil.com27000": "srt-ctxlic001.srv.lukoil.com",
+  "ctxlic.pro.lukoil.com7279": "srt-ctxlic001.srv.lukoil.com",
+  "ctxlic.pro.lukoil.com": "srt-ctxlic001.srv.lukoil.com",
+  "kaiten-prd.pro.lukoil.com": "kaiten-prd-app01.srv.lukoil.com",
+  "kaiten-prd-api.pro.lukoil.com": "kaiten-prd-app01.srv.lukoil.com",
+  "kaiten-prd-files.pro.lukoil.com": "kaiten-prd-app01.srv.lukoil.com",
+  "kaiten-prd-socket.pro.lukoil.com": "kaiten-prd-app01.srv.lukoil.com",
+  "kaiten-tst.pro.lukoil.com": "kaiten-tst-app01.srv.lukoil.com",
+  "kaiten-tst-api.pro.lukoil.com": "kaiten-tst-app01.srv.lukoil.com",
+  "kaiten-tst-files.pro.lukoil.com": "kaiten-tst-app01.srv.lukoil.com",
+  "kaiten-tst-socket.pro.lukoil.com": "kaiten-tst-app01.srv.lukoil.com",
+  "ecpdoc.pro.lukoil.com": "ecpdoc-app01.srv.lukoil.com",
+  "app-lzstemp.pro.lukoil.com": [
+    "app-oislzs1.srv.lukoil.com",
+    "app-oislzs2.srv.lukoil.com",
+    "app-oislzs3.srv.lukoil.com",
+    "app-oislzs4.srv.lukoil.com",
+    "app-oislzs5.srv.lukoil.com",
+    "app-oislzs6.srv.lukoil.com"
+  ],
+  "hr.ext.lukoil.com": [
+    "vkp-prd-cand-cgate01.srv.lukoil.com",
+    "vkp-prd-cand-cgate02.srv.lukoil.com"
+  ],
+  "hr-preprod.ext.lukoil.com": "vkp-preprod-cand-cgate01.srv.lukoil.com",
+  "hr-test.ext.lukoil.com": "vkp-tst-cand-cgate01.srv.lukoil.com",
+  "pdm.pro.lukoil.com": "edm-app01.srv.lukoil.com",
+  "lukeria.pro.lukoil.com": "cl3-llm1.srv.lukoil.com",
+  "qas-podbor-analogov.pro.lukoil.com": "sokrat-qas-app01.srv.lukoil.com",
+  "podbor-analogov.pro.lukoil.com": "sokrat-prd-app1.srv.lukoil.com",
+  "mark.pro.lukoil.com": "mark-prd-app01.srv.lukoil.com",
+  "mark-tst.pro.lukoil.com": "mark-tst-app01.srv.lukoil.com",
+  "sedtstmp.pro.lukoil.com": "sedtstmp-app01.srv.lukoil.com",
+  "sedprodmp.pro.lukoil.com": "sedprdmp-app01.srv.lukoil.com",
+  "vkp-preprod.pro.lukoil.com": [
+    "vkp-preprod-entrypoint01.srv.lukoil.com",
+    "vkp-preprod-entrypoint02.srv.lukoil.com"
+  ],
+  "ecm-prd-kafka.pro.lukoil.com": [
+    "ecm-prd-kaf01.srv.lukoil.com",
+    "ecm-prd-kaf02.srv.lukoil.com",
+    "ecm-prd-kaf03.srv.lukoil.com"
+  ],
+  "ecm-qa-kafka.pro.lukoil.com": [
+    "ecm-prd-kaf01.srv.lukoil.com",
+    "ecm-prd-kaf02.srv.lukoil.com",
+    "ecm-prd-kaf03.srv.lukoil.com"
+  ],
+  "ecm-vault.pro.lukoil.com": "vault-prd-app01.srv.lukoil.com",
+  "nedra16.pro.lukoil.com": "nedra16-web1.srv.lukoil.com",
+  "nedra16t.pro.lukoil.com": "nedra16t-web1.srv.lukoil.com",
+  "leng-accelerator.pro.lukoil.com": "tmn-app-aclportal.corp.lukoil.com",
+  "rup-vip-nwbc.pro.lukoil.com": "saprup.srv.lukoil.com",
+  "rsd-vip-nwbc.pro.lukoil.com": "saprsd.srv.lukoil.com",
+  "rcr-vip-nwbc.pro.lukoil.com": "saprcr.srv.lukoil.com",
+  "pup-vip-nwbc.pro.lukoil.com": "sappup.srv.lukoil.com",
+  "psd-vip-nwbc.pro.lukoil.com": "sappsd.srv.lukoil.com",
+  "pcr-vip-nwbc.pro.lukoil.com": "sappcr.srv.lukoil.com",
+  "enef.pro.lukoil.com": [
+    "enef-tst-app01.srv.lukoil.com",
+    "enef-tst-db01.srv.lukoil.com"
+  ],
+  "arch.pro.lukoil.com": "alfabet-pdb.srv.lukoil.com",
+  "link-grafana.pro.lukoil.com": "linkmc2-app01.srv.lukoil.com",
+  "link-git.pro.lukoil.com": "linkmc2-app01.srv.lukoil.com",
+  "link-s3.pro.lukoil.com": "linkmc2-app01.srv.lukoil.com",
+  "link-ml.pro.lukoil.com": "linkmc2-app01.srv.lukoil.com",
+  "gostream.pro.lukoil.com": "oss-app01.srv.lukoil.com",
+  "golibrary.pro.lukoil.com": "oss-app01.srv.lukoil.com",
+  "csc-str.pro.lukoil.com": "cmc-prd-str01.srv.lukoil.com",
+  "hq4-nwbc.pro.lukoil.com": "saphq4.srv.lukoil.com",
+  "csc-bpla.pro.lukoil.com": "bpla-prd-app01.srv.lukoil.com",
+  "ehd-user-access.pro.lukoil.com": "c-ln05.corp.lukoil.com",
+  "lt-mockservice.pro.lukoil.com": "lt-github.srv.lukoil.com",
+  "mineflow.pro.lukoil.com": "promineprd-app01.srv.lukoil.com",
+  "ppm-ksp2.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "ocean-tst.pro.lukoil.com": "ocean-tst-app01.srv.lukoil.com",
+  "dso-tst.pro.lukoil.com": "dso-test01.srv.lukoil.com",
+  "gocloud.pro.lukoil.com": "oss-app01.srv.lukoil.com",
+  "aiorchestrator.pro.lukoil.com": "cl3-llm2.srv.lukoil.com",
+  "aiserver.pro.lukoil.com": "cl3-llm4.srv.lukoil.com",
+  "tstsipkp.pro.lukoil.com": "sprint-pims-a02.srv.lukoil.com",
+  "dcim.pro.lukoil.com": "dcim.srv.lukoil.com",
+  "emm-auth.lukoil.com": "mdm-idmngr01.srv.lukoil.com",
+  "mrb.pro.lukoil.com": "ipmrb-app01.srv.lukoil.com",
+  "vopru.pro.lukoil.com": "vopru.srv.lukoil.com",
+  "suprexport.pro.lukoil.com": "linksps-app01.srv.lukoil.com",
+  "prprint.pro.lukoil.com": "linksps-app01.srv.lukoil.com",
+  "mums.pro.lukoil.com": "linksps-app01.srv.lukoil.com",
+  "techdisc.pro.lukoil.com": "linksps-app01.srv.lukoil.com",
+  "prsurvey.pro.lukoil.com": "linksps-app01.srv.lukoil.com",
+  "urzm-prd.pro.lukoil.com": "urzmbalancer01.srv.lukoil.com",
+  "kp-prod.pro.lukoil.com": "lrnptkpuu01.srv.lukoil.com",
+  "kp-test.pro.lukoil.com": "lrnptkputst01.srv.lukoil.com",
+  "icc-pup.pro.lukoil.com": [
+    "vmicc1.corp.lukoil.com",
+    "vmicc2.corp.lukoil.com"
+  ],
+  "sipkp.pro.lukoil.com": "sprint-web01.srv.lukoil.com",
+  "olimpol-tst.pro.lukoil.com": "limsol-prd-app1.srv.lukoil.com",
+  "netbox.pro.lukoil.com": "netboxapp01.srv.lukoil.com",
+  "goexporter.pro.lukoil.com": "oss-tst-app01.srv.lukoil.com",
+  "irss.pro.lukoil.com": "cms-dev-app01.srv.lukoil.com",
+  "ppm-keycloak.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "ppm-centri.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "ppm-oauth.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "ppm-kc.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "ppm-cnp.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "ppm-objcon.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "ppm-wrapper.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "ppm-systask.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "ppm-admin.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "ppm-xchat.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "ppm-shell3-viewer.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "ppm-bpmn.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "ppm-workflow.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "ppm-kanban.pro.lukoil.com": "ppm-bi-prod2.srv.lukoil.com",
+  "qas-fondim.pro.lukoil.com": "fond-app-qas01.srv.lukoil.com",
+  "git.ext.lukoil.com": "uim-git02.srv.lukoil.com",
+  "repo.ext.lukoil.com": "uim-git02.srv.lukoil.com",
+  "b2b-trading.pro.lukoil.com": "lrnptkpuu01.srv.lukoil.com",
+  "b2b-tst.pro.lukoil.com": "lrnptkputst01.srv.lukoil.com",
+  "alphatst.pro.lukoil.com": "alphatst-app01.srv.lukoil.com",
+  "info-asodu.pro.lukoil.com": "c-mskadcsdmapp2.srv.lukoil.com",
+  "x62-nwbc.pro.lukoil.com": "sapx62cidb.srv.lukoil.com",
+  "x2a-nwbc.pro.lukoil.com": "sapx2acidb.srv.lukoil.com",
+  "x63-nwbc.pro.lukoil.com": "sapx63.srv.lukoil.com",
+  "x3a-nwbc.pro.lukoil.com": "sapx3acidb.srv.lukoil.com",
+  "x3b-nwbc.pro.lukoil.com": "sapx3bcidb.srv.lukoil.com",
+  "x3c-nwbc.pro.lukoil.com": "sapx3ccidb.srv.lukoil.com",
+  "x3d-nwbc.pro.lukoil.com": "sapx3dcidb.srv.lukoil.com",
+  "x4b-nwbc.pro.lukoil.com": "sapx4bcidb.srv.lukoil.com",
+  "x4d-nwbc.pro.lukoil.com": "sapx4dcidb.srv.lukoil.com",
+  "x4e-nwbc.pro.lukoil.com": "sapx4ecidb.srv.lukoil.com",
+  "x4f-nwbc.pro.lukoil.com": "sapx4fcidb.srv.lukoil.com",
+  "x3s-nwbc.pro.lukoil.com": "sapx3scidb.srv.lukoil.com",
+  "x4s-nwbc.pro.lukoil.com": "sapx4scidb.srv.lukoil.com",
+  "xdi-nwbc.pro.lukoil.com": "sapxdicidb.srv.lukoil.com",
+  "ltsmtst.pro.lukoil.com": "ltsmtst-app01.srv.lukoil.com",
+  "id.ext.lukoil.com": "srt-extidb01.srv.lukoil.com",
+  "id.lukoil.com": "srt-extidb01.srv.lukoil.com",
+  "scm-monitoring.pro.lukoil.com": "scm-mon01.srv.lukoil.com",
+  "scm.pro.lukoil.com": "scm-app01.srv.lukoil.com",
+  "col-app.pro.lukoil.com": "col-prd-app01.srv.lukoil.com",
+  "col-tst.pro.lukoil.com": "survey-app01.srv.lukoil.com",
+  "laero-samara.pro.lukoil.com": "appsql1claero.srv.lukoil.com",
+  "prem.pro.lukoil.com": "mskpremsqlprd.srv.lukoil.com",
+  "ecm-qa-kafka-rest.pro.lukoil.com": [
+    "ecm-qa-kaf01.srv.lukoil.com",
+    "ecm-qa-kaf02.srv.lukoil.com",
+    "ecm-qa-kaf03.srv.lukoil.com"
+  ],
+  "ecm-prd-kafka-rest.pro.lukoil.com": [
+    "ecm-prd-kaf01.srv.lukoil.com",
+    "ecm-prd-kaf02.srv.lukoil.com",
+    "ecm-prd-kaf03.srv.lukoil.com"
+  ],
+  "ltsm.pro.lukoil.com": "ltsm-app01.srv.lukoil.com"
+}

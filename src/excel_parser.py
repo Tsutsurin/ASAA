@@ -8,12 +8,10 @@ import pandas as pd
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
-from src.utils import normalize_text, normalize_value
+from .utils import normalize_text, normalize_value
 
 logger = logging.getLogger('auto_responsible.excel_parser')
 
-
-# ── Колонки для поиска ──────────────────────────────────────────────
 
 DEFAULT_FQDN_CANDIDATES = [
     'Доменное имя',
@@ -29,8 +27,6 @@ DEFAULT_IP_CANDIDATES = [
     'Host.Ip',
 ]
 
-
-# ── Нормализация ────────────────────────────────────────────────────
 
 def _find_column(df: pd.DataFrame, candidates: list[str]) -> str | None:
     normalized_map = {
@@ -54,8 +50,6 @@ def _find_header_column(ws, candidates: list[str]) -> int | None:
             return header_map[key]
     return None
 
-
-# ── Извлечение параметров ──────────────────────────────────────────
 
 def extract_params_from_files(
     files: list[Path],
@@ -91,19 +85,18 @@ def extract_params_from_files(
     return result
 
 
-# ── Нормализация API-строки ────────────────────────────────────────
-
 def _coalesce(row, *keys: str) -> str:
-    """Первое непустое значение из списка ключей."""
     for key in keys:
         value = row.get(key)
-        if value is not None and str(value).strip():
-            return str(value).strip()
+        if value is None or pd.isna(value):
+            continue
+        text = str(value).strip()
+        if text and text.lower() != 'nan':
+            return text
     return ''
 
 
 def normalize_api_row(row) -> dict:
-    """Приведение строки API-ответа к единому формату."""
     return {
         **row.to_dict(),
         'group': normalize_value(_coalesce(row, 'group', 'Группа', 'responsible_group', 'responsible')),
@@ -114,8 +107,6 @@ def normalize_api_row(row) -> dict:
         'backend_fqdn': normalize_value(_coalesce(row, 'backend_fqdn', 'Бэкэнд сервер')),
     }
 
-
-# ── Lookup map ─────────────────────────────────────────────────────
 
 def build_lookup_map(enriched_params: pd.DataFrame) -> dict[tuple[str, str], dict]:
     result = {}
@@ -136,8 +127,6 @@ def build_lookup_map(enriched_params: pd.DataFrame) -> dict[tuple[str, str], dic
     logger.info('Lookup сформирован: %s ключей', len(result))
     return result
 
-
-# ── Работа с колонками Excel ───────────────────────────────────────
 
 def _get_last_business_column(ws) -> int:
     col_idx = ws.max_column
@@ -197,8 +186,6 @@ def _reset_filters(ws) -> None:
     ws.auto_filter.ref = f'A1:{get_column_letter(last)}{ws.max_row}'
 
 
-# ── Построение отчёта ──────────────────────────────────────────────
-
 def build_output_report(
     source_file: Path,
     enriched_params: pd.DataFrame,
@@ -220,7 +207,6 @@ def build_output_report(
     fqdn_col_idx = _find_header_column(ws, fqdn_candidates)
     ip_col_idx = _find_header_column(ws, ip_candidates)
 
-    # Создаём/находим целевые колонки
     col_indices = {
         'Группа': ensure_column(ws, 'Группа'),
         'Члены группы': ensure_column(ws, 'Члены группы'),

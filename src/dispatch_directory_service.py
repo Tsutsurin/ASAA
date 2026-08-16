@@ -4,7 +4,7 @@ from datetime import datetime
 from pathlib import Path
 
 from src.config import Settings, TEMP_DIR
-from dispatch_service import process_dispatch_excel_file
+from src.dispatch_processor import process_dispatch_excel_file
 
 logger = logging.getLogger('auto_responsible.dispatch_directory')
 
