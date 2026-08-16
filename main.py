@@ -1,22 +1,21 @@
+"""Точка входа ASAA. Оркестрирует 3 сценария: отработка, поиск, обогащение."""
+
 import logging
 
-from config import load_columns, load_settings
-from dispatch_directory_service import process_dispatch_directory
-from dispatch_service import process_dispatch_folder
-from excel_parser import (
-    build_output_report,
-    extract_params_from_files,
-)
-from exchange_client import (
+from src.config import BASE_DIR, load_columns, load_settings
+from src.dispatch_directory_service import process_dispatch_directory
+from src.excel_parser import build_output_report, extract_params_from_files
+from src.exchange_client import (
     download_excel_attachments,
     find_latest_email_in_folder,
     get_account,
     mark_as_read,
 )
-from exchange_sender import send_html_email
-from logger_setup import setup_logging
-from responsible_service import enrich_with_responsibles
-from search_directory_service import process_search_directory
+from src.exchange_sender import send_html_email
+from src.logger_setup import setup_logging
+from src.report_formatter import set_formatter_config
+from src.responsible_service import enrich_with_responsibles
+from src.search_directory_service import process_search_directory
 
 logger = logging.getLogger('auto_responsible.main')
 
@@ -48,32 +47,43 @@ def process_enrich_folder(settings, columns_config, account) -> bool:
         logger.warning('Входные параметры fqdn/ip не найдены')
         return False
 
-    enriched = enrich_with_responsibles(
-        params=params,
-        settings=settings,
-    )
+    try:
+        enriched = enrich_with_responsibles(
+            params=params,
+            settings=settings,
+        )
+    except Exception:
+        logger.exception('Ошибка обогащения данных из API')
+        return False
 
     source_file = excel_files[0]
 
-    build_output_report(
-        source_file=source_file,
-        enriched_params=enriched,
-        output_file=source_file,
-        columns_config=columns_config,
-    )
+    try:
+        build_output_report(
+            source_file=source_file,
+            enriched_params=enriched,
+            output_file=source_file,
+            columns_config=columns_config,
+        )
+    except Exception:
+        logger.exception('Ошибка формирования отчета')
+        return False
 
     if settings.send_email.enabled:
-        send_html_email(
-            account=account,
-            to=settings.send_email.to,
-            cc=settings.send_email.cc,
-            subject=settings.send_email.subject,
-            html_body=settings.send_email.body,
-            attachments=[source_file],
-        )
+        try:
+            send_html_email(
+                account=account,
+                to=settings.send_email.to,
+                cc=settings.send_email.cc,
+                subject=settings.send_email.subject,
+                html_body=settings.send_email.body,
+                attachments=[source_file],
+            )
+        except Exception:
+            logger.exception('Ошибка отправки письма с обогащенным отчетом')
+            return False
 
     mark_as_read(message)
-
     logger.info('Сценарий обогащения завершен')
     return True
 
@@ -84,18 +94,11 @@ def main() -> None:
     settings = load_settings()
     columns_config = load_columns()
 
+    set_formatter_config(BASE_DIR / settings.report_formatter_config)
+
     logger.info('Старт обработки через EWS')
 
     account = get_account(settings.ews)
-
-    try:
-        processed_dispatch_mail = process_dispatch_folder(
-            settings=settings,
-            account=account,
-        )
-    except Exception:
-        logger.exception('Ошибка сценария Отработать из почты')
-        processed_dispatch_mail = False
 
     try:
         processed_dispatch_directory = process_dispatch_directory(
@@ -127,8 +130,7 @@ def main() -> None:
         processed_enrich = False
 
     if (
-        not processed_dispatch_mail
-        and not processed_dispatch_directory
+        not processed_dispatch_directory
         and not processed_search_directory
         and not processed_enrich
     ):
