@@ -1,9 +1,7 @@
 {
-  "enrich_folder": "Обогащение",
   "columns_config": "config\\columns.json",
   "report_formatter_config": "config\\config.ini",
   "backend_mapping_file": "config\\backend_mapping.json",
-  "subject_contains": null,
   "only_unread": true,
   "ews": {
     "enabled": true,
@@ -19,13 +17,6 @@
     "base_url": "https://msk-devmon01.srv.lukoil.com:8026/httplistner/getsupportedby",
     "verify_ssl": false,
     "timeout": 30
-  },
-  "send_email": {
-    "enabled": true,
-    "to": "nikita.tsutsurin@lukoil.com; igor.v.akhidov@lukoil.com; Andrey.V.Denisov@lukoil.com; Vyacheslav.Kurzanov@lukoil.com",
-    "cc": null,
-    "subject": "Обогащенный отчет об уязвимостях",
-    "body": "<p>Отчет обогащен данными об ответственных.</p>"
   },
   "dispatch": {
     "enabled": true,

@@ -38,16 +38,16 @@ def append_ticket_to_registry(
     logger.info('Колонки реестра: %s', list(header_map.keys()))
 
     values = {
-        registry_columns['ticket_number']: ticket_number,
-        registry_columns['group']: group_name,
-        registry_columns['host']: ip_or_fqdn,
-        registry_columns['date']: datetime.now().strftime('%d.%m.%Y'),
-        registry_columns['status']: status,
+        normalize_text(registry_columns['ticket_number']): ticket_number,
+        normalize_text(registry_columns['group']): group_name,
+        normalize_text(registry_columns['host']): ip_or_fqdn,
+        normalize_text(registry_columns['date']): datetime.now().strftime('%d.%m.%Y'),
+        normalize_text(registry_columns['status']): status,
     }
 
     vuln_col = registry_columns.get('vulnerability_id')
     if vuln_col:
-        values[vuln_col] = vulnerability_id
+        values[normalize_text(vuln_col)] = vulnerability_id
 
     missing = [name for name in values if name not in header_map]
     if missing:

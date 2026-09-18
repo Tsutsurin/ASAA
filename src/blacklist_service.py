@@ -1,52 +1,96 @@
-"""Модуль загрузки и проверки блэклиста email из отдельного JSON-файла."""
+"""Модуль загрузки и проверки блэклиста email."""
 
 import json
 import logging
 from pathlib import Path
 
-from src.utils import normalize_text
+from .config import BASE_DIR
+from .utils import normalize_text
 
 logger = logging.getLogger('auto_responsible.blacklist')
 
 
-def load_blacklist(path: str | Path | None) -> list[str]:
-    """Загрузка блэклиста из JSON-файла.
-
-    Поддерживает форматы:
-        - ["email1@x.ru", "email2@x.ru"]  # массив строк
-        - {"blocked_emails": ["email1@x.ru"]}  # объект с ключом
-    """
+def load_blacklist(
+    path: str | Path | None,
+) -> list[str]:
     if not path:
+        logger.warning('Файл блэклиста не настроен')
         return []
 
     path = Path(path)
 
+    if not path.is_absolute():
+        path = BASE_DIR / path
+
     if not path.exists():
-        logger.warning('Файл блэклиста не найден: %s', path)
-        return []
+        raise FileNotFoundError(
+            f'Файл блэклиста не найден: {path}'
+        )
 
     try:
-        with open(path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-    except Exception:
-        logger.exception('Ошибка чтения блэклиста: %s', path)
-        return []
+        with open(
+            path,
+            'r',
+            encoding='utf-8-sig',
+        ) as file:
+            data = json.load(file)
 
-    emails: list[str] = []
+    except Exception as error:
+        raise RuntimeError(
+            f'Не удалось прочитать блэклист: {path}'
+        ) from error
+
+    emails = []
 
     if isinstance(data, list):
-        emails = [str(e).strip() for e in data if str(e).strip()]
-    elif isinstance(data, dict):
-        raw = data.get('blocked_emails', [])
-        if isinstance(raw, list):
-            emails = [str(e).strip() for e in raw if str(e).strip()]
+        emails = [
+            str(email).strip()
+            for email in data
+            if str(email or '').strip()
+        ]
 
-    logger.info('Блэклист загружен: %s записей из %s', len(emails), path)
+    elif isinstance(data, dict):
+        raw_emails = data.get(
+            'blocked_emails',
+            [],
+        )
+
+        if isinstance(raw_emails, list):
+            emails = [
+                str(email).strip()
+                for email in raw_emails
+                if str(email or '').strip()
+            ]
+
+    else:
+        raise ValueError(
+            f'Некорректный формат блэклиста: {path}'
+        )
+
+    emails = list(dict.fromkeys(emails))
+
+    logger.info(
+        'Блэклист загружен: %s записей | файл=%s',
+        len(emails),
+        path,
+    )
+
     return emails
 
 
-def is_blocked(email: str, blacklist: list[str]) -> bool:
-    """Проверка email на вхождение в блэклист (case-insensitive)."""
-    normalized = normalize_text(email)
-    blocked_set = {normalize_text(e) for e in blacklist if normalize_text(e)}
-    return normalized in blocked_set
+def is_blocked(
+    email: str,
+    blacklist: list[str],
+) -> bool:
+    normalized_email = normalize_text(email)
+
+    if not normalized_email:
+        return False
+
+    blocked = {
+        normalize_text(item)
+        for item in blacklist
+        if normalize_text(item)
+    }
+
+    return normalized_email in blocked

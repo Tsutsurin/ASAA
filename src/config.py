@@ -110,18 +110,18 @@ class DispatchDirectorySettings:
 
 @dataclass
 class Settings:
-    enrich_folder: str
-    subject_contains: str | None
     only_unread: bool
     ews: EwsSettings
     api: ApiSettings
-    send_email: SendEmailSettings
     dispatch: DispatchSettings
     search_directory: SearchDirectorySettings
     dispatch_directory: DispatchDirectorySettings
     backend_mapping_file: str | None
     report_formatter_config: str
     columns_config: str
+    enrich_folder: str | None = None
+    subject_contains: str | None = None
+    send_email: SendEmailSettings | None = None
 
 
 def _load_password(env_var: str) -> str:
@@ -146,12 +146,22 @@ def load_settings(path: str | Path | None = None) -> Settings:
 
     ews = data['ews']
     api = data['api']
-    send_email = data['send_email']
     dispatch = data['dispatch']
     recipient_filter = dispatch['recipient_filter']
 
+    send_email_raw = data.get('send_email')
+    send_email = None
+    if send_email_raw:
+        send_email = SendEmailSettings(
+            enabled=send_email_raw.get('enabled', False),
+            to=send_email_raw['to'],
+            cc=send_email_raw.get('cc'),
+            subject=send_email_raw['subject'],
+            body=send_email_raw['body'],
+        )
+
     return Settings(
-        enrich_folder=data['enrich_folder'],
+        enrich_folder=data.get('enrich_folder'),
         subject_contains=data.get('subject_contains'),
         only_unread=data['only_unread'],
         ews=EwsSettings(
@@ -170,13 +180,7 @@ def load_settings(path: str | Path | None = None) -> Settings:
             verify_ssl=api.get('verify_ssl', True),
             timeout=api.get('timeout', 30),
         ),
-        send_email=SendEmailSettings(
-            enabled=send_email.get('enabled', False),
-            to=send_email['to'],
-            cc=send_email.get('cc'),
-            subject=send_email['subject'],
-            body=send_email['body'],
-        ),
+        send_email=send_email,
         dispatch=DispatchSettings(
             enabled=dispatch.get('enabled', True),
             template_path=dispatch['template_path'],
