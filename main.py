@@ -1,26 +1,34 @@
-"""Точка входа ASAA. Оркестрирует сценарии: отработка, поиск, перескан."""
+"""Точка входа ASAA."""
 
 import logging
 import sys
 
-from src.config import BASE_DIR, load_columns, load_settings
-from src.dispatch_directory_service import process_dispatch_directory
-from src.exchange_client import get_account
+from src.config import load_settings
 from src.logger_setup import setup_logging
-from src.report_formatter import set_formatter_config
-from src.rescan_service import run_rescan_mode
-from src.search_directory_service import process_search_directory
 
 logger = logging.getLogger('auto_responsible.main')
 
 
 def run_rescan(settings) -> None:
     """Запускает только режим пересканирования."""
-    logger.info('Запуск режима Пересканировать')
+
+    # Импорт нужен только режиму перескана.
+    from src.rescan_service import run_rescan_mode
+
+    print('RESCAN MODE STARTED')
+
+    logger.info(
+        'Запуск режима Пересканировать'
+    )
 
     try:
         processed = run_rescan_mode(
             settings=settings,
+        )
+
+        print(
+            'RESCAN FINISHED. '
+            f'PROCESSED: {processed}'
         )
 
         logger.info(
@@ -29,30 +37,65 @@ def run_rescan(settings) -> None:
             processed,
         )
 
-    except Exception:
+    except Exception as exc:
+        print(
+            'RESCAN ERROR: '
+            f'{type(exc).__name__}: {exc}'
+        )
+
         logger.exception(
             'Ошибка сценария Пересканировать'
         )
+
         raise
 
 
-def run_normal(
-    settings,
-    columns_config,
-) -> None:
+def run_normal(settings) -> None:
     """
-    Обычный режим ASAA:
+    Обычный режим:
     - Отработать;
     - Поиск.
     """
-    logger.info('Старт обработки через EWS')
 
-    account = get_account(settings.ews)
+    # Эти импорты перескану НЕ нужны.
+    # Поэтому загружаем их только здесь.
+    from src.config import BASE_DIR, load_columns
+    from src.dispatch_directory_service import (
+        process_dispatch_directory,
+    )
+    from src.exchange_client import get_account
+    from src.report_formatter import (
+        set_formatter_config,
+    )
+    from src.search_directory_service import (
+        process_search_directory,
+    )
+
+    logger.info(
+        'Запуск обычного режима ASAA'
+    )
+
+    columns_config = load_columns()
+
+    set_formatter_config(
+        BASE_DIR
+        / settings.report_formatter_config
+    )
+
+    logger.info(
+        'Старт обработки через EWS'
+    )
+
+    account = get_account(
+        settings.ews
+    )
 
     try:
-        processed_dispatch_directory = process_dispatch_directory(
-            settings=settings,
-            account=account,
+        processed_dispatch_directory = (
+            process_dispatch_directory(
+                settings=settings,
+                account=account,
+            )
         )
 
     except Exception:
@@ -60,13 +103,16 @@ def run_normal(
             'Ошибка сценария Отработать '
             'из сетевой папки'
         )
+
         processed_dispatch_directory = False
 
     try:
-        processed_search_directory = process_search_directory(
-            settings=settings,
-            columns_config=columns_config,
-            account=account,
+        processed_search_directory = (
+            process_search_directory(
+                settings=settings,
+                columns_config=columns_config,
+                account=account,
+            )
         )
 
     except Exception:
@@ -74,6 +120,7 @@ def run_normal(
             'Ошибка сценария поиска '
             'из сетевой папки'
         )
+
         processed_search_directory = False
 
     if (
@@ -86,39 +133,80 @@ def run_normal(
 
 
 def main() -> None:
+    print('ASAA STARTED')
+    print(
+        f'RAW ARGUMENTS: {sys.argv}'
+    )
+
     setup_logging()
 
-    settings = load_settings()
-    columns_config = load_columns()
-
-    set_formatter_config(
-        BASE_DIR
-        / settings.report_formatter_config
+    logger.info(
+        'ASAA запущен. Аргументы: %s',
+        sys.argv,
     )
 
-    # Отдельный режим перескана.
-    #
-    # ASAA.exe --rescan
-    #
-    # В этом режиме Exchange/EWS
-    # вообще не подключается.
-    if '--rescan' in sys.argv:
-        run_rescan(settings)
-        logger.info('Обработка завершена')
+    settings = load_settings()
+
+    args = [
+        argument.strip().lower()
+        for argument in sys.argv[1:]
+    ]
+
+    print(
+        f'NORMALIZED ARGUMENTS: {args}'
+    )
+
+    logger.info(
+        'Нормализованные аргументы: %s',
+        args,
+    )
+
+    # -----------------------------
+    # ПЕРЕСКАН
+    # -----------------------------
+
+    if '--rescan' in args:
+        print('MODE: RESCAN')
+
+        logger.info(
+            'Выбран режим: Пересканировать'
+        )
+
+        run_rescan(
+            settings=settings,
+        )
+
+        logger.info(
+            'Обработка завершена'
+        )
+
+        print(
+            'ASAA RESCAN COMPLETED'
+        )
+
         return
 
-    # Обычный режим:
-    #
-    # ASAA.exe
-    #
-    # Поведение остаётся таким же,
-    # как было раньше.
-    run_normal(
-        settings=settings,
-        columns_config=columns_config,
+    # -----------------------------
+    # ОБЫЧНЫЙ РЕЖИМ
+    # -----------------------------
+
+    print('MODE: NORMAL')
+
+    logger.info(
+        'Выбран обычный режим'
     )
 
-    logger.info('Обработка завершена')
+    run_normal(
+        settings=settings,
+    )
+
+    logger.info(
+        'Обработка завершена'
+    )
+
+    print(
+        'ASAA NORMAL COMPLETED'
+    )
 
 
 if __name__ == '__main__':

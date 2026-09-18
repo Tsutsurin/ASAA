@@ -274,6 +274,8 @@ def _create_template_if_missing(
         dataframe,
         [
             'IP',
+            'IP-адрес',
+            'IP адрес',
             'Host.IpAddress',
             'IP Address',
             'IpAddress',
@@ -442,6 +444,8 @@ def _get_result_source_column(
     aliases = {
         'IP': [
             'IP',
+            'IP-адрес',
+            'IP адрес',
             'Host.IpAddress',
             'IP Address',
             'IpAddress',
