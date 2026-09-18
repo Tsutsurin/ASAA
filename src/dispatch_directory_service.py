@@ -1,41 +1,102 @@
+"""Обработка файлов из сетевой директории "Отработать"."""
+
 import logging
 import shutil
 from datetime import datetime
 from pathlib import Path
 
-from src.config import Settings, TEMP_DIR
-from src.dispatch_processor import process_dispatch_excel_file
+from .config import Settings
+from .dispatch_processor import process_dispatch_excel_file
 
-logger = logging.getLogger('auto_responsible.dispatch_directory')
-
-
-def is_excel_file(path: Path) -> bool:
-    return path.suffix.lower() in {'.xlsx', '.xls'}
+logger = logging.getLogger(
+    'auto_responsible.dispatch_directory'
+)
 
 
-def get_excel_files(input_dir: Path) -> list[Path]:
-    if not input_dir.exists():
-        logger.warning('Папка отработки не существует: %s', input_dir)
+def _is_excel_file(file_path: Path) -> bool:
+    """Проверяет, является ли файл Excel-файлом."""
+    if not file_path.is_file():
+        return False
+
+    if file_path.name.startswith('~$'):
+        return False
+
+    return file_path.suffix.lower() in {
+        '.xlsx',
+        '.xlsm',
+    }
+
+
+def find_dispatch_files(
+    directory: Path,
+) -> list[Path]:
+    """
+    Возвращает Excel-файлы из директории
+    "Отработать".
+    """
+    if not directory.exists():
+        logger.warning(
+            'Директория "Отработать" '
+            'не существует: %s',
+            directory,
+        )
+        return []
+
+    if not directory.is_dir():
+        logger.error(
+            'Путь "Отработать" '
+            'не является директорией: %s',
+            directory,
+        )
         return []
 
     files = [
-        path for path in input_dir.iterdir()
-        if path.is_file() and is_excel_file(path)
+        file_path
+        for file_path in directory.iterdir()
+        if _is_excel_file(file_path)
     ]
 
-    return sorted(files, key=lambda path: path.stat().st_mtime)
-
-
-def make_work_copy(source_file: Path) -> Path:
-    TEMP_DIR.mkdir(parents=True, exist_ok=True)
-
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    work_file = TEMP_DIR / f'{timestamp}_{source_file.name}'
-
-    shutil.copy2(source_file, work_file)
+    files.sort(
+        key=lambda path: path.stat().st_mtime
+    )
 
     logger.info(
-        'Файл отработки скопирован для обработки: %s -> %s',
+        'В директории "Отработать" '
+        'найдено файлов: %s',
+        len(files),
+    )
+
+    return files
+
+
+def make_work_copy(
+    source_file: Path,
+) -> Path:
+    """
+    Создаёт рабочую копию исходного файла.
+
+    Временное имя содержит timestamp, чтобы
+    избежать конфликтов между файлами.
+
+    ВАЖНО:
+    это имя не должно попадать в колонку
+    "Система" общего реестра заявок.
+    """
+    timestamp = datetime.now().strftime(
+        '%Y%m%d_%H%M%S_%f'
+    )
+
+    work_file = source_file.with_name(
+        f'{timestamp}_{source_file.name}'
+    )
+
+    shutil.copy2(
+        source_file,
+        work_file,
+    )
+
+    logger.info(
+        'Создана рабочая копия: %s -> %s',
         source_file,
         work_file,
     )
@@ -43,148 +104,214 @@ def make_work_copy(source_file: Path) -> Path:
     return work_file
 
 
-def move_source_file(
+def _move_file(
     source_file: Path,
-    target_dir: Path,
-    reason: str,
+    destination_dir: Path,
 ) -> Path:
-    target_dir.mkdir(parents=True, exist_ok=True)
+    """Перемещает файл в указанную директорию."""
+    destination_dir.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
 
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    target_file = target_dir / f'{timestamp}_{source_file.name}'
+    destination_file = (
+        destination_dir
+        / source_file.name
+    )
 
-    shutil.move(str(source_file), str(target_file))
+    if destination_file.exists():
+        timestamp = datetime.now().strftime(
+            '%Y%m%d_%H%M%S'
+        )
+
+        destination_file = (
+            destination_dir
+            / (
+                f'{source_file.stem}_'
+                f'{timestamp}'
+                f'{source_file.suffix}'
+            )
+        )
+
+    shutil.move(
+        str(source_file),
+        str(destination_file),
+    )
+
+    return destination_file
+
+
+def archive_dispatch_file(
+    source_file: Path,
+    archive_dir: Path,
+) -> Path:
+    """
+    Перемещает успешно обработанный
+    исходный файл в архив.
+    """
+    archived_file = _move_file(
+        source_file=source_file,
+        destination_dir=archive_dir,
+    )
 
     logger.info(
-        'Исходный файл отработки перемещен: reason=%s | %s',
-        reason,
-        target_file,
+        'Исходный файл перемещён в архив: %s',
+        archived_file,
     )
 
-    return target_file
+    return archived_file
 
 
-def archive_or_delete_source(
-    source_file: Path,
-    archive_dir: Path | None,
-    delete_after_processing: bool,
-) -> None:
-    if delete_after_processing:
-        source_file.unlink()
-
-        logger.info(
-            'Исходный файл отработки удален: %s',
-            source_file,
-        )
-
-        return
-
-    if archive_dir is None:
-        logger.info(
-            'Архив не указан, исходный файл отработки оставлен: %s',
-            source_file,
-        )
-
-        return
-
-    move_source_file(
-        source_file=source_file,
-        target_dir=archive_dir,
-        reason='success',
-    )
-
-
-def move_source_to_error(
+def move_dispatch_file_to_error(
     source_file: Path,
     error_dir: Path,
+) -> Path:
+    """
+    Перемещает исходный файл в директорию
+    ошибок.
+    """
+    error_file = _move_file(
+        source_file=source_file,
+        destination_dir=error_dir,
+    )
+
+    logger.error(
+        'Исходный файл перемещён '
+        'в директорию ошибок: %s',
+        error_file,
+    )
+
+    return error_file
+
+
+def _remove_work_file(
+    work_file: Path,
 ) -> None:
+    """Удаляет временную рабочую копию."""
     try:
-        move_source_file(
-            source_file=source_file,
-            target_dir=error_dir,
-            reason='error',
-        )
+        if work_file.exists():
+            work_file.unlink()
+
+            logger.info(
+                'Рабочая копия удалена: %s',
+                work_file,
+            )
 
     except Exception:
         logger.exception(
-            'Не удалось переместить исходный файл в папку ошибки: %s',
-            source_file,
+            'Не удалось удалить '
+            'рабочую копию: %s',
+            work_file,
         )
 
 
 def process_dispatch_directory(
     settings: Settings,
     account,
-) -> bool:
-    if not settings.dispatch_directory.enabled:
-        logger.info('Сценарий отработки из папки отключен')
-        return False
+) -> int:
+    """
+    Обрабатывает все Excel-файлы
+    из директории "Отработать".
 
-    input_dir = Path(settings.dispatch_directory.input_dir)
+    Для каждого файла:
+    1. Сохраняет оригинальное имя.
+    2. Создаёт рабочую копию.
+    3. Передаёт копию в dispatch_processor.
+    4. В общий реестр передаётся именно
+       оригинальное имя файла.
+    5. После успешной обработки исходный
+       файл перемещается в архив.
+    """
 
-    archive_dir = (
-        Path(settings.dispatch_directory.archive_dir)
-        if settings.dispatch_directory.archive_dir
-        else None
+    source_dir = Path(
+        settings.dispatch.source_dir
     )
 
-    error_dir = (
-        Path(settings.dispatch_directory.error_dir)
-        if settings.dispatch_directory.error_dir
-        else input_dir / 'Ошибка'
+    archive_dir = Path(
+        settings.dispatch.archive_dir
     )
 
-    files = get_excel_files(input_dir)
+    error_dir = Path(
+        settings.dispatch.error_dir
+    )
 
-    if not files:
-        logger.info('В папке отработки нет Excel-файлов')
-        return False
+    source_files = find_dispatch_files(
+        source_dir
+    )
 
-    processed_any = False
+    processed_count = 0
 
-    for source_file in files:
-        logger.info(
-            'Начинаю обработку файла из папки отработки: %s',
-            source_file,
+    for source_file in source_files:
+        # КРИТИЧНО:
+        # сохраняем имя ДО создания
+        # временной рабочей копии.
+        original_file_name = (
+            source_file.name
         )
 
-        work_file = make_work_copy(source_file)
+        logger.info(
+            'Начинаю обработку файла: %s',
+            original_file_name,
+        )
+
+        work_file = None
 
         try:
+            work_file = make_work_copy(
+                source_file
+            )
+
             process_dispatch_excel_file(
                 settings=settings,
                 account=account,
                 source_file=work_file,
+                original_file_name=(
+                    original_file_name
+                ),
+            )
+
+            archive_dispatch_file(
+                source_file=source_file,
+                archive_dir=archive_dir,
+            )
+
+            processed_count += 1
+
+            logger.info(
+                'Обработка файла завершена: %s',
+                original_file_name,
             )
 
         except Exception:
             logger.exception(
-                'Ошибка обработки файла отработки. '
-                'Исходный файл будет перемещен в папку ошибки: %s',
-                source_file,
+                'Ошибка обработки файла: %s',
+                original_file_name,
             )
 
-            move_source_to_error(
-                source_file=source_file,
-                error_dir=error_dir,
-            )
+            try:
+                if source_file.exists():
+                    move_dispatch_file_to_error(
+                        source_file=source_file,
+                        error_dir=error_dir,
+                    )
 
-            processed_any = True
-            continue
+            except Exception:
+                logger.exception(
+                    'Не удалось переместить '
+                    'исходный файл в ошибки: %s',
+                    source_file,
+                )
 
-        archive_or_delete_source(
-            source_file=source_file,
-            archive_dir=archive_dir,
-            delete_after_processing=(
-                settings.dispatch_directory.delete_after_processing
-            ),
-        )
+        finally:
+            if work_file is not None:
+                _remove_work_file(
+                    work_file
+                )
 
-        processed_any = True
+    logger.info(
+        'Обработка директории завершена. '
+        'Успешно обработано файлов: %s',
+        processed_count,
+    )
 
-        logger.info(
-            'Файл из папки отработки обработан: %s',
-            source_file,
-        )
-
-    return processed_any
+    return processed_count

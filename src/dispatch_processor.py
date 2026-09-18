@@ -334,6 +334,18 @@ def _resolve_recipients(
                 'service_owner_admin',
             )
 
+        # Если адреса были, но все были исключены
+        # blacklist, не используем fallback_to.
+        # Переходим к членам группы.
+        logger.warning(
+            'Все Ответственные ИС / Администраторы ИС '
+            'исключены черным списком. '
+            'Переход к Членам группы | '
+            'service=%s | group=%s',
+            group_report.service_name,
+            group_report.display_name,
+        )
+
     # 5. Члены группы с фильтрацией через AD.
     if group_report.group_member_emails:
         to, cc = resolve_dispatch_recipients(
@@ -379,7 +391,26 @@ def process_dispatch_excel_file(
     settings: Settings,
     account,
     source_file: Path,
+    original_file_name: str | None = None,
 ) -> int:
+    """
+    Обрабатывает Excel-файл для рассылки.
+
+    source_file:
+        рабочая копия файла.
+
+    original_file_name:
+        исходное имя файла из папки "Отработать".
+        Оно записывается в колонку "Система"
+        общего реестра заявок.
+    """
+
+    # Сохраняем обратную совместимость на случай,
+    # если функция вызывается не из
+    # dispatch_directory_service.py.
+    if not original_file_name:
+        original_file_name = source_file.name
+
     output_dir = (
         BASE_DIR
         / settings.dispatch.output_dir
@@ -414,8 +445,7 @@ def process_dispatch_excel_file(
         and len(group_reports) > max_emails
     ):
         raise RuntimeError(
-            'Количество сформированных писем '
-            f'({len(group_reports)}) превышает '
+            'Количество сформированных писем 'f'({len(group_reports)}) превышает '
             f'лимит за запуск ({max_emails}). '
             'Ни одно письмо не отправлено.'
         )
@@ -452,11 +482,18 @@ def process_dispatch_excel_file(
     created_count = 0
     failed_count = 0
 
+    logger.info(
+        'Обработка файла | '
+        'working_file=%s | original_file=%s',
+        source_file,
+        original_file_name,
+    )
+
     for group_report in group_reports:
         try:
             if group_report.has_group:
                 ticket_number = next_ticket_number
-                next_ticket_number +=1
+                next_ticket_number += 1
 
                 (
                     to,
@@ -552,14 +589,17 @@ def process_dispatch_excel_file(
                     status=(
                         settings.dispatch.status_value
                     ),
+                    system=original_file_name,
                 )
 
                 logger.info(
                     'Заявка %s отправлена | '
+                    'system=%s | '
                     'group=%s | service=%s | '
                     'route=%s | to=%s | '
                     'cc=%s | file=%s',
                     ticket_number,
+                    original_file_name,
                     group_report.display_name,
                     group_report.service_name,
                     route_source,
@@ -630,8 +670,10 @@ def process_dispatch_excel_file(
         )
 
     logger.info(
-        'Файл обработан: %s | писем=%s',
+        'Файл обработан: %s | '
+        'original_file=%s | писем=%s',
         source_file,
+        original_file_name,
         created_count,
     )
 
