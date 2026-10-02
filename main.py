@@ -6,14 +6,16 @@ import sys
 from src.config import load_settings
 from src.logger_setup import setup_logging
 
-logger = logging.getLogger('auto_responsible.main')
+
+logger = logging.getLogger(
+    'auto_responsible.main'
+)
 
 
 def run_rescan(settings) -> None:
-    """Запускает только режим пересканирования."""
-
-    # Импорт нужен только режиму перескана.
-    from src.rescan_service import run_rescan_mode
+    from src.rescan_service import (
+        run_rescan_mode,
+    )
 
     print('RESCAN MODE STARTED')
 
@@ -50,20 +52,66 @@ def run_rescan(settings) -> None:
         raise
 
 
-def run_normal(settings) -> None:
-    """
-    Обычный режим:
-    - Отработать;
-    - Поиск.
-    """
+def run_feedback(settings) -> None:
+    from src.exchange_client import (
+        get_account,
+    )
+    from src.feedback_service import (
+        process_feedback,
+    )
 
-    # Эти импорты перескану НЕ нужны.
-    # Поэтому загружаем их только здесь.
-    from src.config import BASE_DIR, load_columns
+    print('FEEDBACK MODE STARTED')
+
+    logger.info(
+        'Запуск режима обратной связи'
+    )
+
+    account = get_account(
+        settings.ews
+    )
+
+    try:
+        processed = process_feedback(
+            settings=settings,
+            account=account,
+        )
+
+        logger.info(
+            'Режим обратной связи завершён. '
+            'Обработано писем: %s',
+            processed,
+        )
+
+        print(
+            'FEEDBACK FINISHED. '
+            f'PROCESSED: {processed}'
+        )
+
+    except Exception as exc:
+        print(
+            'FEEDBACK ERROR: '
+            f'{type(exc).__name__}: {exc}'
+        )
+
+        logger.exception(
+            'Ошибка сценария '
+            'обратной связи'
+        )
+
+        raise
+
+
+def run_normal(settings) -> None:
+    from src.config import (
+        BASE_DIR,
+        load_columns,
+    )
     from src.dispatch_directory_service import (
         process_dispatch_directory,
     )
-    from src.exchange_client import get_account
+    from src.exchange_client import (
+        get_account,
+    )
     from src.report_formatter import (
         set_formatter_config,
     )
@@ -134,6 +182,7 @@ def run_normal(settings) -> None:
 
 def main() -> None:
     print('ASAA STARTED')
+
     print(
         f'RAW ARGUMENTS: {sys.argv}'
     )
@@ -161,10 +210,6 @@ def main() -> None:
         args,
     )
 
-    # -----------------------------
-    # ПЕРЕСКАН
-    # -----------------------------
-
     if '--rescan' in args:
         print('MODE: RESCAN')
 
@@ -186,9 +231,27 @@ def main() -> None:
 
         return
 
-    # -----------------------------
-    # ОБЫЧНЫЙ РЕЖИМ
-    # -----------------------------
+    if '--feedback' in args:
+        print('MODE: FEEDBACK')
+
+        logger.info(
+            'Выбран режим: '
+            'Обратная связь'
+        )
+
+        run_feedback(
+            settings=settings,
+        )
+
+        logger.info(
+            'Обработка завершена'
+        )
+
+        print(
+            'ASAA FEEDBACK COMPLETED'
+        )
+
+        return
 
     print('MODE: NORMAL')
 

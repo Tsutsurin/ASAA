@@ -38,6 +38,22 @@ class ApiSettings:
 
 
 @dataclass
+class AiSettings:
+    enabled: bool
+    base_url: str
+    model: str
+    timeout: int
+
+
+@dataclass
+class FeedbackSettings:
+    enabled: bool
+    report_to: str
+    report_cc: str | None
+    report_subject: str
+
+
+@dataclass
 class SendEmailSettings:
     enabled: bool
     to: str
@@ -113,6 +129,8 @@ class Settings:
     only_unread: bool
     ews: EwsSettings
     api: ApiSettings
+    ai: AiSettings
+    feedback: FeedbackSettings
     dispatch: DispatchSettings
     search_directory: SearchDirectorySettings
     dispatch_directory: DispatchDirectorySettings
@@ -135,136 +153,328 @@ def _load_password(env_var: str) -> str:
     return password
 
 
-def load_settings(path: str | Path | None = None) -> Settings:
+def load_settings(
+    path: str | Path | None = None,
+) -> Settings:
     if path is None:
-        path = BASE_DIR / 'config' / 'settings.json'
+        path = (
+            BASE_DIR
+            / 'config'
+            / 'settings.json'
+        )
     else:
         path = BASE_DIR / path
 
-    with open(path, 'r', encoding='utf-8') as file:
+    with open(
+        path,
+        'r',
+        encoding='utf-8',
+    ) as file:
         data = json.load(file)
 
     ews = data['ews']
     api = data['api']
+    ai = data['ai']
+    feedback = data['feedback']
     dispatch = data['dispatch']
-    recipient_filter = dispatch['recipient_filter']
 
-    send_email_raw = data.get('send_email')
+    recipient_filter = (
+        dispatch['recipient_filter']
+    )
+
+    send_email_raw = data.get(
+        'send_email'
+    )
+
     send_email = None
+
     if send_email_raw:
         send_email = SendEmailSettings(
-            enabled=send_email_raw.get('enabled', False),
+            enabled=send_email_raw.get(
+                'enabled',
+                False,
+            ),
             to=send_email_raw['to'],
             cc=send_email_raw.get('cc'),
-            subject=send_email_raw['subject'],
+            subject=send_email_raw[
+                'subject'
+            ],
             body=send_email_raw['body'],
         )
 
     return Settings(
-        enrich_folder=data.get('enrich_folder'),
-        subject_contains=data.get('subject_contains'),
-        only_unread=data['only_unread'],
+        enrich_folder=data.get(
+            'enrich_folder'
+        ),
+        subject_contains=data.get(
+            'subject_contains'
+        ),
+        only_unread=data[
+            'only_unread'
+        ],
         ews=EwsSettings(
-            enabled=ews.get('enabled', True),
-            service_endpoint=ews['service_endpoint'],
+            enabled=ews.get(
+                'enabled',
+                True,
+            ),
+            service_endpoint=ews[
+                'service_endpoint'
+            ],
             username=ews['username'],
-            password_env=ews['password_env'],
-            password=_load_password(ews['password_env']),
+            password_env=ews[
+                'password_env'
+            ],
+            password=_load_password(
+                ews['password_env']
+            ),
             email=ews['email'],
-            auth_type=ews.get('auth_type', 'NTLM'),
-            verify_ssl=ews.get('verify_ssl', True),
+            auth_type=ews.get(
+                'auth_type',
+                'NTLM',
+            ),
+            verify_ssl=ews.get(
+                'verify_ssl',
+                True,
+            ),
         ),
         api=ApiSettings(
-            enabled=api.get('enabled', True),
+            enabled=api.get(
+                'enabled',
+                True,
+            ),
             base_url=api['base_url'],
-            verify_ssl=api.get('verify_ssl', True),
-            timeout=api.get('timeout', 30),
+            verify_ssl=api.get(
+                'verify_ssl',
+                True,
+            ),
+            timeout=api.get(
+                'timeout',
+                30,
+            ),
+        ),
+        ai=AiSettings(
+            enabled=ai.get(
+                'enabled',
+                False,
+            ),
+            base_url=ai['base_url'],
+            model=ai['model'],
+            timeout=ai.get(
+                'timeout',
+                120,
+            ),
+        ),
+        feedback=FeedbackSettings(
+            enabled=feedback.get(
+                'enabled',
+                False,
+            ),
+            report_to=feedback[
+                'report_to'
+            ],
+            report_cc=feedback.get(
+                'report_cc'
+            ),
+            report_subject=feedback.get(
+                'report_subject',
+                'ASAA — обратная связь',
+            ),
         ),
         send_email=send_email,
         dispatch=DispatchSettings(
-            enabled=dispatch.get('enabled', True),
-            template_path=dispatch['template_path'],
-            no_group_template_path=dispatch['no_group_template_path'],
-            service_template_path=dispatch['service_template_path'],
+            enabled=dispatch.get(
+                'enabled',
+                True,
+            ),
+            template_path=dispatch[
+                'template_path'
+            ],
+            no_group_template_path=dispatch[
+                'no_group_template_path'
+            ],
+            service_template_path=dispatch[
+                'service_template_path'
+            ],
             to=dispatch['to'],
             cc=dispatch.get('cc'),
-            no_group_to=dispatch['no_group_to'],
-            no_group_cc=dispatch.get('no_group_cc'),
+            no_group_to=dispatch[
+                'no_group_to'
+            ],
+            no_group_cc=dispatch.get(
+                'no_group_cc'
+            ),
             subject=dispatch['subject'],
-            no_group_subject=dispatch['no_group_subject'],
-            output_dir=dispatch['output_dir'],
-            network_tasks_dir=dispatch['network_tasks_dir'],
-            registry_file=dispatch['registry_file'],
-            registry_columns=dispatch['registry_columns'],
-            group_column=dispatch['group_column'],
-            ip_column=dispatch['ip_column'],
-            fqdn_column=dispatch['fqdn_column'],
-            vulnerability_column=dispatch['vulnerability_column'],
-            placeholder=dispatch['placeholder'],
-            status_value=dispatch['status_value'],
-            max_emails_per_run=dispatch.get('max_emails_per_run', 0),
+            no_group_subject=dispatch[
+                'no_group_subject'
+            ],
+            output_dir=dispatch[
+                'output_dir'
+            ],
+            network_tasks_dir=dispatch[
+                'network_tasks_dir'
+            ],
+            registry_file=dispatch[
+                'registry_file'
+            ],
+            registry_columns=dispatch[
+                'registry_columns'
+            ],
+            group_column=dispatch[
+                'group_column'
+            ],
+            ip_column=dispatch[
+                'ip_column'
+            ],
+            fqdn_column=dispatch[
+                'fqdn_column'
+            ],
+            vulnerability_column=dispatch[
+                'vulnerability_column'
+            ],
+            placeholder=dispatch[
+                'placeholder'
+            ],
+            status_value=dispatch[
+                'status_value'
+            ],
+            max_emails_per_run=dispatch.get(
+                'max_emails_per_run',
+                0,
+            ),
             pause_between_emails_seconds=dispatch.get(
                 'pause_between_emails_seconds',
                 0,
             ),
             recipient_filter=RecipientFilterSettings(
-                enabled=recipient_filter.get('enabled', False),
-                ldap_server=recipient_filter['ldap_server'],
-                ldap_user=recipient_filter['ldap_user'],
-                ldap_password_env=recipient_filter['ldap_password_env'],
-                ldap_password=_load_password(
-                    recipient_filter['ldap_password_env'],
+                enabled=recipient_filter.get(
+                    'enabled',
+                    False,
                 ),
-                search_base=recipient_filter['search_base'],
-                max_recipients=recipient_filter.get('max_recipients', 0),
-                fallback_to=recipient_filter['fallback_to'],
-                fallback_cc=recipient_filter.get('fallback_cc'),
+                ldap_server=recipient_filter[
+                    'ldap_server'
+                ],
+                ldap_user=recipient_filter[
+                    'ldap_user'
+                ],
+                ldap_password_env=recipient_filter[
+                    'ldap_password_env'
+                ],
+                ldap_password=_load_password(
+                    recipient_filter[
+                        'ldap_password_env'
+                    ],
+                ),
+                search_base=recipient_filter[
+                    'search_base'
+                ],
+                max_recipients=recipient_filter.get(
+                    'max_recipients',
+                    0,
+                ),
+                fallback_to=recipient_filter[
+                    'fallback_to'
+                ],
+                fallback_cc=recipient_filter.get(
+                    'fallback_cc'
+                ),
                 allowed_titles=recipient_filter.get(
                     'allowed_titles',
                     [],
                 ),
-                blacklist_file=recipient_filter.get('blacklist_file'),
+                blacklist_file=recipient_filter.get(
+                    'blacklist_file'
+                ),
             ),
-            service_routing=dispatch.get('service_routing', ''),
+            service_routing=dispatch.get(
+                'service_routing',
+                '',
+            ),
             attachment_drop_columns=dispatch.get(
                 'attachment_drop_columns',
                 [],
             ),
         ),
         search_directory=SearchDirectorySettings(
-            enabled=data['search_directory'].get('enabled', False),
-            input_dir=data['search_directory']['input_dir'],
-            output_dir=data['search_directory']['output_dir'],
-            archive_dir=data['search_directory'].get('archive_dir'),
-            delete_after_processing=data['search_directory'].get(
+            enabled=data[
+                'search_directory'
+            ].get(
+                'enabled',
+                False,
+            ),
+            input_dir=data[
+                'search_directory'
+            ]['input_dir'],
+            output_dir=data[
+                'search_directory'
+            ]['output_dir'],
+            archive_dir=data[
+                'search_directory'
+            ].get(
+                'archive_dir'
+            ),
+            delete_after_processing=data[
+                'search_directory'
+            ].get(
                 'delete_after_processing',
                 False,
             ),
         ),
         dispatch_directory=DispatchDirectorySettings(
-            enabled=data['dispatch_directory'].get('enabled', False),
-            input_dir=data['dispatch_directory']['input_dir'],
-            archive_dir=data['dispatch_directory'].get('archive_dir'),
-            error_dir=data['dispatch_directory'].get('error_dir'),
-            delete_after_processing=data['dispatch_directory'].get(
+            enabled=data[
+                'dispatch_directory'
+            ].get(
+                'enabled',
+                False,
+            ),
+            input_dir=data[
+                'dispatch_directory'
+            ]['input_dir'],
+            archive_dir=data[
+                'dispatch_directory'
+            ].get(
+                'archive_dir'
+            ),
+            error_dir=data[
+                'dispatch_directory'
+            ].get(
+                'error_dir'
+            ),
+            delete_after_processing=data[
+                'dispatch_directory'
+            ].get(
                 'delete_after_processing',
                 False,
             ),
         ),
-        backend_mapping_file=data.get('backend_mapping_file'),
+        backend_mapping_file=data.get(
+            'backend_mapping_file'
+        ),
         report_formatter_config=data.get(
             'report_formatter_config',
             'config/config.ini',
         ),
-        columns_config=data.get('columns_config', 'config/columns.json'),
+        columns_config=data.get(
+            'columns_config',
+            'config/columns.json',
+        ),
     )
 
 
-def load_columns(path: str | Path | None = None) -> dict[str, list[str]]:
+def load_columns(
+    path: str | Path | None = None,
+) -> dict[str, list[str]]:
     if path is None:
-        path = BASE_DIR / 'config' / 'columns.json'
+        path = (
+            BASE_DIR
+            / 'config'
+            / 'columns.json'
+        )
     else:
         path = BASE_DIR / path
 
-    with open(path, 'r', encoding='utf-8') as file:
+    with open(
+        path,
+        'r',
+        encoding='utf-8',
+    ) as file:
         return json.load(file)

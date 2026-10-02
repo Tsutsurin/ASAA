@@ -18,6 +18,18 @@
     "verify_ssl": false,
     "timeout": 30
   },
+  "ai": {
+    "enabled": true,
+    "base_url": "http://10.201.198.47:11434",
+    "model": "qwen9B:latest",
+    "timeout": 120
+  },
+  "feedback": {
+    "enabled": true,
+    "report_to": "vm@lukoil.com",
+    "report_cc": null,
+    "report_subject": "ASAA — обратная связь по заявкам"
+  },
   "dispatch": {
     "enabled": true,
     "template_path": "pattern\\template.html",
