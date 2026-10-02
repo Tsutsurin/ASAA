@@ -7,11 +7,15 @@ from pathlib import Path
 
 import pandas as pd
 from openpyxl import load_workbook
-from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
-from openpyxl.utils import get_column_letter
+from openpyxl.styles import PatternFill
 
 from .config import Settings
+from .report_formatter import (
+    get_rescan_status_colors,
+    stream_transform,
+)
 from .utils import normalize_text
+
 
 logger = logging.getLogger(
     'auto_responsible.rescan'
@@ -26,27 +30,29 @@ VULNERABILITY_ID_COLUMN = (
     'Идентификатор уязвимости VM'
 )
 
+STATUS_COLUMN = 'Статус устранения'
+
 RESULT_COLUMNS = [
-    'IP',
-    'FQDN',
-    'Описание',
-    'Способ устранения',
+    'IP-адрес',
+    'Доменное имя',
+    'Имя узла',
     'CVE',
-    'CVSS',
+    'CVSS Общая',
     'Уровень опасности',
+    'Название уязвимости',
+    'Уязвимая сущность',
+    'Версия уязвимой сущности',
+    'Путь установки',
+    'Операционная система',
+    'Описание уязвимости',
+    'Способ устранения уязвимости',
     VULNERABILITY_ID_COLUMN,
 ]
-
-STATUS_COLUMN = 'Статус'
 
 
 def _is_excel_file(
     file_path: Path,
 ) -> bool:
-    """
-    Проверяет, является ли файл подходящим
-    Excel-файлом.
-    """
     if not file_path.is_file():
         return False
 
@@ -62,10 +68,6 @@ def _is_excel_file(
 def _get_ticket_directories(
     tasks_dir: Path,
 ) -> list[Path]:
-    """
-    Возвращает числовые директории заявок:
-    1, 2, 3, ...
-    """
     if not tasks_dir.exists():
         raise FileNotFoundError(
             'Директория заявок не найдена: '
@@ -89,12 +91,6 @@ def _get_ticket_directories(
 def _get_excel_files(
     ticket_dir: Path,
 ) -> list[Path]:
-    """
-    Возвращает Excel-файлы только из корня
-    папки заявки.
-
-    Файлы из Результат/Архив сюда не попадают.
-    """
     files = [
         path
         for path in ticket_dir.iterdir()
@@ -102,7 +98,10 @@ def _get_excel_files(
     ]
 
     files.sort(
-        key=lambda path: path.stat().st_mtime
+        key=lambda path: (
+            path.stat().st_mtime,
+            path.name,
+        )
     )
 
     return files
@@ -112,10 +111,6 @@ def _find_column(
     dataframe: pd.DataFrame,
     candidates: list[str],
 ) -> str | None:
-    """
-    Ищет колонку по одному из возможных названий.
-    Сравнение выполняется через normalize_text().
-    """
     normalized_columns = {
         normalize_text(column): column
         for column in dataframe.columns
@@ -140,7 +135,6 @@ def _find_column(
 def _clean_value(
     value,
 ) -> str:
-    """Преобразует значение Excel в строку."""
     if pd.isna(value):
         return ''
 
@@ -155,10 +149,6 @@ def _clean_value(
 def _unique_values(
     values: list[str],
 ) -> list[str]:
-    """
-    Удаляет пустые значения и дубликаты,
-    сохраняя исходный порядок.
-    """
     result = []
 
     for value in values:
@@ -176,13 +166,6 @@ def _unique_values(
 def _quote_values(
     values: list[str],
 ) -> str:
-    """
-    Превращает:
-        ['1.2.3.4', '5.6.7.8']
-
-    в:
-        "1.2.3.4", "5.6.7.8"
-    """
     return ', '.join(
         f'"{value}"'
         for value in values
@@ -193,17 +176,6 @@ def _build_template_text(
     ip_addresses: list[str],
     fqdns: list[str],
 ) -> str:
-    """
-    Формирует содержимое шаблон.txt.
-
-    Пример:
-
-    1.2.3.4; 5.6.7.8
-    aboba; aboba2
-    Host.IpAddress in ["1.2.3.4", "5.6.7.8"]
-    host.fqdn in ["aboba", "aboba2"]
-    WebSite.DomainName in ["aboba", "aboba2"]
-    """
     ip_line = '; '.join(
         ip_addresses
     )
@@ -212,7 +184,7 @@ def _build_template_text(
         fqdns
     )
 
-    quoted_ips = _quote_values(
+    plain_ips = ', '.join(
         ip_addresses
     )
 
@@ -225,7 +197,7 @@ def _build_template_text(
         fqdn_line,
         (
             'Host.IpAddress in '
-            f'[{quoted_ips}]'
+            f'[{plain_ips}]'
         ),
         (
             'host.fqdn in '
@@ -237,18 +209,15 @@ def _build_template_text(
         ),
     ]
 
-    return '\n'.join(lines)
+    return '\n'.join(
+        lines
+    )
 
 
 def _create_template_if_missing(
     ticket_dir: Path,
     original_file: Path,
 ) -> None:
-    """
-    Создаёт шаблон.txt, если его ещё нет.
-
-    IP/FQDN берутся из оригинального Excel.
-    """
     template_file = (
         ticket_dir
         / TEMPLATE_FILE_NAME
@@ -273,9 +242,9 @@ def _create_template_if_missing(
     ip_column = _find_column(
         dataframe,
         [
-            'IP',
             'IP-адрес',
             'IP адрес',
+            'IP',
             'Host.IpAddress',
             'IP Address',
             'IpAddress',
@@ -285,9 +254,9 @@ def _create_template_if_missing(
     fqdn_column = _find_column(
         dataframe,
         [
+            'Доменное имя',
             'FQDN',
             'Host.Fqdn',
-            'Доменное имя',
             'Hostname',
         ],
     )
@@ -334,12 +303,6 @@ def _create_template_if_missing(
 def _ensure_result_directories(
     ticket_dir: Path,
 ) -> tuple[Path, Path]:
-    """
-    Создаёт:
-
-    <заявка>/Результат
-    <заявка>/Результат/Архив
-    """
     result_dir = (
         ticket_dir
         / RESULT_DIR_NAME
@@ -369,11 +332,9 @@ def _ensure_result_directories(
 def _normalize_vulnerability_id(
     value,
 ) -> str:
-    """
-    Нормализует идентификатор уязвимости
-    для сравнения.
-    """
-    value = _clean_value(value)
+    value = _clean_value(
+        value
+    )
 
     return value.casefold()
 
@@ -381,10 +342,6 @@ def _normalize_vulnerability_id(
 def _get_vulnerability_column(
     dataframe: pd.DataFrame,
 ) -> str:
-    """
-    Находит колонку идентификатора
-    уязвимости.
-    """
     column = _find_column(
         dataframe,
         [
@@ -404,14 +361,6 @@ def _get_vulnerability_column(
 def _get_original_and_rescan(
     excel_files: list[Path],
 ) -> tuple[Path, Path]:
-    """
-    Из двух Excel определяет:
-
-    старый файл -> оригинал;
-    новый файл -> перескан.
-
-    Используется время изменения файла.
-    """
     if len(excel_files) != 2:
         raise ValueError(
             'Для сравнения должно быть '
@@ -437,39 +386,32 @@ def _get_result_source_column(
     dataframe: pd.DataFrame,
     target_column: str,
 ) -> str | None:
-    """
-    Определяет исходную колонку для
-    результирующего отчёта.
-    """
     aliases = {
-        'IP': [
-            'IP',
+        'IP-адрес': [
             'IP-адрес',
             'IP адрес',
+            'IP',
             'Host.IpAddress',
             'IP Address',
             'IpAddress',
         ],
-        'FQDN': [
+        'Доменное имя': [
+            'Доменное имя',
             'FQDN',
             'Host.Fqdn',
-            'Доменное имя',
             'Hostname',
         ],
-        'Описание': [
-            'Описание',
-            'Description',
-        ],
-        'Способ устранения': [
-            'Способ устранения',
-            'Рекомендации',
-            'Рекомендация',
-            'Remediation',
+        'Имя узла': [
+            'Имя узла',
+            'HOST.hostname',
+            'Hostname',
         ],
         'CVE': [
             'CVE',
+            'Q.cve',
         ],
-        'CVSS': [
+        'CVSS Общая': [
+            'CVSS Общая',
             'CVSS',
             'CVSS Score',
         ],
@@ -477,6 +419,39 @@ def _get_result_source_column(
             'Уровень опасности',
             'Severity',
             'Критичность',
+        ],
+        'Название уязвимости': [
+            'Название уязвимости',
+            'Name',
+        ],
+        'Уязвимая сущность': [
+            'Уязвимая сущность',
+            'Уязвимая сущность (ОС/ПО/Сервис)',
+            'VulnerableEntity',
+        ],
+        'Версия уязвимой сущности': [
+            'Версия уязвимой сущности',
+            'Version',
+        ],
+        'Путь установки': [
+            'Путь установки',
+            'Path',
+        ],
+        'Операционная система': [
+            'Операционная система',
+            'OS',
+        ],
+        'Описание уязвимости': [
+            'Описание уязвимости',
+            'Описание',
+            'Description',
+        ],
+        'Способ устранения уязвимости': [
+            'Способ устранения уязвимости',
+            'Способ устранения',
+            'Рекомендации',
+            'Рекомендация',
+            'Remediation',
         ],
         VULNERABILITY_ID_COLUMN: [
             VULNERABILITY_ID_COLUMN,
@@ -496,20 +471,6 @@ def _build_result_dataframe(
     original_df: pd.DataFrame,
     rescan_df: pd.DataFrame,
 ) -> pd.DataFrame:
-    """
-    Создаёт результат сравнения.
-
-    ВАЖНО:
-    основой результата является ТОЛЬКО
-    оригинальный файл.
-
-    Новые уязвимости из перескана
-    в результат не добавляются.
-
-    Если ID оригинальной уязвимости:
-    - найден в перескане -> неустранено;
-    - отсутствует -> устранено.
-    """
     original_vulnerability_column = (
         _get_vulnerability_column(
             original_df
@@ -612,21 +573,23 @@ def _build_result_dataframe(
     )
 
 
-def _format_result_excel(
+def _format_rescan_status(
     result_file: Path,
 ) -> None:
-    """
-    Форматирует результирующий Excel:
-    - фильтр;
-    - закрепление первой строки;
-    - оформление заголовка;
-    - границы;
-    - перенос текста;
-    - ширина колонок.
+    colors = (
+        get_rescan_status_colors()
+    )
 
-    Сортировка по Статусу выполняется
-    по алфавиту А -> Я.
-    """
+    resolved_fill = PatternFill(
+        fill_type='solid',
+        fgColor=colors['resolved'],
+    )
+
+    unresolved_fill = PatternFill(
+        fill_type='solid',
+        fgColor=colors['unresolved'],
+    )
+
     wb = load_workbook(
         result_file
     )
@@ -634,161 +597,93 @@ def _format_result_excel(
     ws = wb.active
     ws.title = 'Проверка'
 
-    thin = Side(
-        style='thin',
-    )
-
-    border = Border(
-        left=thin,
-        right=thin,
-        top=thin,
-        bottom=thin,
-    )
-
-    header_fill = PatternFill(
-        fill_type='solid',
-        fgColor='1F2933',
-    )
-
-    header_font = Font(
-        color='FFFFFF',
-        bold=True,
-    )
-
-    for cell in ws[1]:
-        cell.fill = header_fill
-        cell.font = header_font
-        cell.border = border
-        cell.alignment = Alignment(
-            horizontal='center',
-            vertical='center',
-            wrap_text=True,
-        )
-
-    for row in ws.iter_rows(
-        min_row=2,
-    ):
-        for cell in row:
-            cell.border = border
-            cell.alignment = Alignment(
-                vertical='top',
-                wrap_text=True,
-            )
-
-    ws.freeze_panes = 'A2'
-
-    ws.auto_filter.ref = (
-        f'A1:'
-        f'{get_column_letter(ws.max_column)}'
-        f'{ws.max_row}'
-    )
-
-    # Физически сортируем строки по статусу
-    # А -> Я.
-    #
-    # "неустранено" будет выше
-    # "устранено".
     status_column_index = None
 
     for column_index in range(
         1,
         ws.max_column + 1,
     ):
-        if (
-            normalize_text(
-                ws.cell(
-                    row=1,
-                    column=column_index,
-                ).value
-            )
-            == normalize_text(
-                STATUS_COLUMN
-            )
-        ):
-            status_column_index = (
-                column_index
-            )
-            break
-
-    if (
-        status_column_index
-        and ws.max_row > 2
-    ):
-        data = [
-            [
-                ws.cell(
-                    row=row_index,
-                    column=column_index,
-                ).value
-                for column_index
-                in range(
-                    1,
-                    ws.max_column + 1,
-                )
-            ]
-            for row_index
-            in range(
-                2,
-                ws.max_row + 1,
-            )
-        ]
-
-        data.sort(
-            key=lambda row: (
-                str(
-                    row[
-                        status_column_index - 1
-                    ]
-                    or ''
-                ).casefold()
-            )
-        )
-
-        for row_offset, values in enumerate(
-            data,
-            start=2,
-        ):
-            for column_index, value in enumerate(
-                values,
-                start=1,
-            ):
-                ws.cell(
-                    row=row_offset,
-                    column=column_index,
-                    value=value,
-                )
-
-    widths = {
-        'IP': 18,
-        'FQDN': 35,
-        'Описание': 55,
-        'Способ устранения': 55,
-        'CVE': 22,
-        'CVSS': 12,
-        'Уровень опасности': 20,
-        VULNERABILITY_ID_COLUMN: 30,
-        STATUS_COLUMN: 18,
-    }
-
-    for column_index in range(
-        1,
-        ws.max_column + 1,
-    ):
-        header = _clean_value(
+        header = normalize_text(
             ws.cell(
                 row=1,
                 column=column_index,
             ).value
         )
 
-        ws.column_dimensions[
-            get_column_letter(
+        if header == normalize_text(
+            STATUS_COLUMN
+        ):
+            status_column_index = (
                 column_index
             )
-        ].width = widths.get(
-            header,
-            20,
+            break
+
+    if status_column_index is None:
+        wb.close()
+
+        raise ValueError(
+            'Не найдена колонка '
+            f'"{STATUS_COLUMN}"'
         )
+
+    rows = list(
+        ws.iter_rows(
+            min_row=2,
+        )
+    )
+
+    rows.sort(
+        key=lambda row: (
+            str(
+                row[
+                    status_column_index - 1
+                ].value
+                or ''
+            ).casefold()
+        )
+    )
+
+    values = [
+        [
+            cell.value
+            for cell in row
+        ]
+        for row in rows
+    ]
+
+    for row_index, row_values in enumerate(
+        values,
+        start=2,
+    ):
+        status = str(
+            row_values[
+                status_column_index - 1
+            ]
+            or ''
+        ).strip().casefold()
+
+        if status == 'устранено':
+            fill = resolved_fill
+
+        elif status == 'неустранено':
+            fill = unresolved_fill
+
+        else:
+            fill = None
+
+        for column_index, value in enumerate(
+            row_values,
+            start=1,
+        ):
+            cell = ws.cell(
+                row=row_index,
+                column=column_index,
+            )
+
+            cell.value = value
+
+            if fill is not None:
+                cell.fill = fill
 
     wb.save(
         result_file
@@ -803,10 +698,14 @@ def _create_result_file(
     original_file: Path,
     rescan_file: Path,
 ) -> Path:
-    """
-    Сравнивает оригинал и перескан
-    и создаёт итоговый Excel.
-    """
+    # Второй Excel является сырым результатом
+    # повторного сканирования.
+    # Сначала приводим его к общему формату ASAA.
+    stream_transform(
+        infile=rescan_file,
+        outfile=rescan_file,
+    )
+
     original_df = pd.read_excel(
         original_file
     )
@@ -837,8 +736,6 @@ def _create_result_file(
         )
     )
 
-    # Если в этот же день режим запустили
-    # повторно, старый результат не затираем.
     if result_file.exists():
         timestamp = (
             datetime.now().strftime(
@@ -861,20 +758,34 @@ def _create_result_file(
         index=False,
     )
 
-    _format_result_excel(
+    # Применяем к результату тот же
+    # formatter/config.ini, что используется
+    # для остальных Excel ASAA.
+    stream_transform(
+        infile=result_file,
+        outfile=result_file,
+    )
+
+    # После общего форматирования заменяем
+    # severity-заливку на статусную.
+    _format_rescan_status(
         result_file
     )
 
     unresolved_count = int(
         (
-            result_df[STATUS_COLUMN]
+            result_df[
+                STATUS_COLUMN
+            ]
             == 'неустранено'
         ).sum()
     )
 
     resolved_count = int(
         (
-            result_df[STATUS_COLUMN]
+            result_df[
+                STATUS_COLUMN
+            ]
             == 'устранено'
         ).sum()
     )
@@ -899,10 +810,6 @@ def _move_rescan_to_archive(
     rescan_file: Path,
     archive_dir: Path,
 ) -> Path:
-    """
-    Перемещает успешно обработанный
-    перескан в Результат/Архив.
-    """
     destination = (
         archive_dir
         / rescan_file.name
@@ -940,15 +847,6 @@ def _move_rescan_to_archive(
 def _prepare_ticket_directory(
     ticket_dir: Path,
 ) -> None:
-    """
-    Подготавливает одну заявку:
-    - Результат;
-    - Результат/Архив;
-    - шаблон.txt.
-
-    Если Excel пока один, сравнение
-    не выполняется.
-    """
     result_dir, archive_dir = (
         _ensure_result_directories(
             ticket_dir
@@ -966,7 +864,6 @@ def _prepare_ticket_directory(
         )
         return
 
-    # Самый старый Excel считаем оригиналом.
     original_file = min(
         excel_files,
         key=lambda path: (
@@ -1007,9 +904,6 @@ def _prepare_ticket_directory(
         )
     )
 
-    # Сначала полностью создаём результат.
-    # Если здесь возникнет ошибка,
-    # перескан останется в корне заявки.
     _create_result_file(
         ticket_dir=ticket_dir,
         result_dir=result_dir,
@@ -1017,8 +911,6 @@ def _prepare_ticket_directory(
         rescan_file=rescan_file,
     )
 
-    # Только после успешного формирования
-    # результата переносим перескан.
     _move_rescan_to_archive(
         rescan_file=rescan_file,
         archive_dir=archive_dir,
@@ -1028,14 +920,6 @@ def _prepare_ticket_directory(
 def run_rescan_mode(
     settings: Settings,
 ) -> int:
-    """
-    Запускает режим "Пересканировать"
-    для всех числовых папок заявок.
-
-    Используется тот же network_tasks_dir,
-    в котором основной режимсоздаёт
-    папки заявок.
-    """
     tasks_dir = Path(
         settings.dispatch.network_tasks_dir
     )

@@ -66,6 +66,11 @@ SEVERITY_COLORS = {
     'none': 'FFFFFF',
 }
 
+RESCAN_STATUS_COLORS = {
+    'resolved': 'C6EFCE',
+    'unresolved': 'F4CCCC',
+}
+
 SEVERITY_ALIASES = {
     'critical': 'critical',
     'критический': 'critical',
@@ -209,6 +214,7 @@ def load_settings_from_config() -> None:
     global SEVERITY_FILLS
     global COL_MAP
     global DROP_COLS_NORM
+    global RESCAN_STATUS_COLORS
 
     config_path = _get_config_path()
 
@@ -247,6 +253,31 @@ def load_settings_from_config() -> None:
 
                 if key and value:
                     SEVERITY_COLORS[key] = value
+
+        if config.has_section('rescan_status'):
+            resolved_color = config.get(
+                'rescan_status',
+                'resolved',
+                fallback=RESCAN_STATUS_COLORS[
+                    'resolved'
+                ],
+            ).strip()
+
+            unresolved_color = config.get(
+                'rescan_status',
+                'unresolved',
+                fallback=RESCAN_STATUS_COLORS[
+                    'unresolved'
+                ],
+            ).strip()
+
+            RESCAN_STATUS_COLORS[
+                'resolved'
+            ] = resolved_color
+
+            RESCAN_STATUS_COLORS[
+                'unresolved'
+            ] = unresolved_color
 
         COL_MAP.clear()
 
@@ -329,6 +360,12 @@ def load_settings_from_config() -> None:
             'solid',
             fgColor=color,
         )
+
+
+def get_rescan_status_colors() -> dict[str, str]:
+    load_settings_from_config()
+
+    return RESCAN_STATUS_COLORS.copy()
 
 
 def clean_cve(text: str) -> list[str]:
@@ -493,6 +530,7 @@ def stream_transform(
                 max_row=1,
             )
         )
+
         source_header = [
             (
                 str(cell.value).strip()
@@ -504,17 +542,20 @@ def stream_transform(
 
         rename_map, width_map = build_column_maps()
 
-        output_columns: list[tuple[int, str]] = []
+        output_columns: list[
+            tuple[int, str]
+        ] = []
 
         for source_index, source_name in enumerate(
             source_header
         ):
-            normalized = norm_name(source_name)
+            normalized = norm_name(
+                source_name
+            )
 
             if normalized in DROP_COLS_NORM:
                 continue
 
-            # Защита от старых пустых / Unnamed-колонок.
             if not normalized:
                 continue
 
@@ -549,9 +590,13 @@ def stream_transform(
 
                 text = first + '\n' + rest
 
-            display_header.append(text)
+            display_header.append(
+                text
+            )
 
-        ws.append(display_header)
+        ws.append(
+            display_header
+        )
 
         for cell in ws[1]:
             cell.font = HEADER_FONT
@@ -573,9 +618,11 @@ def stream_transform(
             source_contains='vulners.ids',
         )
 
-        severity_position = find_severity_position(
-            source_header=source_header,
-            output_columns=output_columns,
+        severity_position = (
+            find_severity_position(
+                source_header=source_header,
+                output_columns=output_columns,
+            )
         )
 
         verdict_position = find_column_position(
@@ -632,13 +679,20 @@ def stream_transform(
 
             if (
                 cve_position is not None
-                and cve_position < len(row_values)
+                and cve_position
+                < len(row_values)
             ):
                 cve_ids = clean_cve(
-                    str(row_values[cve_position])
+                    str(
+                        row_values[
+                            cve_position
+                        ]
+                    )
                 )
 
-                row_values[cve_position] = (
+                row_values[
+                    cve_position
+                ] = (
                     ','.join(cve_ids)
                     if cve_ids
                     else ' '
@@ -646,13 +700,20 @@ def stream_transform(
 
             if (
                 bdu_position is not None
-                and bdu_position < len(row_values)
+                and bdu_position
+                < len(row_values)
             ):
                 bdu_ids = clean_bdu(
-                    str(row_values[bdu_position])
+                    str(
+                        row_values[
+                            bdu_position
+                        ]
+                    )
                 )
 
-                row_values[bdu_position] = (
+                row_values[
+                    bdu_position
+                ] = (
                     ', '.join(
                         f'BDU:{bdu_id}'
                         for bdu_id in bdu_ids
@@ -663,7 +724,8 @@ def stream_transform(
 
             if (
                 port_position is not None
-                and port_position < len(row_values)
+                and port_position
+                < len(row_values)
             ):
                 raw_port = row_values[
                     port_position
@@ -675,7 +737,9 @@ def stream_transform(
                     str(raw_port),
                 )
 
-                row_values[port_position] = (
+                row_values[
+                    port_position
+                ] = (
                     cleaned_port
                     if cleaned_port
                     else ' '
@@ -683,10 +747,13 @@ def stream_transform(
 
             if (
                 verdict_position is not None
-                and verdict_position < len(row_values)
+                and verdict_position
+                < len(row_values)
             ):
                 raw_verdict = str(
-                    row_values[verdict_position]
+                    row_values[
+                        verdict_position
+                    ]
                 ).strip()
 
                 mapped = VERDICT_MAP.get(
@@ -702,14 +769,19 @@ def stream_transform(
 
             if (
                 severity_position is not None
-                and severity_position < len(row_values)
+                and severity_position
+                < len(row_values)
             ):
                 severity = normalize_severity(
-                    row_values[severity_position]
+                    row_values[
+                        severity_position
+                    ]
                 )
 
-                row_fill = SEVERITY_FILLS.get(
-                    severity
+                row_fill = (
+                    SEVERITY_FILLS.get(
+                        severity
+                    )
                 )
 
             for column_index, value in enumerate(
@@ -746,8 +818,10 @@ def stream_transform(
                 progress_callback
                 and total_rows > 0
                 and (
-                    processed_rows % update_every == 0
-                    or processed_rows == total_rows
+                    processed_rows
+                    % update_every == 0
+                    or processed_rows
+                    == total_rows
                 )
             ):
                 progress_callback(
@@ -781,8 +855,12 @@ def stream_transform(
             )
 
             width = (
-                width_map.get(source_norm)
-                or width_map.get(output_norm)
+                width_map.get(
+                    source_norm
+                )
+                or width_map.get(
+                    output_norm
+                )
                 or DEFAULT_COL_WIDTH
             )
 
@@ -799,14 +877,20 @@ def stream_transform(
             ).column_letter
 
             ws.auto_filter.ref = (
-                f'A1:{last_column_letter}{ws.max_row}'
+                f'A1:'
+                f'{last_column_letter}'
+                f'{ws.max_row}'
             )
 
-        wb.save(temp_outfile)
+        wb.save(
+            temp_outfile
+        )
         wb.close()
 
         if progress_callback:
-            progress_callback(100.0)
+            progress_callback(
+                100.0
+            )
 
     finally:
         source_wb.close()
